@@ -1,0 +1,518 @@
+<!doctype html>
+<html>
+  <head>
+    <title>BoxItNow API</title>
+    <style type="text/css">
+      body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+  <h1>BoxItNow API</h1>
+    <div class="app-desc">Access BIN functionality remotely</div>
+    <div class="app-desc">Version: 1.5.0</div>
+    <div class="app-desc">BasePath:/api</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Item">Item</a></h4>
+  <ul>
+  <li><a href="#categoryGet"><code><span class="http-method">get</span> /category</code></a></li>
+  <li><a href="#categoryIdItemsGet"><code><span class="http-method">get</span> /category/{id}/items</code></a></li>
+  <li><a href="#itemStudioIdGet"><code><span class="http-method">get</span> /item/studio/{id}</code></a></li>
+  </ul>
+  <h4><a href="#User">User</a></h4>
+  <ul>
+  <li><a href="#loginPost"><code><span class="http-method">post</span> /login</code></a></li>
+  <li><a href="#registerPost"><code><span class="http-method">post</span> /register</code></a></li>
+  </ul>
+
+  <h1><a name="Item">Item</a></h1>
+  <div class="method"><a name="categoryGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /category</code></pre></div>
+    <div class="method-summary">Get a list of categories (<span class="nickname">categoryGet</span>)</div>
+    <div class="method-notes">Get a list of categories
+</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Category">Category</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "categoryGroupRefNo" : "aeiou",
+  "categoryGroupDesc" : "aeiou",
+  "image1" : "aeiou",
+  "image2" : "aeiou"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The login result, gives errors if invalid credentials
+        
+    <h4 class="field-label">0</h4>
+    Unexpected error
+        <a href="#Error">Error</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="categoryIdItemsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /category/{id}/items</code></pre></div>
+    <div class="method-summary">Get a list of categories (<span class="nickname">categoryIdItemsGet</span>)</div>
+    <div class="method-notes">Get a list of categories
+</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; category id </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Category">Category</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "categoryGroupRefNo" : "aeiou",
+  "categoryGroupDesc" : "aeiou",
+  "image1" : "aeiou",
+  "image2" : "aeiou"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Gives errors if invalid category id
+        
+    <h4 class="field-label">0</h4>
+    Unexpected error
+        <a href="#Error">Error</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="itemStudioIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /item/studio/{id}</code></pre></div>
+    <div class="method-summary">Gets the studio html data, requires preloading necesary libraries (<span class="nickname">itemStudioIdGet</span>)</div>
+    <div class="method-notes">Get a item html view
+</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; item id </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Item">Item</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "categoryGroupNo" : "aeiou",
+  "itemRefNo" : "aeiou",
+  "itemQuickDesc" : "aeiou",
+  "itemNo" : "aeiou"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Gives errors if invalid item id
+        
+    <h4 class="field-label">0</h4>
+    Unexpected error
+        <a href="#Error">Error</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="User">User</a></h1>
+  <div class="method"><a name="loginPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /login</code></pre></div>
+    <div class="method-summary">User Login (<span class="nickname">loginPost</span>)</div>
+    <div class="method-notes">This will all you to log a user into a session.
+</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">LoginForm[username] (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The user&#39;s username or email </div><div class="param">LoginForm[password] (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The user&#39;s password </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Object
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>"{}"</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The login result, gives errors if invalid credentials
+        <a href="#Object">Object</a>
+    <h4 class="field-label">0</h4>
+    Unexpected error
+        <a href="#Error">Error</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="registerPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /register</code></pre></div>
+    <div class="method-summary">User Registration (<span class="nickname">registerPost</span>)</div>
+    <div class="method-notes">This will all you to log a user into a session.
+</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">RegisterForm[username] (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The user&#39;s username </div><div class="param">RegisterForm[password] (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user </div><div class="param">RegisterForm[password_repeat] (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The user&#39;s username </div><div class="param">RegisterForm[email] (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The user&#39;s email </div><div class="param">RegisterForm[firstName] (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The user&#39;s email </div><div class="param">RegisterForm[lastName] (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The user&#39;s email </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Object
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>"{}"</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The login result, gives errors if invalid credentials
+        <a href="#Object">Object</a>
+    <h4 class="field-label">0</h4>
+    Unexpected error
+        <a href="#Error">Error</a>
+  </div> <!-- method -->
+  <hr/>
+
+  <div class="up"><a href="#__Models">Up</a></div>
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#Category"><code>Category</code></a></li>
+    <li><a href="#Error"><code>Error</code></a></li>
+    <li><a href="#Item"><code>Item</code></a></li>
+    <li><a href="#Result"><code>Result</code></a></li>
+  </ol>
+
+  <div class="model">
+    <h3 class="field-label"><a name="Category">Category - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">categoryGroupRefNo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Category id </div>
+<div class="param">categoryGroupDesc (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Description of category. </div>
+<div class="param">image1 (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Image URL representing the cateogry. </div>
+<div class="param">image2 (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Image URL representing the cateogry. </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="Error">Error - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">fields (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="Item">Item - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">itemRefNo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Item id </div>
+<div class="param">categoryGroupNo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Category id </div>
+<div class="param">itemNo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Item number </div>
+<div class="param">itemQuickDesc (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Item desc </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="Result">Result - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">errors (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>

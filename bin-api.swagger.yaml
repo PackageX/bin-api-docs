@@ -1,0 +1,204 @@
+swagger: '2.0'
+info:
+  title: BoxItNow API
+  description: Access BIN functionality remotely
+  version: "1.5.0"
+# the domain of the service
+host: api.boxitnow.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /api
+produces:
+  - application/json
+paths:
+  /login:
+    post:
+      summary: User Login
+      description: |
+        This will all you to log a user into a session.
+      parameters:
+        - name: LoginForm[username]
+          in: query
+          description: The user's username or email
+          required: true
+          type: string
+        - name: LoginForm[password]
+          in: query
+          description: The user's password
+          required: true
+          type: string
+      tags:
+        - User
+      responses:
+        200:
+          description: The login result, gives errors if invalid credentials
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/Result'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /register:
+    post:
+      summary: User Registration
+      description: |
+        This will all you to log a user into a session.
+      parameters:
+        - name: RegisterForm[username]
+          in: query
+          description: The user's username
+          required: true
+          type: string
+        - name: RegisterForm[password]
+          in: query
+          description: The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
+          required: true
+          type: string
+        - name: RegisterForm[password_repeat]
+          in: query
+          description: The user's username
+          required: true
+          type: string
+        - name: RegisterForm[email]
+          in: query
+          description: The user's email
+          required: true
+          type: string
+        - name: RegisterForm[firstName]
+          in: query
+          description: The user's email
+          required: false
+          type: string
+        - name: RegisterForm[lastName]
+          in: query
+          description: The user's email
+          required: false
+          type: string
+      tags:
+        - User
+      responses:
+        200:
+          description: The login result, gives errors if invalid credentials
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/Result'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /category:
+    get:
+      summary: Get a list of categories
+      description: |
+        Get a list of categories
+      tags:
+        - Item
+      responses:
+        200:
+          description: The login result, gives errors if invalid credentials
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Category'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /category/{id}/items:
+    get:
+      summary: Get a list of categories
+      description: |
+        Get a list of categories
+      parameters:
+        - name: id
+          in: path
+          description: category id
+          required: true
+          type: number
+      tags:
+        - Item
+      responses:
+        200:
+          description: Gives errors if invalid category id
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Category'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /item/studio/{id}:
+    get:
+      summary: Gets the studio html data, requires preloading necesary libraries
+      description: |
+        Get a item html view
+      parameters:
+        - name: id
+          in: path
+          description: item id
+          required: true
+          type: number
+      tags:
+        - Item
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Item'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Category:
+    type: object
+    properties:
+      categoryGroupRefNo:
+        type: string
+        description: Category id
+      categoryGroupDesc:
+        type: string
+        description: Description of category.
+      image1:
+        type: string
+        description: Image URL representing the cateogry.
+      image2:
+        type: string
+        description: Image URL representing the cateogry.
+  Item:
+    type: object
+    properties:
+      itemRefNo:
+        type: string
+        description: Item id
+      categoryGroupNo:
+        type: string
+        description: Category id
+      itemNo:
+        type: string
+        description: Item number
+      itemQuickDesc:
+        type: string
+        description: Item desc
+  Result:
+    type: object
+    properties:
+      message:
+        type: string
+      errors:
+        type: string
+  Error:
+    type: object
+    properties:
+      message:
+        type: string
+      fields:
+        type: string
