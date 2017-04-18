@@ -109,7 +109,7 @@
                     tag: $('#studio'),
                     //(require)design information to load
                     design: {
-                        //(require) 'standard' or 'user'
+                        //(require) 'standard' or '$optionsuser'
                         type: 'standard',
                         //(require) id of item or resize
                         id: 60,
@@ -119,11 +119,14 @@
                         parameters : { length : "10.1", }
                     },
                     //(optional) for loading 
-                    modules: {
+                    options : {
                         //all optional default is true
-                        resizer: {enabled: true},
-                        graphics: {enabled: true},
-                        export: {enabled: true}
+                        //default: modules:['mod_advanced']
+                        resizer: {enabled: true, modules:['mod_advanced']},
+                        //default: modules:['mod_graphics','mod_standard', 'mod_text', 'mod_color','mod_litho']
+                        graphics: {enabled: true, modules:['mod_graphics', 'mod_text', 'mod_color']},
+                        //default: modules:['mod_email','mod_ftp','mod_share']
+                        export: {enabled: true, modules:['mod_email','mod_ftp','mod_share']}
                     },
                     //(optional)after studio is loaded
                     onLoad: function (userSessionHandle) {
