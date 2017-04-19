@@ -20,33 +20,30 @@
 
         <!-- EXAMPLE USER INTEGRATION SCRIPT -->
         <script>
-            
+
             function doExport(userToken, exportData) {
                 //will go through save process already
-                
+
                 //userToken: use to match with client account
                 //exportData: design files    
                 /*
                  exportData: = {
-                    name : STRING,
-                    parameters : {
-                       material : STRING
-                       dimensions : {},
-                       designRef : INT,
-                    },
-                    files : {
-                        'hpgl' : URL,
-                        'eps' : URL,
-                        'dxf' : URL,
-                        'cad' : URL,
-                        '3d' : URL,
-                        '2d' : URL
-                    }
+                 name : STRING,
+                 parameters : {
+                 material : STRING
+                 dimensions : {},
+                 designRef : INT,
+                 },
+                 files : {
+                 'hpgl' : URL,
+                 'eps' : URL,
+                 'dxf' : URL,
+                 'cad' : URL,
+                 '3d' : URL,
+                 '2d' : URL
                  }
-                 
-                 
+                 }
                  */
-                
             }
 
             function doSave(userSessionHandle, completeSaveFunc) {
@@ -100,45 +97,48 @@
             //LOAD bin libraries
             BIN.Bootstrap.load({
                 //the root of the BIN HOST site
-                api: 'http://localhost/'
+                apiUrl: 'http://localhost/',
+                apiKey: "h0Hka2hpZcio4WOw"
+
             }, function () {
 
                 //Begin create studio
-                BIN.Widgets.CreateStudio({
+                BIN.Widgets.Create({
+                    //can be: 'studio' (3d design studio) , 'boxes' (My Boxes), 'media' (Media Manager) 
+                    type: 'studio',
                     //(require)Html div to attach the widget to
                     tag: $('#studio'),
-                    //(require)design information to load
+                    //(optional) required if loading user design, user media or user projects
+                    userToken: '539adca81ece7cc4153e141137e82b59',
+                    //(require for design studio)design information to load
                     design: {
                         //(require) 'standard' or '$optionsuser'
                         type: 'standard',
                         //(require) id of item or resize
                         id: 60,
-                        //(optional) required if loading user design
-                        userToken: null,
                         //(optional) 
-                        parameters : { length : "10.1", }
+                        parameters: {length: "10.1", }
                     },
-                    //(optional) for loading 
-                    options : {
+                    //(optional) for loading for design studio 
+                    options: {
                         //all optional default is true
                         //default: modules:['mod_advanced']
-                        resizer: {enabled: true, modules:['mod_advanced']},
+                        resizer: {enabled: true, modules: ['mod_advanced']},
                         //default: modules:['mod_graphics','mod_standard', 'mod_text', 'mod_color','mod_litho']
-                        graphics: {enabled: true, modules:['mod_graphics', 'mod_text', 'mod_color']},
+                        graphics: {enabled: true, modules: ['mod_graphics', 'mod_text', 'mod_color']},
                         //default: modules:['mod_email','mod_ftp','mod_share']
-                        export: {enabled: true, modules:['mod_email','mod_ftp','mod_share']}
+                        export: {enabled: true, modules: ['mod_email', 'mod_ftp', 'mod_share']}
                     },
                     //(optional)after studio is loaded
                     onLoad: function (userSessionHandle) {
-
                     },
                     //(optional)user does a resize
                     onResize: function (userSessionHandle, paramters) {
-
+                        console.log(paramters);
                     },
                     //(required)
                     onSave: doSave,
-                    onExport : doExport
+                    onExport: doExport
 
                 });
             });
