@@ -157,6 +157,30 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+  /resize/info/{id}:
+    get:
+      summary: Gets information about a resize
+      description: |
+        Gets information about a resize
+      parameters:
+        - name: id
+          in: path
+          description: item id
+          required: true
+          type: number
+      tags:
+        - Resize
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Resize'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
 definitions:
   Category:
     type: object
@@ -188,6 +212,30 @@ definitions:
       itemQuickDesc:
         type: string
         description: Item desc
+  Resize:
+    type: object
+    properties:
+      thumbnail:
+        type: string
+        description: Thumbnail of resize
+      pdfLayout:
+        type: string
+        description: Hi-Resolution PDF compilation file
+      cad_dims:
+        type: string
+        description: CAD view of design with dimension
+      cad_flat:
+        type: string
+        description: CAD view of design without dimension
+      eps:
+        type: string
+        description: EPS file
+      dxf:
+        type: string
+        description: DXF cad file
+      hpgl:
+        type: string
+        description: HPGL cutting file
   Result:
     type: object
     properties:

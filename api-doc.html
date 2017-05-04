@@ -181,8 +181,7 @@ font-style: italic;
   <body>
   <h1>BoxItNow API</h1>
     <div class="app-desc">Access BIN functionality remotely</div>
-    <div class="app-desc">Version: 1.5.0</div>
-    <div class="app-desc">BasePath:/api</div>
+    
   <h2>Access</h2>
 
   <h2><a name="__Methods">Methods</a></h2>
@@ -195,6 +194,10 @@ font-style: italic;
   <li><a href="#categoryGet"><code><span class="http-method">get</span> /category</code></a></li>
   <li><a href="#categoryIdItemsGet"><code><span class="http-method">get</span> /category/{id}/items</code></a></li>
   <li><a href="#itemStudioIdGet"><code><span class="http-method">get</span> /item/studio/{id}</code></a></li>
+  </ul>
+  <h4><a href="#Resize">Resize</a></h4>
+  <ul>
+  <li><a href="#resizeInfoIdGet"><code><span class="http-method">get</span> /resize/info/{id}</code></a></li>
   </ul>
   <h4><a href="#User">User</a></h4>
   <ul>
@@ -219,7 +222,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      array[<a href="#Category">Category</a>]
+      array[<a href="#inline_response_200">inline_response_200</a>]
       
     </div>
 
@@ -247,7 +250,7 @@ font-style: italic;
         
     <h4 class="field-label">0</h4>
     Unexpected error
-        <a href="#Error">Error</a>
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="categoryIdItemsGet"/>
@@ -272,7 +275,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      array[<a href="#Category">Category</a>]
+      array[<a href="#inline_response_200">inline_response_200</a>]
       
     </div>
 
@@ -300,7 +303,7 @@ font-style: italic;
         
     <h4 class="field-label">0</h4>
     Unexpected error
-        <a href="#Error">Error</a>
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="itemStudioIdGet"/>
@@ -325,7 +328,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      array[<a href="#Item">Item</a>]
+      array[<a href="#inline_response_200_1">inline_response_200_1</a>]
       
     </div>
 
@@ -353,7 +356,64 @@ font-style: italic;
         
     <h4 class="field-label">0</h4>
     Unexpected error
-        <a href="#Error">Error</a>
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Resize">Resize</a></h1>
+  <div class="method"><a name="resizeInfoIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /resize/info/{id}</code></pre></div>
+    <div class="method-summary">Gets information about a resize (<span class="nickname">resizeInfoIdGet</span>)</div>
+    <div class="method-notes">Gets information about a resize
+</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; item id </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200_2">inline_response_200_2</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "thumbnail" : "aeiou",
+  "cad_flat" : "aeiou",
+  "dxf" : "aeiou",
+  "eps" : "aeiou",
+  "cad_dims" : "aeiou",
+  "pdfLayout" : "aeiou",
+  "hpgl" : "aeiou"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Gives errors if invalid item id
+        
+    <h4 class="field-label">0</h4>
+    Unexpected error
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="User">User</a></h1>
@@ -404,7 +464,7 @@ font-style: italic;
         <a href="#Object">Object</a>
     <h4 class="field-label">0</h4>
     Unexpected error
-        <a href="#Error">Error</a>
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="registerPost"/>
@@ -462,7 +522,7 @@ font-style: italic;
         <a href="#Object">Object</a>
     <h4 class="field-label">0</h4>
     Unexpected error
-        <a href="#Error">Error</a>
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
 
@@ -474,7 +534,12 @@ font-style: italic;
   <ol>
     <li><a href="#Category"><code>Category</code></a></li>
     <li><a href="#Error"><code>Error</code></a></li>
+    <li><a href="#inline_response_200"><code>inline_response_200</code></a></li>
+    <li><a href="#inline_response_200_1"><code>inline_response_200_1</code></a></li>
+    <li><a href="#inline_response_200_2"><code>inline_response_200_2</code></a></li>
+    <li><a href="#inline_response_default"><code>inline_response_default</code></a></li>
     <li><a href="#Item"><code>Item</code></a></li>
+    <li><a href="#Resize"><code>Resize</code></a></li>
     <li><a href="#Result"><code>Result</code></a></li>
   </ol>
 
@@ -497,6 +562,47 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
+    <h3 class="field-label"><a name="inline_response_200">inline_response_200 - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">categoryGroupRefNo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Category id </div>
+<div class="param">categoryGroupDesc (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Description of category. </div>
+<div class="param">image1 (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Image URL representing the cateogry. </div>
+<div class="param">image2 (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Image URL representing the cateogry. </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_200_1">inline_response_200_1 - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">itemRefNo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Item id </div>
+<div class="param">categoryGroupNo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Category id </div>
+<div class="param">itemNo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Item number </div>
+<div class="param">itemQuickDesc (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Item desc </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_200_2">inline_response_200_2 - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">thumbnail (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Thumbnail of resize </div>
+<div class="param">pdfLayout (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Hi-Resolution PDF compilation file </div>
+<div class="param">cad_dims (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> CAD view of design with dimension </div>
+<div class="param">cad_flat (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> CAD view of design without dimension </div>
+<div class="param">eps (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> EPS file </div>
+<div class="param">dxf (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> DXF cad file </div>
+<div class="param">hpgl (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> HPGL cutting file </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_default">inline_response_default - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">fields (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
     <h3 class="field-label"><a name="Item">Item - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
@@ -504,6 +610,19 @@ font-style: italic;
 <div class="param">categoryGroupNo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Category id </div>
 <div class="param">itemNo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Item number </div>
 <div class="param">itemQuickDesc (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Item desc </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="Resize">Resize - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">thumbnail (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Thumbnail of resize </div>
+<div class="param">pdfLayout (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Hi-Resolution PDF compilation file </div>
+<div class="param">cad_dims (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> CAD view of design with dimension </div>
+<div class="param">cad_flat (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> CAD view of design without dimension </div>
+<div class="param">eps (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> EPS file </div>
+<div class="param">dxf (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> DXF cad file </div>
+<div class="param">hpgl (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> HPGL cutting file </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -516,3 +635,4 @@ font-style: italic;
   </div>
   </body>
 </html>
+
