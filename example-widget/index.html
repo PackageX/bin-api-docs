@@ -25,7 +25,7 @@
                 //will go through save process already
 
                 //userToken: use to match with client account
-                //exportData: design files    
+                //exportData: design files
                 /*
                  exportData: = {
                  name : STRING,
@@ -104,7 +104,7 @@
 
                 //Begin create studio
                 BIN.Widgets.Create({
-                    //can be: 'studio' (3d design studio) , 'boxes' (My Boxes), 'media' (Media Manager) 
+                    //can be: 'viewer' (3d viewer), 'studio' (3d design studio) , 'boxes' (My Boxes), 'media' (Media Manager)
                     type: 'studio',
                     //(require)Html div to attach the widget to
                     tag: $('#studio'),
@@ -116,10 +116,10 @@
                         type: 'standard',
                         //(require) id of item or resize
                         id: 60,
-                        //(optional) 
-                        parameters: {length: "10.1", }
+                        //(optional)
+                        parameters: {Length: "20.1", }
                     },
-                    //(optional) for loading for design studio 
+                    //(optional) for loading for design studio
                     options: {
                         //all optional default is true
                         //default: modules:['mod_advanced']
