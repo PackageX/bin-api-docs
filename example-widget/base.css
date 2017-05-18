@@ -33,7 +33,7 @@ body {
     box-sizing: border-box;
 }
 
-#studio {
+#studio, #viewer {
     position: absolute;
     right: 0;
     width: 80%;
