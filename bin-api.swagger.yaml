@@ -4,7 +4,7 @@ info:
   description: Access BIN functionality remotely
   version: "1.5.0"
 # the domain of the service
-host: api.boxitnow.com
+host: apistaging.boxitnow.com
 # array of all schemes that your API supports
 schemes:
   - https
@@ -17,7 +17,7 @@ paths:
     post:
       summary: User Login
       description: |
-        This will all you to log a user into a session.
+        This will allow you to log a user into a session.
       parameters:
         - name: LoginForm[username]
           in: query
@@ -46,7 +46,7 @@ paths:
     post:
       summary: User Registration
       description: |
-        This will all you to log a user into a session.
+        This will allow you to create a new user
       parameters:
         - name: RegisterForm[username]
           in: query
@@ -56,11 +56,6 @@ paths:
         - name: RegisterForm[password]
           in: query
           description: The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
-          required: true
-          type: string
-        - name: RegisterForm[password_repeat]
-          in: query
-          description: The user's username
           required: true
           type: string
         - name: RegisterForm[email]
@@ -77,6 +72,89 @@ paths:
           in: query
           description: The user's email
           required: false
+          type: string
+        - name: RegisterForm[activate]
+          in: query
+          description: Automatically initate the user, default=false
+          required: false
+          type: string
+        - name: RegisterForm[emphemeral]
+          in: query
+          description: Set this true if the user is created for temporary reasons. default=false
+          required: false
+          type: string
+      tags:
+        - User
+      responses:
+        200:
+          description: The login result, gives errors if invalid credentials
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/Result'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/merge:
+    post:
+      summary: User Merge
+      description: |
+        Merges ephemeral users into main users
+      parameters:
+        - name: Target[username]
+          in: query
+          description: The permanent user's username
+          required: true
+          type: string
+        - name: Target[password]
+          in: query
+          description: The permanent user's password
+          required: true
+          type: string
+        - name: Source[username]
+          in: query
+          description: The ephemeral user's username
+          required: true
+          type: string
+        - name: Source[password]
+          in: query
+          description: The ephemeral user's password
+          required: true
+          type: string
+      tags:
+        - User
+      responses:
+        200:
+          description: The login result, gives errors if invalid credentials
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/Result'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/makePersistent:
+    post:
+      summary: Changes ephemeral user to a permanent 
+      description: |
+        This will all you to log a user into a session.
+      parameters:
+        - name: Target[username]
+          in: query
+          description: The ephermeral user's username
+          required: true
+          type: string
+        - name: Target[password]
+          in: query
+          description: The ephermeral user's password
+          required: true
+          type: string
+        - name: NewUser[username]
+          in: query
+          description: The new user's username
+          required: true
           type: string
       tags:
         - User
