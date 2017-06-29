@@ -259,6 +259,30 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+  /resize/compilePdf/{id}:
+    get:
+      summary: Gets the hi-res compiled pdf of deisgn
+      description: |
+        Gets the hi-res compiled pdf of deisgn. If file does not exist, it may take ~30s to generate.
+      parameters:
+        - name: id
+          in: path
+          description: item id
+          required: true
+          type: number
+      tags:
+        - Resize
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Resize'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
 definitions:
   Category:
     type: object

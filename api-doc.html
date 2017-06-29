@@ -916,6 +916,9 @@ margin-bottom: 20px;
                       <a href="#api-Item-itemStudioIdGet">itemStudioIdGet</a>
                     </li>
                   <li class="nav-header" data-group="Resize"><a href="#api-Resize">API Methods - Resize</a></li>
+                    <li data-group="Resize" data-name="resizeCompilePdfIdGet" class="">
+                      <a href="#api-Resize-resizeCompilePdfIdGet">resizeCompilePdfIdGet</a>
+                    </li>
                     <li data-group="Resize" data-name="resizeInfoIdGet" class="">
                       <a href="#api-Resize-resizeInfoIdGet">resizeInfoIdGet</a>
                     </li>
@@ -1944,6 +1947,352 @@ except ApiException as e:
                   </section>
                 <section id="api-Resize">
                   <h1>Resize</h1>
+                    <div id="api-Resize-resizeCompilePdfIdGet">
+                      <article id="api-Resize-resizeCompilePdfIdGet-0" data-group="User" data-name="resizeCompilePdfIdGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>resizeCompilePdfIdGet</h1>
+                          <p>Gets the hi-res compiled pdf of deisgn</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Gets the hi-res compiled pdf of deisgn. If file does not exist, it may take ~30s to generate.
+</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/resize/compilePdf/{id}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Resize-resizeCompilePdfIdGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Resize-resizeCompilePdfIdGet-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">get</span> "https://apistaging.boxitnow.com/api/resize/compilePdf/{id}"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ResizeApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ResizeApiExample {
+
+    public static void main(String[] args) {
+        
+        ResizeApi apiInstance = new ResizeApi();
+        BigDecimal id = 3.4; // BigDecimal | item id
+        try {
+            array[inline_response_200_2] result = apiInstance.resizeCompilePdfIdGet(id);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ResizeApi#resizeCompilePdfIdGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ResizeApi;
+
+public class ResizeApiExample {
+
+    public static void main(String[] args) {
+        ResizeApi apiInstance = new ResizeApi();
+        BigDecimal id = 3.4; // BigDecimal | item id
+        try {
+            array[inline_response_200_2] result = apiInstance.resizeCompilePdfIdGet(id);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ResizeApi#resizeCompilePdfIdGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">BigDecimal *id = 3.4; // item id
+
+ResizeApi *apiInstance = [[ResizeApi alloc] init];
+
+// Gets the hi-res compiled pdf of deisgn
+[apiInstance resizeCompilePdfIdGetWith:id
+              completionHandler: ^(array[inline_response_200_2] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
+
+var api = new BoxItNowApi.ResizeApi()
+
+var id = 3.4; // {BigDecimal} item id
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.resizeCompilePdfIdGet(id, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class resizeCompilePdfIdGetExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new ResizeApi();
+            var id = 3.4;  // BigDecimal | item id
+
+            try
+            {
+                // Gets the hi-res compiled pdf of deisgn
+                array[inline_response_200_2] result = apiInstance.resizeCompilePdfIdGet(id);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ResizeApi.resizeCompilePdfIdGet: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\ResizeApi();
+$id = 3.4; // BigDecimal | item id
+
+try {
+    $result = $api_instance->resizeCompilePdfIdGet($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ResizeApi->resizeCompilePdfIdGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ResizeApi;
+
+my $api_instance = WWW::SwaggerClient::ResizeApi->new();
+my $id = 3.4; # BigDecimal | item id
+
+eval { 
+    my $result = $api_instance->resizeCompilePdfIdGet(id => $id);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ResizeApi->resizeCompilePdfIdGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ResizeApi()
+id = 3.4 # BigDecimal | item id
+
+try: 
+    # Gets the hi-res compiled pdf of deisgn
+    api_response = api_instance.resizeCompilePdfIdGet(id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ResizeApi->resizeCompilePdfIdGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">id*</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "id",
+  "in" : "path",
+  "description" : "item id",
+  "required" : true,
+  "type" : "number"
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,1);
+													var result = $('#d2e199_resizeCompilePdfIdGet_id');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_resizeCompilePdfIdGet_id"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Gives errors if invalid item id </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-resizeCompilePdfIdGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-resizeCompilePdfIdGet-200-schema">
+                                  <div id='responses-resizeCompilePdfIdGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                                               <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Gives errors if invalid item id",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/inline_response_200_2"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        schemaWrapper.definitions = defs;
+                                        //console.log(JSON.stringify(schema))
+                                        JsonRefs.resolveRefs(schemaWrapper, {
+                                            "depth": 3,
+                                            "resolveRemoteRefs": false,
+                                            "resolveFileRefs": false
+                                        }, function(err, resolved, metadata) {
+                                          //console.log(JSON.stringify(resolved));
+                                          var view = new JSONSchemaView(resolved.schema, 3);
+                                          $('#responses-resizeCompilePdfIdGet-200-schema-data').val(JSON.stringify(resolved.schema));
+                                          var result = $('#responses-resizeCompilePdfIdGet-200-schema-200');
+                                          result.empty();
+                                          result.append(view.render());
+                                        });
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-resizeCompilePdfIdGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 0 - Unexpected error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-resizeCompilePdfIdGet-0-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-resizeCompilePdfIdGet-0-schema">
+                                  <div id='responses-resizeCompilePdfIdGet-0-schema-0' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                                               <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Unexpected error",
+  "schema" : {
+    "$ref" : "#/definitions/inline_response_default"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        schemaWrapper.definitions = defs;
+                                        //console.log(JSON.stringify(schema))
+                                        JsonRefs.resolveRefs(schemaWrapper, {
+                                            "depth": 3,
+                                            "resolveRemoteRefs": false,
+                                            "resolveFileRefs": false
+                                        }, function(err, resolved, metadata) {
+                                          //console.log(JSON.stringify(resolved));
+                                          var view = new JSONSchemaView(resolved.schema, 3);
+                                          $('#responses-resizeCompilePdfIdGet-0-schema-data').val(JSON.stringify(resolved.schema));
+                                          var result = $('#responses-resizeCompilePdfIdGet-0-schema-0');
+                                          result.empty();
+                                          result.append(view.render());
+                                        });
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-resizeCompilePdfIdGet-0-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Resize-resizeInfoIdGet">
                       <article id="api-Resize-resizeInfoIdGet-0" data-group="User" data-name="resizeInfoIdGet" data-version="0">
                         <div class="pull-left">
@@ -4197,7 +4546,7 @@ except ApiException as e:
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2017-06-09T01:16:26.409Z
+              Generated 2017-06-29T22:43:34.639Z
             </div>
           </div>
       </div>
