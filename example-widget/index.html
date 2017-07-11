@@ -1,165 +1,165 @@
 <html>
-    <head>
-        <!-- BoxItNow CSS -->
-        <link rel="stylesheet" type="text/css" href="http://[API ENDPOINT]/css/bin.cache.min.css" />
 
-        <!-- BoxItNow JS -->
-        <script type="text/javascript" src="http://[API ENDPOINT]/js/bin.bootstrap.min.js"></script>
+<head>
+  <!-- BoxItNow CSS -->
+  <link rel="stylesheet" type="text/css" href="http://[API ENDPOINT]/css/bin.cache.min.css" />
 
-        <!-- CLIENT CSS -->
-        <!--<link rel="stylesheet" type="text/css" href="spectrum.css" />-->
-        <link rel="stylesheet" type="text/css" href="base.css" />
+  <!-- BoxItNow JS -->
+  <script type="text/javascript" src="http://[API ENDPOINT]/js/bin.bootstrap.min.js"></script>
 
-        <!-- CLIENT JS -->
+  <!-- CLIENT CSS -->
+  <!--<link rel="stylesheet" type="text/css" href="spectrum.css" />-->
+  <link rel="stylesheet" type="text/css" href="base.css" />
 
-        <!-- You can pre load the following, BIN will load if they are not already loaded -->
-        <!--<script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.js"></script>-->
-        <!--<script type="text/javascript" src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>-->
-        <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r72/three.js"></script>-->
-        <!--<script type="text/javascript" src="spectrum.js"></script>-->
+  <!-- CLIENT JS -->
 
-        <!-- EXAMPLE USER INTEGRATION SCRIPT -->
-        <script>
+  <!-- You can pre load the following, BIN will load if they are not already loaded -->
+  <!--<script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.js"></script>-->
+  <!--<script type="text/javascript" src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>-->
+  <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r72/three.js"></script>-->
+  <!--<script type="text/javascript" src="spectrum.js"></script>-->
 
-            function doExport(userToken, exportData) {
-                //will go through save process already
+  <!-- EXAMPLE USER INTEGRATION SCRIPT -->
+  <script>
+    function doExport(userToken, exportData) {
+      //will go through save process already
 
-                //userToken: use to match with client account
-                //exportData: design files
-                /*
-                 exportData: = {
-                 name : STRING,
-                 parameters : {
-                 material : STRING
-                 dimensions : {},
-                 designRef : INT,
-                 },
-                 files : {
-                 'hpgl' : URL,
-                 'eps' : URL,
-                 'dxf' : URL,
-                 'cad' : URL,
-                 '3d' : URL,
-                 '2d' : URL
-                 }
-                 }
-                 */
-            }
+      //userToken: use to match with client account
+      //exportData: design files
+      /*
+       exportData: = {
+       name : STRING,
+       parameters : {
+       material : STRING
+       dimensions : {},
+       designRef : INT,
+       },
+       files : {
+       'hpgl' : URL,
+       'eps' : URL,
+       'dxf' : URL,
+       'cad' : URL,
+       '3d' : URL,
+       '2d' : URL
+       }
+       }
+       */
+    }
 
-            function doSave(userSessionHandle, completeSaveFunc) {
-                /****** EXAMPLE INTEGRATION: *****/
+    function doSave(userSessionHandle, completeSaveFunc) {
+      /****** EXAMPLE INTEGRATION: *****/
 
-                //CLIENT POPUP INTEGRATION
-                if (confirm('Do you have an account? Press yes to login.')) {
+      //CLIENT POPUP INTEGRATION
+      if (confirm('Do you have an account? Press yes to login.')) {
 
-                    //CLIENT LOGIN INTEGRATION
-                    doLogin(function (userToken) {
-                        //on complete finish save
-                        completeSaveFunc(userSessionHandle, userToken);
-                    });
+        //CLIENT LOGIN INTEGRATION
+        doLogin(function(userToken) {
+          //on complete finish save
+          completeSaveFunc(userSessionHandle, userToken);
+        });
 
-                } else {
+      } else {
 
-                    //CLIENT REGISTRATION INTEGRATION
-                    doRegistration(function (userToken) {
-                        //on complete finish save
-                        completeSaveFunc(userSessionHandle, userToken);
-                    });
+        //CLIENT REGISTRATION INTEGRATION
+        doRegistration(function(userToken) {
+          //on complete finish save
+          completeSaveFunc(userSessionHandle, userToken);
+        });
 
-                }
-            }
-
-            //client login example
-            function doLogin(completeFunc) {
-                //use credentials to login
-                BIN.User.Login({username: 'test', password: 'test123'}, function (userToken) {
-                    completeFunc(userToken);
-                });
-            }
-
-            //client registration example
-            function doRegistration(completeFunc) {
-                //do client registration(frontend/backend)
-                //do bin registration(backend)
-                //use new credentials to login
-                BIN.User.Login({username: 'test', password: 'test123'}, function (userToken) {
-                    completeFunc(userToken);
-                });
-            }
+      }
+    }
+  </script>
 
 
-        </script>
+  <!-- EXAMPLE LOAD/CREATE SCRIPT -->
+  <script>
+    //LOAD bin libraries
+    BIN.Bootstrap.load({
+      //the root of the BIN HOST site
+      apiUrl: 'http://[API ENDPOINT]/',
+      apiKey: "h0Hka2hpZcio4WOw"
 
+    }, function() {
 
-        <!-- EXAMPLE LOAD/CREATE SCRIPT -->
-        <script>
+      //Begin create studio
+      BIN.Widgets.Create({
+        //can be: 'viewer' (3d viewer), 'studio' (3d design studio) , 'boxes' (My Boxes), 'media' (Media Manager)
+        type: 'studio',
+        //(require)Html div to attach the widget to
+        tag: $('#studio'),
+        //(optional) required if loading user design, user media or user projects
+        userToken: '539adca81ece7cc4153e141137e82b59',
+        //(require for design studio)design information to load
+        design: {
+          //(require) 'standard' or '$optionsuser'
+          type: 'standard',
+          //(require) id of item or resize
+          id: 60,
+          //(optional)
+          parameters: {
+            Length: "20.1",
+          }
+        },
 
-            //LOAD bin libraries
-            BIN.Bootstrap.load({
-                //the root of the BIN HOST site
-                apiUrl: 'http://[API ENDPOINT]/',
-                apiKey: "h0Hka2hpZcio4WOw"
+        //(optional) for loading for design studio
+        options: {
+          form: {
+            fields: {
+              Client: false,
+              Quantity: 2,
+              "Project Name": false
+            },
+            hideAdvancedDims: true,
+          },
+          //this controls the view ui
+          views: ['3d', 'outside', 'inside', 'cad', 'details', 'fullscreen', '2nd_view'],
+          //all optional default is true
+          //default: modules:['mod_advanced']
+          resizer: {
+            enabled: true,
+            modules: ['mod_advanced']
+          },
+          //default: modules:['mod_graphics','mod_standard', 'mod_text', 'mod_color','mod_litho']
+          graphics: {
+            enabled: true,
+            useKraft: false,
+            modules: ['mod_graphics', 'mod_text', 'mod_color']
+          },
+          //default: modules:['mod_email','mod_ftp','mod_share']
+          export: {
+            enabled: true,
+            modules: ['mod_email', 'mod_ftp', 'mod_share']
+          }
+        },
+        //(optional)after studio is loaded
+        onLoad: function(userSessionHandle) {},
+        //(optional)user does a resize
+        onResize: function(userSessionHandle, parameters) {
+          console.log(parameters);
+        },
+        //(required)
+        onSave: doSave,
+        onExport: doExport
 
-            }, function () {
+      });
+    });
+  </script>
+  <title>Page</title>
+</head>
 
-                //Begin create studio
-                BIN.Widgets.Create({
-                    //can be: 'viewer' (3d viewer), 'studio' (3d design studio) , 'boxes' (My Boxes), 'media' (Media Manager)
-                    type: 'studio',
-                    //(require)Html div to attach the widget to
-                    tag: $('#studio'),
-                    //(optional) required if loading user design, user media or user projects
-                    userToken: '539adca81ece7cc4153e141137e82b59',
-                    //(require for design studio)design information to load
-                    design: {
-                        //(require) 'standard' or '$optionsuser'
-                        type: 'standard',
-                        //(require) id of item or resize
-                        id: 60,
-                        //(optional)
-                        parameters: {Length: "20.1", }
-                    },
+<body>
+  <!-- BEGIN PAGE -->
+  <div id='header'>
+    header
+  </div>
+  <div id='body'>
+    <div id='tab'>tab</div>
+    <div id='studio'></div>
+  </div>
+  <div id='footer'>
+    footer
+  </div>
+  <!-- END PAGE -->
+</body>
 
-                    //(optional) for loading for design studio
-                    options: {
-                      //this controls the view ui
-                      views : ['3d', 'outside', 'inside', 'cad', 'details', 'fullscreen', '2nd_view'],
-                        //all optional default is true
-                        //default: modules:['mod_advanced']
-                        resizer: {enabled: true, modules: ['mod_advanced']},
-                        //default: modules:['mod_graphics','mod_standard', 'mod_text', 'mod_color','mod_litho']
-                        graphics: {enabled: true, modules: ['mod_graphics', 'mod_text', 'mod_color']},
-                        //default: modules:['mod_email','mod_ftp','mod_share']
-                        export: {enabled: true, modules: ['mod_email', 'mod_ftp', 'mod_share']}
-                    },
-                    //(optional)after studio is loaded
-                    onLoad: function (userSessionHandle) {
-                    },
-                    //(optional)user does a resize
-                    onResize: function (userSessionHandle, parameters) {
-                        console.log(parameters);
-                    },
-                    //(required)
-                    onSave: doSave,
-                    onExport: doExport
-
-                });
-            });
-        </script>
-        <title>Page</title>
-    </head>
-    <body>
-        <!-- BEGIN PAGE -->
-        <div id='header'>
-            header
-        </div>
-        <div id='body'>
-            <div id='tab'>tab</div>
-            <div id='studio'></div>
-        </div>
-        <div id='footer'>
-            footer
-        </div>
-        <!-- END PAGE -->
-    </body>
 </html>
