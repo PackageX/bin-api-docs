@@ -103,13 +103,34 @@
 
         //(optional) for loading for design studio
         options: {
-          form: {
-            fields: {
-              Client: false,
-              Quantity: 2,
-              "Project Name": false
+          form : {
+            pdfPreview : true,
+            fields : {
+              Client : false,
+              Quantity : 2,
+              "Project Name" : false
             },
-            hideAdvancedDims: true,
+            hideAdvancedDims : true,
+          },
+          finishes: {
+            enable: true,
+            label: 'Finishes',
+            options: {
+              'Standard': {
+                renderBase : 'color'
+              },
+              'Gloss': {
+                renderBase : 'color',
+                renderSurface : 'gloss'
+              },
+              'Kraft': {
+                //double sided kraft
+                renderBase : 'kraft'
+              }
+            },
+          },
+          materials : {
+            enable: true,
           },
           //this controls the view ui
           views: ['3d', 'outside', 'inside', 'cad', 'details', 'fullscreen', '2nd_view'],
