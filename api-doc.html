@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -916,8 +916,8 @@ margin-bottom: 20px;
                       <a href="#api-Item-itemStudioIdGet">itemStudioIdGet</a>
                     </li>
                   <li class="nav-header" data-group="Resize"><a href="#api-Resize">API Methods - Resize</a></li>
-                    <li data-group="Resize" data-name="resizeCompilePdfIdGet" class="">
-                      <a href="#api-Resize-resizeCompilePdfIdGet">resizeCompilePdfIdGet</a>
+                    <li data-group="Resize" data-name="resizeCompiledPdfIdGet" class="">
+                      <a href="#api-Resize-resizeCompiledPdfIdGet">resizeCompiledPdfIdGet</a>
                     </li>
                     <li data-group="Resize" data-name="resizeInfoIdGet" class="">
                       <a href="#api-Resize-resizeInfoIdGet">resizeInfoIdGet</a>
@@ -1947,10 +1947,10 @@ except ApiException as e:
                   </section>
                 <section id="api-Resize">
                   <h1>Resize</h1>
-                    <div id="api-Resize-resizeCompilePdfIdGet">
-                      <article id="api-Resize-resizeCompilePdfIdGet-0" data-group="User" data-name="resizeCompilePdfIdGet" data-version="0">
+                    <div id="api-Resize-resizeCompiledPdfIdGet">
+                      <article id="api-Resize-resizeCompiledPdfIdGet-0" data-group="User" data-name="resizeCompiledPdfIdGet" data-version="0">
                         <div class="pull-left">
-                          <h1>resizeCompilePdfIdGet</h1>
+                          <h1>resizeCompiledPdfIdGet</h1>
                           <p>Gets the hi-res compiled pdf of deisgn</p>
                         </div>
                         <div class="pull-right"></div>
@@ -1960,29 +1960,29 @@ except ApiException as e:
 </p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/resize/compilePdf/{id}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/resize/compiledPdf/{id}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Resize-resizeCompilePdfIdGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Resize-resizeCompilePdfIdGet-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Resize-resizeCompiledPdfIdGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Resize-resizeCompilePdfIdGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">get</span> "https://apistaging.boxitnow.com/api/resize/compilePdf/{id}"</code></pre>
+                          <div class="tab-pane active" id="examples-Resize-resizeCompiledPdfIdGet-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">get</span> "https://apistaging.boxitnow.com/api/resize/compiledPdf/{id}"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-java">
+                          <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -1998,17 +1998,17 @@ public class ResizeApiExample {
         ResizeApi apiInstance = new ResizeApi();
         BigDecimal id = 3.4; // BigDecimal | item id
         try {
-            array[inline_response_200_2] result = apiInstance.resizeCompilePdfIdGet(id);
+            array[inline_response_200_2] result = apiInstance.resizeCompiledPdfIdGet(id);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ResizeApi#resizeCompilePdfIdGet");
+            System.err.println("Exception when calling ResizeApi#resizeCompiledPdfIdGet");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-android">
+                          <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-android">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ResizeApi;
 
 public class ResizeApiExample {
@@ -2017,26 +2017,26 @@ public class ResizeApiExample {
         ResizeApi apiInstance = new ResizeApi();
         BigDecimal id = 3.4; // BigDecimal | item id
         try {
-            array[inline_response_200_2] result = apiInstance.resizeCompilePdfIdGet(id);
+            array[inline_response_200_2] result = apiInstance.resizeCompiledPdfIdGet(id);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ResizeApi#resizeCompilePdfIdGet");
+            System.err.println("Exception when calling ResizeApi#resizeCompiledPdfIdGet");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-groovy">
+  <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-objc">
+                            <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">BigDecimal *id = 3.4; // item id
 
 ResizeApi *apiInstance = [[ResizeApi alloc] init];
 
 // Gets the hi-res compiled pdf of deisgn
-[apiInstance resizeCompilePdfIdGetWith:id
+[apiInstance resizeCompiledPdfIdGetWith:id
               completionHandler: ^(array[inline_response_200_2] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -2048,7 +2048,7 @@ ResizeApi *apiInstance = [[ResizeApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-javascript">
+                            <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
 
 var api = new BoxItNowApi.ResizeApi()
@@ -2063,14 +2063,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.resizeCompilePdfIdGet(id, callback);
+api.resizeCompiledPdfIdGet(id, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-angular">
+                            <!--<div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-csharp">
+                            <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -2079,7 +2079,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class resizeCompilePdfIdGetExample
+    public class resizeCompiledPdfIdGetExample
     {
         public void main()
         {
@@ -2090,19 +2090,19 @@ namespace Example
             try
             {
                 // Gets the hi-res compiled pdf of deisgn
-                array[inline_response_200_2] result = apiInstance.resizeCompilePdfIdGet(id);
+                array[inline_response_200_2] result = apiInstance.resizeCompiledPdfIdGet(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling ResizeApi.resizeCompilePdfIdGet: " + e.Message );
+                Debug.Print("Exception when calling ResizeApi.resizeCompiledPdfIdGet: " + e.Message );
             }
         }
     }
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-php">
+                            <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
@@ -2110,15 +2110,15 @@ $api_instance = new Swagger\Client\Api\ResizeApi();
 $id = 3.4; // BigDecimal | item id
 
 try {
-    $result = $api_instance->resizeCompilePdfIdGet($id);
+    $result = $api_instance->resizecompiledPdfIdGet($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ResizeApi->resizeCompilePdfIdGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ResizeApi->resizecompiledPdfIdGet: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-perl">
+                            <div class="tab-pane" id="examples-Resize-resizecompiledPdfIdGet-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::ResizeApi;
@@ -2127,15 +2127,15 @@ my $api_instance = WWW::SwaggerClient::ResizeApi->new();
 my $id = 3.4; # BigDecimal | item id
 
 eval { 
-    my $result = $api_instance->resizeCompilePdfIdGet(id => $id);
+    my $result = $api_instance->resizecompiledPdfIdGet(id => $id);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling ResizeApi->resizeCompilePdfIdGet: $@\n";
+    warn "Exception when calling ResizeApi->resizecompiledPdfIdGet: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Resize-resizeCompilePdfIdGet-0-python">
+                            <div class="tab-pane" id="examples-Resize-resizecompiledPdfIdGet-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -2148,10 +2148,10 @@ id = 3.4 # BigDecimal | item id
 
 try: 
     # Gets the hi-res compiled pdf of deisgn
-    api_response = api_instance.resizeCompilePdfIdGet(id)
+    api_response = api_instance.resizecompiledPdfIdGet(id)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ResizeApi->resizeCompilePdfIdGet: %s\n" % e)</code></pre>
+    print("Exception when calling ResizeApi->resizecompiledPdfIdGet: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -2182,7 +2182,7 @@ except ApiException as e:
 
 
 													var view = new JSONSchemaView(schema,1);
-													var result = $('#d2e199_resizeCompilePdfIdGet_id');
+													var result = $('#d2e199_resizecompiledPdfIdGet_id');
 													result.empty();
 													result.append(view.render());
 
@@ -2192,7 +2192,7 @@ except ApiException as e:
 
 												});
 												</script>
-												<div id="d2e199_resizeCompilePdfIdGet_id"></div>
+												<div id="d2e199_resizecompiledPdfIdGet_id"></div>
 </td>
 </tr>
 
@@ -2207,14 +2207,14 @@ except ApiException as e:
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-resizeCompilePdfIdGet-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-resizecompiledPdfIdGet-200-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-resizeCompilePdfIdGet-200-schema">
-                                  <div id='responses-resizeCompilePdfIdGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-resizecompiledPdfIdGet-200-schema">
+                                  <div id='responses-resizecompiledPdfIdGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                                                <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -2236,15 +2236,15 @@ except ApiException as e:
                                         }, function(err, resolved, metadata) {
                                           //console.log(JSON.stringify(resolved));
                                           var view = new JSONSchemaView(resolved.schema, 3);
-                                          $('#responses-resizeCompilePdfIdGet-200-schema-data').val(JSON.stringify(resolved.schema));
-                                          var result = $('#responses-resizeCompilePdfIdGet-200-schema-200');
+                                          $('#responses-resizecompiledPdfIdGet-200-schema-data').val(JSON.stringify(resolved.schema));
+                                          var result = $('#responses-resizecompiledPdfIdGet-200-schema-200');
                                           result.empty();
                                           result.append(view.render());
                                         });
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-resizeCompilePdfIdGet-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-resizecompiledPdfIdGet-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
@@ -2252,14 +2252,14 @@ except ApiException as e:
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-resizeCompilePdfIdGet-0-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-resizecompiledPdfIdGet-0-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-resizeCompilePdfIdGet-0-schema">
-                                  <div id='responses-resizeCompilePdfIdGet-0-schema-0' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-resizecompiledPdfIdGet-0-schema">
+                                  <div id='responses-resizecompiledPdfIdGet-0-schema-0' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                                                <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -2278,15 +2278,15 @@ except ApiException as e:
                                         }, function(err, resolved, metadata) {
                                           //console.log(JSON.stringify(resolved));
                                           var view = new JSONSchemaView(resolved.schema, 3);
-                                          $('#responses-resizeCompilePdfIdGet-0-schema-data').val(JSON.stringify(resolved.schema));
-                                          var result = $('#responses-resizeCompilePdfIdGet-0-schema-0');
+                                          $('#responses-resizecompiledPdfIdGet-0-schema-data').val(JSON.stringify(resolved.schema));
+                                          var result = $('#responses-resizecompiledPdfIdGet-0-schema-0');
                                           result.empty();
                                           result.append(view.render());
                                         });
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-resizeCompilePdfIdGet-0-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-resizecompiledPdfIdGet-0-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 

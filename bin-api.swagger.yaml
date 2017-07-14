@@ -259,7 +259,7 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-  /resize/compilePdf/{id}:
+  /resize/compiledPdf/{id}:
     get:
       summary: Gets the hi-res compiled pdf of deisgn
       description: |
