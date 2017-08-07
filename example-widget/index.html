@@ -103,33 +103,39 @@
 
         //(optional) for loading for design studio
         options: {
-          form : {
-            pdfPreview : true,
-            fields : {
-              Client : false,
-              Quantity : 2,
-              "Project Name" : false
+          user: {
+            saving: "normal"
+          },
+          form: {
+            pdfPreview: true,
+            fields: {
+              Client: false,
+              Quantity: 2,
+              "Project Name": false
             },
-            hideAdvancedDims : true,
+            hideAdvancedDims: true,
           },
           finishes: {
             enable: true,
             label: 'Finishes',
             options: {
               'Standard': {
-                renderBase : 'color'
+                renderBase : 'color',
+                interior : 'white',
+
               },
               'Gloss': {
                 renderBase : 'color',
-                renderSurface : 'gloss'
+                renderSurface : 'gloss',
+                interior : 'white',
               },
               'Kraft': {
                 //double sided kraft
-                renderBase : 'kraft'
+                renderBase : 'kraft',
               }
             },
           },
-          materials : {
+          materials: {
             enable: true,
           },
           //this controls the view ui
@@ -138,7 +144,7 @@
           //default: modules:['mod_advanced']
           resizer: {
             enabled: true,
-            trimParams : true,
+            trimParams: true,
             modules: ['mod_advanced']
           },
           //default: modules:['mod_graphics','mod_standard', 'mod_text', 'mod_color','mod_litho']
