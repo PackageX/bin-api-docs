@@ -107,6 +107,8 @@
             saving: "normal"
           },
           ui : {
+            //use initial tab to set if you want measurements, graphics, or export
+            //initialTab: "graphics",
             saveButtonText : "SAVE DESIGN",
             saveProgressText : "SAVING...",
             saveFinishText : "DESIGN SAVED",
@@ -143,8 +145,15 @@
           materials: {
             enable: true,
           },
-          //this controls the view ui
-          views: ['3d', 'outside', 'inside', 'cad', 'details', 'fullscreen', '2nd_view'],
+          //this controls the view ui, remove an item if you don't want it shown, and set the value to change default label
+          views: {
+            '3d': "3D",
+            'outside': null,
+            'cad': null,
+            'details': null,
+            'fullscreen': null,
+            '2nd_view': null
+          },
           //all optional default is true
           //default: modules:['mod_advanced']
           resizer: {
