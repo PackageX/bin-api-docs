@@ -2,11 +2,11 @@
 
 <head>
   <!-- BoxItNow CSS -->
-  <link rel="stylesheet" type="text/css" href="http://localhost/bindev/css/bin.cache.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost/boxitnow/css/bin.cache.min.css" />
 
   <!-- BoxItNow JS -->
-  <script type="text/javascript" src="http://localhost/bindev/js/bin.bootstrap.min.js"></script>
- 
+  <script type="text/javascript" src="http://localhost/boxitnow/js/bin.bootstrap.min.js"></script>
+
   <!-- CLIENT CSS -->
   <!--<link rel="stylesheet" type="text/css" href="spectrum.css" />-->
   <style>
@@ -89,7 +89,7 @@
       //the root of the BIN HOST site
 	  //http://localhost/bindev/
 	  //https://staging.boxitnow.com/
-      apiUrl: 'http://localhost/bindev/',
+      apiUrl: 'http://localhost/boxitnow/',
       apiKey: "VGL6TmfXuFMprVPy"
 
     }, function() {
@@ -104,13 +104,13 @@
         userToken: '2328e16dcef34fe4cb54a57aace29d05',
         //(require for design studio)design information to load
         design: {
-          //(require) 'standard' or '$optionsuser'
-          type: 'user',
+          //(require) 'standard' or 'user'
+          type: 'standard',
           //(require) id of item or resize
-          id: 5420,
+          id: 60,
           //(optional)
           parameters: {
-            Length: "5.1",
+            Length: "15.1",
           }
         },
 
@@ -140,7 +140,11 @@
               views: {
                 '3d': '3D',
                 'outside': 'Outside View',
-                'inside': 'Inside View'
+                'inside': 'Inside View',
+                'cad': null,
+                'details': null,
+                'fullscreen': null,
+                '2nd_view': null
               },
               form: {
                 fields: {
