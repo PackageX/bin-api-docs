@@ -2,14 +2,70 @@
 
 <head>
   <!-- BoxItNow CSS -->
-  <link rel="stylesheet" type="text/css" href="http://[API ENDPOINT]/css/bin.cache.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost/bindev/css/bin.cache.min.css" />
 
   <!-- BoxItNow JS -->
-  <script type="text/javascript" src="http://[API ENDPOINT]/js/bin.bootstrap.min.js"></script>
-
+  <script type="text/javascript" src="http://localhost/bindev/js/bin.bootstrap.min.js"></script>
+ 
   <!-- CLIENT CSS -->
   <!--<link rel="stylesheet" type="text/css" href="spectrum.css" />-->
-  <link rel="stylesheet" type="text/css" href="base.css" />
+  <style>
+  	body {
+    	margin: 0;
+    	font-family: arial;
+	}
+
+	#header {
+	    width: 100%;
+	    text-align: center;
+	    line-height: 150px;
+	    height: 150px;
+	    font-size: 30px;
+	    border: 1px solid #444;
+	    box-sizing: border-box;
+	}
+
+	#body {
+	    min-height: 800px;
+	    border: 0px solid #444;
+	    position: relative;
+	    box-sizing: border-box;
+	}
+
+	#tab {
+	    position: absolute;
+	    left: 0;
+	    width: 20%;
+	    top: 0;
+	    bottom: 0;
+	    border: 1px solid #444;
+	    text-align: center;
+	    line-height: 150px;
+	    font-size: 30px;
+	    box-sizing: border-box;
+	}
+
+	#studio, #viewer {
+	    position: absolute;
+	    right: 0;
+	    width: 80%;
+	    top: 0;
+	    bottom: 0;
+	    border: 1px solid #444;
+	    box-sizing: border-box;
+	    overflow: hidden;
+	}
+
+	#footer {
+	    width: 100%;
+	    text-align: center;
+	    line-height: 150px;
+	    height: 150px;
+	    font-size: 30px;
+	    border: 1px solid #444;
+	    box-sizing: border-box;
+	}
+</style>
 
   <!-- CLIENT JS -->
 
@@ -21,53 +77,8 @@
 
   <!-- EXAMPLE USER INTEGRATION SCRIPT -->
   <script>
-    function doExport(userToken, exportData) {
-      //will go through save process already
 
-      //userToken: use to match with client account
-      //exportData: design files
-      /*
-       exportData: = {
-       name : STRING,
-       parameters : {
-       material : STRING
-       dimensions : {},
-       designRef : INT,
-       },
-       files : {
-       'hpgl' : URL,
-       'eps' : URL,
-       'dxf' : URL,
-       'cad' : URL,
-       '3d' : URL,
-       '2d' : URL
-       }
-       }
-       */
-    }
 
-    function doSave(userSessionHandle, completeSaveFunc) {
-      /****** EXAMPLE INTEGRATION: *****/
-
-      //CLIENT POPUP INTEGRATION
-      if (confirm('Do you have an account? Press yes to login.')) {
-
-        //CLIENT LOGIN INTEGRATION
-        doLogin(function(userToken) {
-          //on complete finish save
-          completeSaveFunc(userSessionHandle, userToken);
-        });
-
-      } else {
-
-        //CLIENT REGISTRATION INTEGRATION
-        doRegistration(function(userToken) {
-          //on complete finish save
-          completeSaveFunc(userSessionHandle, userToken);
-        });
-
-      }
-    }
   </script>
 
 
@@ -76,8 +87,10 @@
     //LOAD bin libraries
     BIN.Bootstrap.load({
       //the root of the BIN HOST site
-      apiUrl: 'http://[API ENDPOINT]/',
-      apiKey: "h0Hka2hpZcio4WOw"
+	  //http://localhost/bindev/
+	  //https://staging.boxitnow.com/
+      apiUrl: 'http://localhost/bindev/',
+      apiKey: "VGL6TmfXuFMprVPy"
 
     }, function() {
 
@@ -88,91 +101,88 @@
         //(require)Html div to attach the widget to
         tag: $('#studio'),
         //(optional) required if loading user design, user media or user projects
-        userToken: '539adca81ece7cc4153e141137e82b59',
+        userToken: '2328e16dcef34fe4cb54a57aace29d05',
         //(require for design studio)design information to load
         design: {
           //(require) 'standard' or '$optionsuser'
-          type: 'standard',
+          type: 'user',
           //(require) id of item or resize
-          id: 60,
+          id: 5420,
           //(optional)
           parameters: {
-            Length: "20.1",
+            Length: "5.1",
           }
         },
 
         //(optional) for loading for design studio
         options: {
-          user: {
-            saving: "normal"
-          },
-          ui : {
-            //use initial tab to set if you want measurements, graphics, or export
-            //initialTab: "graphics",
-            saveButtonText : "SAVE DESIGN",
-            saveProgressText : "SAVING...",
-            saveFinishText : "DESIGN SAVED",
-          },
-          form: {
-            pdfPreview: true,
-            fields: {
-              Client: false,
-              Quantity: 2,
-              "Project Name": false
-            },
-            hideAdvancedDims: true,
-          },
-          finishes: {
-            enable: true,
-            label: 'Finishes',
-            options: {
-              'Standard': {
-                renderBase : 'color',
-                interior : 'white',
-
+              user: {
+                saving: 'simple'
               },
-              'Gloss': {
-                renderBase : 'color',
-                renderSurface : 'gloss',
-                interior : 'white',
+              defaultLayout: {
+                showScores: false
               },
-              'Kraft': {
-                //double sided kraft
-                renderBase : 'kraft',
+              ui: {
+                initialTab: 'graphics',
+                saveButtonText: 'SAVE DESIGN',
+                saveProgressText: 'Saving...',
+                saveFinishText: 'DESIGN SAVED'
+              },
+              resizer: {
+                enabled: true,
+                modules: [],
+                trimParams: true
+              },
+              export: {
+                enabled: true,
+                modules: ['mod_share']
+              },
+              views: {
+                '3d': '3D',
+                'outside': 'Outside View',
+                'inside': 'Inside View'
+              },
+              form: {
+                fields: {
+                  'Project Name': false
+                },
+                hideAdvancedDims: true
+              },
+              finishes: {
+                enable: true,
+                label: 'Materials',
+                options: {
+                  'Standard White': {
+                    renderBase: 'color',
+                    interior: 'white'
+                  },
+                  'Premium White': {
+                    renderBase: 'color',
+                    interior: 'white'
+                  },
+                  'Premium White with Gloss Ink Finish': {
+                    renderBase: 'color',
+                    renderSurface: 'gloss',
+                    interior: 'white'
+                  },
+                  'Kraft': {
+                    // double sided kraft
+                    renderBase: 'kraft'
+                  }
+                }
+              },
+              materials: {
+                enable: false
+              },
+              graphics: {
+                enabled: true,
+                useKraft: false,
+                modules: ['mod_standard', 'mod_graphics', 'mod_text', 'mod_color']
               }
             },
-          },
-          materials: {
-            enable: true,
-          },
-          //this controls the view ui, remove an item if you don't want it shown, and set the value to change default label
-          views: {
-            '3d': "3D",
-            'outside': null,
-            'cad': null,
-            'details': null,
-            'fullscreen': null,
-            '2nd_view': null
-          },
-          //all optional default is true
-          //default: modules:['mod_advanced']
-          resizer: {
-            enabled: true,
-            trimParams: true,
-            modules: ['mod_advanced']
-          },
-          //default: modules:['mod_graphics','mod_standard', 'mod_text', 'mod_color','mod_litho']
-          graphics: {
-            enabled: true,
-            useKraft: false,
-            modules: ['mod_graphics', 'mod_text', 'mod_color']
-          },
-          //default: modules:['mod_email','mod_ftp','mod_share']
-          export: {
-            enabled: true,
-            modules: ['mod_email', 'mod_ftp', 'mod_share']
-          }
-        },
+		onSave : function() {
+
+		},
         //(optional)after studio is loaded
         onLoad: function(userSessionHandle) {},
         //(optional)user does a resize
@@ -180,8 +190,6 @@
           console.log(parameters);
         },
         //(required)
-        onSave: doSave,
-        onExport: doExport
 
       });
     });
