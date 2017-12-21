@@ -89,7 +89,7 @@
       //the root of the BIN HOST site
 	  //http://localhost/bindev/
 	  //https://staging.boxitnow.com/
-      apiUrl: 'http://localhost/boxitnow/',
+      apiUrl: 'https://localhost/boxitnow/',
       apiKey: "VGL6TmfXuFMprVPy"
 
     }, function() {
@@ -138,10 +138,12 @@
                 modules: ['mod_share']
               },
               views: {
+                //to entirely disable a view, remove it from this list
+                //values from this list will be used as the title for the respective section
+                //null gives the default title
                 '3d': '3D',
                 'outside': 'Outside View',
                 'inside': 'Inside View',
-                'cad': null,
                 'details': null,
                 'fullscreen': null,
                 '2nd_view': null
@@ -180,8 +182,7 @@
               },
               graphics: {
                 enabled: true,
-                useKraft: false,
-                modules: ['mod_standard', 'mod_graphics', 'mod_text', 'mod_color']
+                modules: ['mod_standard', 'mod_graphics', 'mod_text', 'mod_color', 'mod_panel']
               }
             },
 		onSave : function() {
