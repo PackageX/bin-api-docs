@@ -87,8 +87,6 @@
     //LOAD bin libraries
     BIN.Bootstrap.load({
       //the root of the BIN HOST site
-	  //http://localhost/bindev/
-	  //https://staging.boxitnow.com/
       apiUrl: 'http://localhost/boxitnow/',
       apiKey: "VGL6TmfXuFMprVPy"
 
@@ -103,97 +101,7 @@
         //(optional) required if loading user design, user media or user projects
         userToken: '2328e16dcef34fe4cb54a57aace29d05',
         //(require for design studio)design information to load
-      /*  design: {
-          //(require) 'standard' or 'user'
-          type: 'standard',
-          //(require) id of item or resize
-          id: 60,
-          //(optional)
-          parameters: {
-            Length: "15.1",
-          }
-        },
-
-        //(optional) for loading for design studio
-        options: {
-              user: {
-                saving: 'simple'
-              },
-              defaultLayout: {
-                showScores: false
-              },
-              ui: {
-                initialTab: 'graphics',
-                saveButtonText: 'SAVE DESIGN',
-                saveProgressText: 'Saving...',
-                saveFinishText: 'DESIGN SAVED'
-              },
-              resizer: {
-                enabled: true,
-                modules: [],
-                trimParams: true
-              },
-              export: {
-                enabled: true,
-                modules: ['mod_share']
-              },
-              views: {
-                '3d': '3D',
-                'outside': 'Outside View',
-                'inside': 'Inside View',
-                'cad': null,
-                'details': null,
-                'fullscreen': null,
-                '2nd_view': null
-              },
-              form: {
-                fields: {
-                  'Project Name': false
-                },
-                hideAdvancedDims: true
-              },
-              finishes: {
-                enable: true,
-                label: 'Materials',
-                options: {
-                  'Standard White': {
-                    renderBase: 'color',
-                    interior: 'white'
-                  },
-                  'Premium White': {
-                    renderBase: 'color',
-                    interior: 'white'
-                  },
-                  'Premium White with Gloss Ink Finish': {
-                    renderBase: 'color',
-                    renderSurface: 'gloss',
-                    interior: 'white'
-                  },
-                  'Kraft': {
-                    // double sided kraft
-                    renderBase: 'kraft'
-                  }
-                }
-              },
-              materials: {
-                enable: false
-              },
-              graphics: {
-                enabled: true,
-                useKraft: false,
-                modules: ['mod_standard', 'mod_graphics', 'mod_text', 'mod_color', 'mod_panel', 'mod_pattern']
-              }
-            },
-		onSave : function() {
-
-		},
-        //(optional)after studio is loaded
-        onLoad: function(userSessionHandle) {},
-        //(optional)user does a resize
-        onResize: function(userSessionHandle, parameters) {
-          console.log(parameters);
-        },*/
-        //(required)
+      
 
       });
     });
