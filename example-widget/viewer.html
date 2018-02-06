@@ -1,10 +1,10 @@
 <html>
     <head>
-        <!-- BoxItNow CSS -->
-        <link rel="stylesheet" type="text/css" href="http://[API ENDPOINT]/css/bin.cache.min.css" />
+      <!-- BoxItNow CSS -->
+      <link rel="stylesheet" type="text/css" href="http://localhost/boxitnow/css/bin.cache.min.css" />
 
-        <!-- BoxItNow JS -->
-        <script type="text/javascript" src="http://[API ENDPOINT]/js/bin.bootstrap.min.js"></script>
+      <!-- BoxItNow JS -->
+      <script type="text/javascript" src="http://localhost/boxitnow/js/bin.bootstrap.js"></script>
 
         <!-- CLIENT CSS -->
         <!--<link rel="stylesheet" type="text/css" href="spectrum.css" />-->
@@ -25,8 +25,9 @@
             //LOAD bin libraries
             BIN.Bootstrap.load({
                 //the root of the BIN HOST site
-                apiUrl: 'http://[API ENDPOINT]/',
-                apiKey: "h0Hka2hpZcio4WOw"
+                apiUrl: 'http://localhost/boxitnow/',
+                apiKey: "VGL6TmfXuFMprVPy"
+                //apiKey: "h0Hka2hpZcio4WOw"  //Old??
 
             }, function () {
 
@@ -35,7 +36,7 @@
                     //can be: 'viewer' (3d viewer), 'studio' (3d design studio) , 'boxes' (My Boxes), 'media' (Media Manager)
                     type: 'viewer',
                     //(require)Html div to attach the widget to
-                    tag: $('#studio'),
+                    tag: $('#viewer'),
                     //(require for design studio)design information to load
                     design: {
                         //(require) 'standard' or 'user'
