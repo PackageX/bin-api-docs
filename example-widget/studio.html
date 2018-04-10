@@ -87,9 +87,7 @@
     //LOAD bin libraries
     BIN.Bootstrap.load({
       //the root of the BIN HOST site
-	  //http://localhost/bindev/
-	  //https://staging.boxitnow.com/
-      apiUrl: 'http://dev.boxitnow.com/',
+      apiUrl: 'http://localhost/boxitnow.com/',
       apiKey: "VGL6TmfXuFMprVPy"
 
     }, function() {
@@ -187,7 +185,7 @@
               graphics: {
                 enabled: true,
                 useKraft: false,
-                modules: [{'type':'mod_standard', 'name':'Default Text'}, 'mod_graphics', 'mod_text', 'mod_color', 'mod_panel', 'mod_pattern']
+                modules: ['mod_standard', 'mod_graphics', 'mod_text', 'mod_color', 'mod_panel', 'mod_pattern']
               }
             },
 		onSave : function() {
