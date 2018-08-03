@@ -102,7 +102,7 @@
     //LOAD bin libraries
     BIN.Bootstrap.load({
       //the root of the BIN HOST site
-      apiUrl: "[[API URL]]",
+      apiUrl: "https://[[API URL]]",
       apiKey: "[[API KEY]]"
 
     }, function() {
@@ -114,6 +114,14 @@
         //(Required) Html div to attach the widget to
         tag: $('#studio'),
 
+      //*********
+      //[USER_TOKEN] is returned from successful login action
+      //
+      //(Required for 'user' type)
+      //userToken: '[USER_TOKEN]',
+      //*********
+
+
         //(required for design studio) design information to load
         design: {
           //(Required) 'standard' or 'user'
@@ -122,14 +130,18 @@
           id: '79',
 
           //(Optional)
-      //** Parameters are mapped from here to the studio verbatim, i.e.
-      //** parameters{x : a} : data['Params['x']'] = a
-      //**
-      //** A note for design types:
-      //** There may be more than Length, Width, and Depth available, depending on design.
-      //**
-      //** Formally defined by the general definition
-      //** parameters{...} = [(String x : int a,)*]
+          //** Parameters are mapped from here to the studio verbatim, i.e.
+          //** parameters{x : a} : data['Params['x']'] = a
+          //**
+          //** A note for design types:
+          //** There may be more than Length, Width, and Depth available, depending on design.
+          //**
+          //** Formally defined by the general definition
+          //** parameters{...} = [(String x : int a,)*]
+
+          parameters: {
+            Length: "15.1",
+          }
 
 
         },
