@@ -784,10 +784,7 @@ margin-bottom: 20px;
 };
     defs.inline_response_200_2 = {
   "properties" : {
-    "thumbnail" : {
-      "type" : "string",
-      "description" : "Thumbnail of resize"
-    },
+    "thumbnail" :
     "pdfLayout" : {
       "type" : "string",
       "description" : "Hi-Resolution PDF compilation file"
@@ -813,6 +810,36 @@ margin-bottom: 20px;
       "description" : "HPGL cutting file"
     }
   }
+};
+
+defs.inline_response_200_3 = {
+"properties" : {
+"thumbnail" :
+"pdfLayout" : {
+  "type" : "string",
+  "description" : "Hi-Resolution PDF compilation file"
+},
+"cad_dims" : {
+  "type" : "string",
+  "description" : "CAD view of design with dimension"
+},
+"cad_flat" : {
+  "type" : "string",
+  "description" : "CAD view of design without dimension"
+},
+"eps" : {
+  "type" : "string",
+  "description" : "EPS file"
+},
+"dxf" : {
+  "type" : "string",
+  "description" : "DXF cad file"
+},
+"hpgl" : {
+  "type" : "string",
+  "description" : "HPGL cutting file"
+}
+}
 };
     defs.inline_response_default = {
   "properties" : {
@@ -1722,7 +1749,7 @@ try {
   "schema" : {
     "type" : "array",
     "items" : {
-      "$ref" : "#/definitions/inline_response_200_2"
+      "$ref" : "#/definitions/inline_response_200_3"
     }
   }
 };
@@ -2312,7 +2339,7 @@ try {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-registerPost-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">post</span> "https://dev.boxitnow.com/api/register?RegisterForm[username]=&RegisterForm[password]=&RegisterForm[email]=&RegisterForm[firstName]=&RegisterForm[lastName]=&RegisterForm[activate]=&RegisterForm[emphemeral]="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">post</span> "https://dev.boxitnow.com/api/register?RegisterForm[username]=&RegisterForm[password]=&RegisterForm[email]=&RegisterForm[firstName]=&RegisterForm[lastName]=&RegisterForm[activate]=&RegisterForm[ephemeral]="</code></pre>
                           </div>
 
                             <div class="tab-pane" id="examples-User-registerPost-0-javascript">
@@ -2330,7 +2357,7 @@ var opts = {
   'RegisterForm[firstName]': RegisterForm[firstName]_example, // {String} The user's email
   'RegisterForm[lastName]': RegisterForm[lastName]_example, // {String} The user's email
   'RegisterForm[activate]': RegisterForm[activate]_example, // {String} Automatically initate the user, default=false
-  'RegisterForm[emphemeral]': RegisterForm[emphemeral]_example // {String} Set this true if the user is created for temporary reasons. default=false
+  'RegisterForm[ephemeral]': RegisterForm[ephemeral]_example // {String} Set this true if the user is created for temporary reasons. default=false
 };
 
 var callback = function(error, data, response) {
@@ -2360,10 +2387,10 @@ $RegisterForm[email] = RegisterForm[email]_example; // String | The user's email
 $RegisterForm[firstName] = RegisterForm[firstName]_example; // String | The user's email
 $RegisterForm[lastName] = RegisterForm[lastName]_example; // String | The user's email
 $RegisterForm[activate] = RegisterForm[activate]_example; // String | Automatically initate the user, default=false
-$RegisterForm[emphemeral] = RegisterForm[emphemeral]_example; // String | Set this true if the user is created for temporary reasons. default=false
+$RegisterForm[ephemeral] = RegisterForm[ephemeral]_example; // String | Set this true if the user is created for temporary reasons. default=false
 
 try {
-    $result = $api_instance->registerPost($RegisterForm[username], $RegisterForm[password], $RegisterForm[email], $RegisterForm[firstName], $RegisterForm[lastName], $RegisterForm[activate], $RegisterForm[emphemeral]);
+    $result = $api_instance->registerPost($RegisterForm[username], $RegisterForm[password], $RegisterForm[email], $RegisterForm[firstName], $RegisterForm[lastName], $RegisterForm[activate], $RegisterForm[ephemeral]);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->registerPost: ', $e->getMessage(), PHP_EOL;
@@ -2551,7 +2578,7 @@ try {
 </td>
 </tr>
 
-                                <tr><td style="width:150px;">RegisterForm[activate]</td>
+                                <tr><td style="width:150px;">RegisterForm[activate]*</td>
 <td>
 
 
@@ -2584,14 +2611,14 @@ try {
 </td>
 </tr>
 
-                                <tr><td style="width:150px;">RegisterForm[emphemeral]</td>
+                                <tr><td style="width:150px;">RegisterForm[ephemeral]*</td>
 <td>
 
 
 <script>
 												$(document).ready(function() {
 													var schemaWrapper = {
-  "name" : "RegisterForm[emphemeral]",
+  "name" : "RegisterForm[ephemeral]",
   "in" : "query",
   "description" : "Set this true if the user is created for temporary reasons. default=false",
   "required" : false,
@@ -2603,7 +2630,7 @@ try {
 
 
 													var view = new JSONSchemaView(schema,1);
-													var result = $('#d2e199_registerPost_RegisterForm[emphemeral]');
+													var result = $('#d2e199_registerPost_RegisterForm[ephemeral]');
 													result.empty();
 													result.append(view.render());
 
@@ -2613,7 +2640,7 @@ try {
 
 												});
 												</script>
-												<div id="d2e199_registerPost_RegisterForm[emphemeral]"></div>
+												<div id="d2e199_registerPost_RegisterForm[ephemeral]"></div>
 </td>
 </tr>
 
@@ -2741,7 +2768,7 @@ try {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-userMakePersistentPost-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">post</span> "https://dev.boxitnow.com/api/user/makePersistent?Target[username]=&Target[password]=&newUser[username]="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">post</span> "https://dev.boxitnow.com/api/user/makePersistent?Target[username]=&Target[password]=&NewUser[username]="</code></pre>
                           </div>
 
 
@@ -2754,7 +2781,7 @@ var Target[username] = Target[username]_example; // {String} The ephermeral user
 
 var Target[password] = Target[password]_example; // {String} The ephermeral user's password
 
-var newUser[username] = newUser[username]_example; // {String} The new user's username
+var NewUser[username] = NewUser[username]_example; // {String} The new user's username
 
 
 var callback = function(error, data, response) {
@@ -2764,7 +2791,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.userMakePersistentPost(Target[username], Target[password], newUser[username], callback);
+api.userMakePersistentPost(Target[username], Target[password], NewUser[username], callback);
 </code></pre>
                             </div>
 
@@ -2780,10 +2807,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $api_instance = new Swagger\Client\Api\UserApi();
 $Target[username] = Target[username]_example; // String | The ephermeral user's username
 $Target[password] = Target[password]_example; // String | The ephermeral user's password
-$newUser[username] = newUser[username]_example; // String | The new user's username
+$NewUser[username] = NewUser[username]_example; // String | The new user's username
 
 try {
-    $result = $api_instance->userMakePersistentPost($Target[username], $Target[password], $newUser[username]);
+    $result = $api_instance->userMakePersistentPost($Target[username], $Target[password], $NewUser[username]);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->userMakePersistentPost: ', $e->getMessage(), PHP_EOL;
@@ -2891,7 +2918,7 @@ try {
 
 
 													var view = new JSONSchemaView(schema,1);
-													var result = $('#d2e199_userMakePersistentPost_newUser[username]');
+													var result = $('#d2e199_userMakePersistentPost_NewUser[username]');
 													result.empty();
 													result.append(view.render());
 
@@ -2901,7 +2928,7 @@ try {
 
 												});
 												</script>
-												<div id="d2e199_userMakePersistentPost_newUser[username]"></div>
+												<div id="d2e199_userMakePersistentPost_NewUser[username]"></div>
 </td>
 </tr>
 
