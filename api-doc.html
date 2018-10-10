@@ -784,7 +784,10 @@ margin-bottom: 20px;
 };
     defs.inline_response_200_2 = {
   "properties" : {
-    "thumbnail" :
+    "thumbnail" : {
+      "type" : "string",
+      "description" : "Thumbnail sized image"
+    },
     "pdfLayout" : {
       "type" : "string",
       "description" : "Hi-Resolution PDF compilation file"
@@ -814,30 +817,9 @@ margin-bottom: 20px;
 
 defs.inline_response_200_3 = {
 "properties" : {
-"thumbnail" :
 "pdfLayout" : {
   "type" : "string",
   "description" : "Hi-Resolution PDF compilation file"
-},
-"cad_dims" : {
-  "type" : "string",
-  "description" : "CAD view of design with dimension"
-},
-"cad_flat" : {
-  "type" : "string",
-  "description" : "CAD view of design without dimension"
-},
-"eps" : {
-  "type" : "string",
-  "description" : "EPS file"
-},
-"dxf" : {
-  "type" : "string",
-  "description" : "DXF cad file"
-},
-"hpgl" : {
-  "type" : "string",
-  "description" : "HPGL cutting file"
 }
 }
 };
