@@ -176,7 +176,7 @@ h={};g()}};typeof define==="function"&&define.amd&&define("google-code-prettify"
     });
   </script>
   <style type="text/css">
-  
+
 /*!
  * Bootstrap v2.3.2
  *
@@ -948,7 +948,7 @@ margin-bottom: 20px;
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 1.5.0</div>
+              <div class="app-desc">Version: 1.5.1</div>
             <hr>
             <p class="marked">Access BIN functionality remotely</p>
           </div>
@@ -975,84 +975,28 @@ margin-bottom: 20px;
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
                           <li class="active"><a href="#examples-Item-categoryGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Item-categoryGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Item-categoryGet-0-android">Android</a></li>
+
+
                           <!--<li class=""><a href="#examples-Item-categoryGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Item-categoryGet-0-objc">Obj-C</a></li>
+
                           <li class=""><a href="#examples-Item-categoryGet-0-javascript">JavaScript</a></li>
                           <!--<li class=""><a href="#examples-Item-categoryGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Item-categoryGet-0-csharp">C#</a></li>
+
                           <li class=""><a href="#examples-Item-categoryGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Item-categoryGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Item-categoryGet-0-python">Python</a></li>
+
+
                         </ul>
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Item-categoryGet-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">get</span> "https://apistaging.boxitnow.com/api/category"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Item-categoryGet-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.ItemApi;
 
-import java.io.File;
-import java.util.*;
-
-public class ItemApiExample {
-
-    public static void main(String[] args) {
-        
-        ItemApi apiInstance = new ItemApi();
-        try {
-            array[inline_response_200] result = apiInstance.categoryGet();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ItemApi#categoryGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Item-categoryGet-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ItemApi;
-
-public class ItemApiExample {
-
-    public static void main(String[] args) {
-        ItemApi apiInstance = new ItemApi();
-        try {
-            array[inline_response_200] result = apiInstance.categoryGet();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ItemApi#categoryGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
   <!--
   <div class="tab-pane" id="examples-Item-categoryGet-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Item-categoryGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
-ItemApi *apiInstance = [[ItemApi alloc] init];
 
-// Get a list of categories
-[apiInstance categoryGetWithCompletionHandler: 
-              ^(array[inline_response_200] output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-Item-categoryGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
@@ -1073,36 +1017,7 @@ api.categoryGet(callback);
                             <!--<div class="tab-pane" id="examples-Item-categoryGet-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Item-categoryGet-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
 
-namespace Example
-{
-    public class categoryGetExample
-    {
-        public void main()
-        {
-            
-            var apiInstance = new ItemApi();
-
-            try
-            {
-                // Get a list of categories
-                array[inline_response_200] result = apiInstance.categoryGet();
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling ItemApi.categoryGet: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-Item-categoryGet-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
@@ -1119,40 +1034,6 @@ try {
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Item-categoryGet-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::ItemApi;
-
-my $api_instance = WWW::SwaggerClient::ItemApi->new();
-
-eval { 
-    my $result = $api_instance->categoryGet();
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling ItemApi->categoryGet: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Item-categoryGet-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = swagger_client.ItemApi()
-
-try: 
-    # Get a list of categories
-    api_response = api_instance.categoryGet()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ItemApi->categoryGet: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
 
                           <h2>Parameters</h2>
 
@@ -1271,87 +1152,30 @@ except ApiException as e:
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
                           <li class="active"><a href="#examples-Item-categoryIdItemsGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Item-categoryIdItemsGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Item-categoryIdItemsGet-0-android">Android</a></li>
+
+
                           <!--<li class=""><a href="#examples-Item-categoryIdItemsGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Item-categoryIdItemsGet-0-objc">Obj-C</a></li>
+
                           <li class=""><a href="#examples-Item-categoryIdItemsGet-0-javascript">JavaScript</a></li>
                           <!--<li class=""><a href="#examples-Item-categoryIdItemsGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Item-categoryIdItemsGet-0-csharp">C#</a></li>
+
                           <li class=""><a href="#examples-Item-categoryIdItemsGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Item-categoryIdItemsGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Item-categoryIdItemsGet-0-python">Python</a></li>
+
+
                         </ul>
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Item-categoryIdItemsGet-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">get</span> "https://apistaging.boxitnow.com/api/category/{id}/items"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Item-categoryIdItemsGet-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.ItemApi;
 
-import java.io.File;
-import java.util.*;
 
-public class ItemApiExample {
 
-    public static void main(String[] args) {
-        
-        ItemApi apiInstance = new ItemApi();
-        BigDecimal id = 3.4; // BigDecimal | category id
-        try {
-            array[inline_response_200] result = apiInstance.categoryIdItemsGet(id);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ItemApi#categoryIdItemsGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Item-categoryIdItemsGet-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ItemApi;
-
-public class ItemApiExample {
-
-    public static void main(String[] args) {
-        ItemApi apiInstance = new ItemApi();
-        BigDecimal id = 3.4; // BigDecimal | category id
-        try {
-            array[inline_response_200] result = apiInstance.categoryIdItemsGet(id);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ItemApi#categoryIdItemsGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
   <!--
   <div class="tab-pane" id="examples-Item-categoryIdItemsGet-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Item-categoryIdItemsGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">BigDecimal *id = 3.4; // category id
 
-ItemApi *apiInstance = [[ItemApi alloc] init];
-
-// Get a list of categories
-[apiInstance categoryIdItemsGetWith:id
-              completionHandler: ^(array[inline_response_200] output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-Item-categoryIdItemsGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
@@ -1375,37 +1199,7 @@ api.categoryIdItemsGet(id, callback);
                             <!--<div class="tab-pane" id="examples-Item-categoryIdItemsGet-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Item-categoryIdItemsGet-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
 
-namespace Example
-{
-    public class categoryIdItemsGetExample
-    {
-        public void main()
-        {
-            
-            var apiInstance = new ItemApi();
-            var id = 3.4;  // BigDecimal | category id
-
-            try
-            {
-                // Get a list of categories
-                array[inline_response_200] result = apiInstance.categoryIdItemsGet(id);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling ItemApi.categoryIdItemsGet: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-Item-categoryIdItemsGet-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
@@ -1423,42 +1217,9 @@ try {
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Item-categoryIdItemsGet-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::ItemApi;
 
-my $api_instance = WWW::SwaggerClient::ItemApi->new();
-my $id = 3.4; # BigDecimal | category id
-
-eval { 
-    my $result = $api_instance->categoryIdItemsGet(id => $id);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling ItemApi->categoryIdItemsGet: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Item-categoryIdItemsGet-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = swagger_client.ItemApi()
-id = 3.4 # BigDecimal | category id
-
-try: 
-    # Get a list of categories
-    api_response = api_instance.categoryIdItemsGet(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ItemApi->categoryIdItemsGet: %s\n" % e)</code></pre>
-                            </div>
                           </div>
+
 
                           <h2>Parameters</h2>
 
@@ -1617,87 +1378,23 @@ except ApiException as e:
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
                           <li class="active"><a href="#examples-Item-itemStudioIdGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Item-itemStudioIdGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Item-itemStudioIdGet-0-android">Android</a></li>
+
+
                           <!--<li class=""><a href="#examples-Item-itemStudioIdGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Item-itemStudioIdGet-0-objc">Obj-C</a></li>
+
                           <li class=""><a href="#examples-Item-itemStudioIdGet-0-javascript">JavaScript</a></li>
                           <!--<li class=""><a href="#examples-Item-itemStudioIdGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Item-itemStudioIdGet-0-csharp">C#</a></li>
+
                           <li class=""><a href="#examples-Item-itemStudioIdGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Item-itemStudioIdGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Item-itemStudioIdGet-0-python">Python</a></li>
+
+
                         </ul>
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Item-itemStudioIdGet-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">get</span> "https://apistaging.boxitnow.com/api/item/studio/{id}"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Item-itemStudioIdGet-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.ItemApi;
 
-import java.io.File;
-import java.util.*;
-
-public class ItemApiExample {
-
-    public static void main(String[] args) {
-        
-        ItemApi apiInstance = new ItemApi();
-        BigDecimal id = 3.4; // BigDecimal | item id
-        try {
-            array[inline_response_200_1] result = apiInstance.itemStudioIdGet(id);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ItemApi#itemStudioIdGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Item-itemStudioIdGet-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ItemApi;
-
-public class ItemApiExample {
-
-    public static void main(String[] args) {
-        ItemApi apiInstance = new ItemApi();
-        BigDecimal id = 3.4; // BigDecimal | item id
-        try {
-            array[inline_response_200_1] result = apiInstance.itemStudioIdGet(id);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ItemApi#itemStudioIdGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Item-itemStudioIdGet-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Item-itemStudioIdGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">BigDecimal *id = 3.4; // item id
-
-ItemApi *apiInstance = [[ItemApi alloc] init];
-
-// Gets the studio html data, requires preloading necesary libraries
-[apiInstance itemStudioIdGetWith:id
-              completionHandler: ^(array[inline_response_200_1] output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-Item-itemStudioIdGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
@@ -1721,37 +1418,6 @@ api.itemStudioIdGet(id, callback);
                             <!--<div class="tab-pane" id="examples-Item-itemStudioIdGet-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Item-itemStudioIdGet-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class itemStudioIdGetExample
-    {
-        public void main()
-        {
-            
-            var apiInstance = new ItemApi();
-            var id = 3.4;  // BigDecimal | item id
-
-            try
-            {
-                // Gets the studio html data, requires preloading necesary libraries
-                array[inline_response_200_1] result = apiInstance.itemStudioIdGet(id);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling ItemApi.itemStudioIdGet: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-Item-itemStudioIdGet-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
@@ -1767,42 +1433,6 @@ try {
     echo 'Exception when calling ItemApi->itemStudioIdGet: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Item-itemStudioIdGet-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::ItemApi;
-
-my $api_instance = WWW::SwaggerClient::ItemApi->new();
-my $id = 3.4; # BigDecimal | item id
-
-eval { 
-    my $result = $api_instance->itemStudioIdGet(id => $id);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling ItemApi->itemStudioIdGet: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Item-itemStudioIdGet-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = swagger_client.ItemApi()
-id = 3.4 # BigDecimal | item id
-
-try: 
-    # Gets the studio html data, requires preloading necesary libraries
-    api_response = api_instance.itemStudioIdGet(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ItemApi->itemStudioIdGet: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -1966,87 +1596,23 @@ except ApiException as e:
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
                           <li class="active"><a href="#examples-Resize-resizeCompiledPdfIdGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-android">Android</a></li>
+
+
                           <!--<li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-objc">Obj-C</a></li>
+
                           <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-javascript">JavaScript</a></li>
                           <!--<li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-csharp">C#</a></li>
+
                           <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Resize-resizeCompiledPdfIdGet-0-python">Python</a></li>
+
+                          
                         </ul>
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Resize-resizeCompiledPdfIdGet-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">get</span> "https://apistaging.boxitnow.com/api/resize/compiledPdf/{id}"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.ResizeApi;
 
-import java.io.File;
-import java.util.*;
-
-public class ResizeApiExample {
-
-    public static void main(String[] args) {
-        
-        ResizeApi apiInstance = new ResizeApi();
-        BigDecimal id = 3.4; // BigDecimal | item id
-        try {
-            array[inline_response_200_2] result = apiInstance.resizeCompiledPdfIdGet(id);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ResizeApi#resizeCompiledPdfIdGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ResizeApi;
-
-public class ResizeApiExample {
-
-    public static void main(String[] args) {
-        ResizeApi apiInstance = new ResizeApi();
-        BigDecimal id = 3.4; // BigDecimal | item id
-        try {
-            array[inline_response_200_2] result = apiInstance.resizeCompiledPdfIdGet(id);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ResizeApi#resizeCompiledPdfIdGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">BigDecimal *id = 3.4; // item id
-
-ResizeApi *apiInstance = [[ResizeApi alloc] init];
-
-// Gets the hi-res compiled pdf of deisgn
-[apiInstance resizeCompiledPdfIdGetWith:id
-              completionHandler: ^(array[inline_response_200_2] output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
@@ -2070,38 +1636,6 @@ api.resizeCompiledPdfIdGet(id, callback);
                             <!--<div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class resizeCompiledPdfIdGetExample
-    {
-        public void main()
-        {
-            
-            var apiInstance = new ResizeApi();
-            var id = 3.4;  // BigDecimal | item id
-
-            try
-            {
-                // Gets the hi-res compiled pdf of deisgn
-                array[inline_response_200_2] result = apiInstance.resizeCompiledPdfIdGet(id);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling ResizeApi.resizeCompiledPdfIdGet: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                            </div>
-
                             <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
@@ -2118,41 +1652,7 @@ try {
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Resize-resizecompiledPdfIdGet-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::ResizeApi;
 
-my $api_instance = WWW::SwaggerClient::ResizeApi->new();
-my $id = 3.4; # BigDecimal | item id
-
-eval { 
-    my $result = $api_instance->resizecompiledPdfIdGet(id => $id);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling ResizeApi->resizecompiledPdfIdGet: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Resize-resizecompiledPdfIdGet-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = swagger_client.ResizeApi()
-id = 3.4 # BigDecimal | item id
-
-try: 
-    # Gets the hi-res compiled pdf of deisgn
-    api_response = api_instance.resizecompiledPdfIdGet(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ResizeApi->resizecompiledPdfIdGet: %s\n" % e)</code></pre>
-                            </div>
                           </div>
 
                           <h2>Parameters</h2>
@@ -2312,87 +1812,23 @@ except ApiException as e:
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
                           <li class="active"><a href="#examples-Resize-resizeInfoIdGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Resize-resizeInfoIdGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Resize-resizeInfoIdGet-0-android">Android</a></li>
+
+
                           <!--<li class=""><a href="#examples-Resize-resizeInfoIdGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Resize-resizeInfoIdGet-0-objc">Obj-C</a></li>
+
                           <li class=""><a href="#examples-Resize-resizeInfoIdGet-0-javascript">JavaScript</a></li>
                           <!--<li class=""><a href="#examples-Resize-resizeInfoIdGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Resize-resizeInfoIdGet-0-csharp">C#</a></li>
+
                           <li class=""><a href="#examples-Resize-resizeInfoIdGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Resize-resizeInfoIdGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Resize-resizeInfoIdGet-0-python">Python</a></li>
+
+
                         </ul>
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Resize-resizeInfoIdGet-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">get</span> "https://apistaging.boxitnow.com/api/resize/info/{id}"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Resize-resizeInfoIdGet-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.ResizeApi;
 
-import java.io.File;
-import java.util.*;
-
-public class ResizeApiExample {
-
-    public static void main(String[] args) {
-        
-        ResizeApi apiInstance = new ResizeApi();
-        BigDecimal id = 3.4; // BigDecimal | item id
-        try {
-            array[inline_response_200_2] result = apiInstance.resizeInfoIdGet(id);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ResizeApi#resizeInfoIdGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Resize-resizeInfoIdGet-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ResizeApi;
-
-public class ResizeApiExample {
-
-    public static void main(String[] args) {
-        ResizeApi apiInstance = new ResizeApi();
-        BigDecimal id = 3.4; // BigDecimal | item id
-        try {
-            array[inline_response_200_2] result = apiInstance.resizeInfoIdGet(id);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ResizeApi#resizeInfoIdGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Resize-resizeInfoIdGet-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Resize-resizeInfoIdGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">BigDecimal *id = 3.4; // item id
-
-ResizeApi *apiInstance = [[ResizeApi alloc] init];
-
-// Gets information about a resize
-[apiInstance resizeInfoIdGetWith:id
-              completionHandler: ^(array[inline_response_200_2] output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-Resize-resizeInfoIdGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
@@ -2416,37 +1852,6 @@ api.resizeInfoIdGet(id, callback);
                             <!--<div class="tab-pane" id="examples-Resize-resizeInfoIdGet-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Resize-resizeInfoIdGet-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class resizeInfoIdGetExample
-    {
-        public void main()
-        {
-            
-            var apiInstance = new ResizeApi();
-            var id = 3.4;  // BigDecimal | item id
-
-            try
-            {
-                // Gets information about a resize
-                array[inline_response_200_2] result = apiInstance.resizeInfoIdGet(id);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling ResizeApi.resizeInfoIdGet: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-Resize-resizeInfoIdGet-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
@@ -2472,7 +1877,7 @@ use WWW::SwaggerClient::ResizeApi;
 my $api_instance = WWW::SwaggerClient::ResizeApi->new();
 my $id = 3.4; # BigDecimal | item id
 
-eval { 
+eval {
     my $result = $api_instance->resizeInfoIdGet(id => $id);
     print Dumper($result);
 };
@@ -2481,24 +1886,6 @@ if ($@) {
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Resize-resizeInfoIdGet-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = swagger_client.ResizeApi()
-id = 3.4 # BigDecimal | item id
-
-try: 
-    # Gets information about a resize
-    api_response = api_instance.resizeInfoIdGet(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ResizeApi->resizeInfoIdGet: %s\n" % e)</code></pre>
-                            </div>
                           </div>
 
                           <h2>Parameters</h2>
@@ -2661,91 +2048,22 @@ except ApiException as e:
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
                           <li class="active"><a href="#examples-User-loginPost-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-User-loginPost-0-java">Java</a></li>
-                          <li class=""><a href="#examples-User-loginPost-0-android">Android</a></li>
+
+
                           <!--<li class=""><a href="#examples-User-loginPost-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-User-loginPost-0-objc">Obj-C</a></li>
+
                           <li class=""><a href="#examples-User-loginPost-0-javascript">JavaScript</a></li>
                           <!--<li class=""><a href="#examples-User-loginPost-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-User-loginPost-0-csharp">C#</a></li>
+
                           <li class=""><a href="#examples-User-loginPost-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-User-loginPost-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-User-loginPost-0-python">Python</a></li>
+
+
                         </ul>
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-loginPost-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">post</span> "https://apistaging.boxitnow.com/api/login?loginForm[username]=&loginForm[password]="</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-User-loginPost-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.UserApi;
-
-import java.io.File;
-import java.util.*;
-
-public class UserApiExample {
-
-    public static void main(String[] args) {
-        
-        UserApi apiInstance = new UserApi();
-        String loginForm[username] = loginForm[username]_example; // String | The user's username or email
-        String loginForm[password] = loginForm[password]_example; // String | The user's password
-        try {
-            Object result = apiInstance.loginPost(loginForm[username], loginForm[password]);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#loginPost");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-User-loginPost-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.UserApi;
-
-public class UserApiExample {
-
-    public static void main(String[] args) {
-        UserApi apiInstance = new UserApi();
-        String loginForm[username] = loginForm[username]_example; // String | The user's username or email
-        String loginForm[password] = loginForm[password]_example; // String | The user's password
-        try {
-            Object result = apiInstance.loginPost(loginForm[username], loginForm[password]);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#loginPost");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-User-loginPost-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-User-loginPost-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">String *loginForm[username] = loginForm[username]_example; // The user's username or email
-String *loginForm[password] = loginForm[password]_example; // The user's password
-
-UserApi *apiInstance = [[UserApi alloc] init];
-
-// User Login
-[apiInstance loginPostWith:loginForm[username]
-    loginForm[password]:loginForm[password]
-              completionHandler: ^(Object output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-User-loginPost-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
@@ -2771,38 +2089,6 @@ api.loginPost(loginForm[username], loginForm[password], callback);
                             <!--<div class="tab-pane" id="examples-User-loginPost-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-User-loginPost-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class loginPostExample
-    {
-        public void main()
-        {
-            
-            var apiInstance = new UserApi();
-            var loginForm[username] = loginForm[username]_example;  // String | The user's username or email
-            var loginForm[password] = loginForm[password]_example;  // String | The user's password
-
-            try
-            {
-                // User Login
-                Object result = apiInstance.loginPost(loginForm[username], loginForm[password]);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling UserApi.loginPost: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-User-loginPost-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
@@ -2821,43 +2107,7 @@ try {
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-loginPost-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::UserApi;
 
-my $api_instance = WWW::SwaggerClient::UserApi->new();
-my $loginForm[username] = loginForm[username]_example; # String | The user's username or email
-my $loginForm[password] = loginForm[password]_example; # String | The user's password
-
-eval { 
-    my $result = $api_instance->loginPost(loginForm[username] => $loginForm[username], loginForm[password] => $loginForm[password]);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling UserApi->loginPost: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-User-loginPost-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = swagger_client.UserApi()
-loginForm[username] = loginForm[username]_example # String | The user's username or email
-loginForm[password] = loginForm[password]_example # String | The user's password
-
-try: 
-    # User Login
-    api_response = api_instance.loginPost(loginForm[username], loginForm[password])
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UserApi->loginPost: %s\n" % e)</code></pre>
-                            </div>
                           </div>
 
                           <h2>Parameters</h2>
@@ -3048,111 +2298,22 @@ except ApiException as e:
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
                           <li class="active"><a href="#examples-User-registerPost-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-User-registerPost-0-java">Java</a></li>
-                          <li class=""><a href="#examples-User-registerPost-0-android">Android</a></li>
+
+
                           <!--<li class=""><a href="#examples-User-registerPost-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-User-registerPost-0-objc">Obj-C</a></li>
+
                           <li class=""><a href="#examples-User-registerPost-0-javascript">JavaScript</a></li>
                           <!--<li class=""><a href="#examples-User-registerPost-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-User-registerPost-0-csharp">C#</a></li>
+
                           <li class=""><a href="#examples-User-registerPost-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-User-registerPost-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-User-registerPost-0-python">Python</a></li>
+
+
                         </ul>
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-registerPost-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">post</span> "https://apistaging.boxitnow.com/api/register?registerForm[username]=&registerForm[password]=&registerForm[email]=&registerForm[firstName]=&registerForm[lastName]=&registerForm[activate]=&registerForm[emphemeral]="</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-User-registerPost-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.UserApi;
-
-import java.io.File;
-import java.util.*;
-
-public class UserApiExample {
-
-    public static void main(String[] args) {
-        
-        UserApi apiInstance = new UserApi();
-        String registerForm[username] = registerForm[username]_example; // String | The user's username
-        String registerForm[password] = registerForm[password]_example; // String | The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
-        String registerForm[email] = registerForm[email]_example; // String | The user's email
-        String registerForm[firstName] = registerForm[firstName]_example; // String | The user's email
-        String registerForm[lastName] = registerForm[lastName]_example; // String | The user's email
-        String registerForm[activate] = registerForm[activate]_example; // String | Automatically initate the user, default=false
-        String registerForm[emphemeral] = registerForm[emphemeral]_example; // String | Set this true if the user is created for temporary reasons. default=false
-        try {
-            Object result = apiInstance.registerPost(registerForm[username], registerForm[password], registerForm[email], registerForm[firstName], registerForm[lastName], registerForm[activate], registerForm[emphemeral]);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#registerPost");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-User-registerPost-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.UserApi;
-
-public class UserApiExample {
-
-    public static void main(String[] args) {
-        UserApi apiInstance = new UserApi();
-        String registerForm[username] = registerForm[username]_example; // String | The user's username
-        String registerForm[password] = registerForm[password]_example; // String | The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
-        String registerForm[email] = registerForm[email]_example; // String | The user's email
-        String registerForm[firstName] = registerForm[firstName]_example; // String | The user's email
-        String registerForm[lastName] = registerForm[lastName]_example; // String | The user's email
-        String registerForm[activate] = registerForm[activate]_example; // String | Automatically initate the user, default=false
-        String registerForm[emphemeral] = registerForm[emphemeral]_example; // String | Set this true if the user is created for temporary reasons. default=false
-        try {
-            Object result = apiInstance.registerPost(registerForm[username], registerForm[password], registerForm[email], registerForm[firstName], registerForm[lastName], registerForm[activate], registerForm[emphemeral]);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#registerPost");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-User-registerPost-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-User-registerPost-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">String *registerForm[username] = registerForm[username]_example; // The user's username
-String *registerForm[password] = registerForm[password]_example; // The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
-String *registerForm[email] = registerForm[email]_example; // The user's email
-String *registerForm[firstName] = registerForm[firstName]_example; // The user's email (optional)
-String *registerForm[lastName] = registerForm[lastName]_example; // The user's email (optional)
-String *registerForm[activate] = registerForm[activate]_example; // Automatically initate the user, default=false (optional)
-String *registerForm[emphemeral] = registerForm[emphemeral]_example; // Set this true if the user is created for temporary reasons. default=false (optional)
-
-UserApi *apiInstance = [[UserApi alloc] init];
-
-// User Registration
-[apiInstance registerPostWith:registerForm[username]
-    registerForm[password]:registerForm[password]
-    registerForm[email]:registerForm[email]
-    registerForm[firstName]:registerForm[firstName]
-    registerForm[lastName]:registerForm[lastName]
-    registerForm[activate]:registerForm[activate]
-    registerForm[emphemeral]:registerForm[emphemeral]
-              completionHandler: ^(Object output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-User-registerPost-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
@@ -3165,7 +2326,7 @@ var registerForm[password] = registerForm[password]_example; // {String} The pas
 
 var registerForm[email] = registerForm[email]_example; // {String} The user's email
 
-var opts = { 
+var opts = {
   'registerForm[firstName]': registerForm[firstName]_example, // {String} The user's email
   'registerForm[lastName]': registerForm[lastName]_example, // {String} The user's email
   'registerForm[activate]': registerForm[activate]_example, // {String} Automatically initate the user, default=false
@@ -3186,43 +2347,7 @@ api.registerPost(registerForm[username], registerForm[password], registerForm[em
                             <!--<div class="tab-pane" id="examples-User-registerPost-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-User-registerPost-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
 
-namespace Example
-{
-    public class registerPostExample
-    {
-        public void main()
-        {
-            
-            var apiInstance = new UserApi();
-            var registerForm[username] = registerForm[username]_example;  // String | The user's username
-            var registerForm[password] = registerForm[password]_example;  // String | The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
-            var registerForm[email] = registerForm[email]_example;  // String | The user's email
-            var registerForm[firstName] = registerForm[firstName]_example;  // String | The user's email (optional) 
-            var registerForm[lastName] = registerForm[lastName]_example;  // String | The user's email (optional) 
-            var registerForm[activate] = registerForm[activate]_example;  // String | Automatically initate the user, default=false (optional) 
-            var registerForm[emphemeral] = registerForm[emphemeral]_example;  // String | Set this true if the user is created for temporary reasons. default=false (optional) 
-
-            try
-            {
-                // User Registration
-                Object result = apiInstance.registerPost(registerForm[username], registerForm[password], registerForm[email], registerForm[firstName], registerForm[lastName], registerForm[activate], registerForm[emphemeral]);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling UserApi.registerPost: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-User-registerPost-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
@@ -3246,53 +2371,7 @@ try {
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-registerPost-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::UserApi;
 
-my $api_instance = WWW::SwaggerClient::UserApi->new();
-my $registerForm[username] = registerForm[username]_example; # String | The user's username
-my $registerForm[password] = registerForm[password]_example; # String | The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
-my $registerForm[email] = registerForm[email]_example; # String | The user's email
-my $registerForm[firstName] = registerForm[firstName]_example; # String | The user's email
-my $registerForm[lastName] = registerForm[lastName]_example; # String | The user's email
-my $registerForm[activate] = registerForm[activate]_example; # String | Automatically initate the user, default=false
-my $registerForm[emphemeral] = registerForm[emphemeral]_example; # String | Set this true if the user is created for temporary reasons. default=false
-
-eval { 
-    my $result = $api_instance->registerPost(registerForm[username] => $registerForm[username], registerForm[password] => $registerForm[password], registerForm[email] => $registerForm[email], registerForm[firstName] => $registerForm[firstName], registerForm[lastName] => $registerForm[lastName], registerForm[activate] => $registerForm[activate], registerForm[emphemeral] => $registerForm[emphemeral]);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling UserApi->registerPost: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-User-registerPost-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = swagger_client.UserApi()
-registerForm[username] = registerForm[username]_example # String | The user's username
-registerForm[password] = registerForm[password]_example # String | The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
-registerForm[email] = registerForm[email]_example # String | The user's email
-registerForm[firstName] = registerForm[firstName]_example # String | The user's email (optional)
-registerForm[lastName] = registerForm[lastName]_example # String | The user's email (optional)
-registerForm[activate] = registerForm[activate]_example # String | Automatically initate the user, default=false (optional)
-registerForm[emphemeral] = registerForm[emphemeral]_example # String | Set this true if the user is created for temporary reasons. default=false (optional)
-
-try: 
-    # User Registration
-    api_response = api_instance.registerPost(registerForm[username], registerForm[password], registerForm[email], registerForm[firstName]=registerForm[firstName], registerForm[lastName]=registerForm[lastName], registerForm[activate]=registerForm[activate], registerForm[emphemeral]=registerForm[emphemeral])
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UserApi->registerPost: %s\n" % e)</code></pre>
-                            </div>
                           </div>
 
                           <h2>Parameters</h2>
@@ -3648,95 +2727,23 @@ except ApiException as e:
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
                           <li class="active"><a href="#examples-User-userMakePersistentPost-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-User-userMakePersistentPost-0-java">Java</a></li>
-                          <li class=""><a href="#examples-User-userMakePersistentPost-0-android">Android</a></li>
+
+
                           <!--<li class=""><a href="#examples-User-userMakePersistentPost-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-User-userMakePersistentPost-0-objc">Obj-C</a></li>
+
                           <li class=""><a href="#examples-User-userMakePersistentPost-0-javascript">JavaScript</a></li>
                           <!--<li class=""><a href="#examples-User-userMakePersistentPost-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-User-userMakePersistentPost-0-csharp">C#</a></li>
+
                           <li class=""><a href="#examples-User-userMakePersistentPost-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-User-userMakePersistentPost-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-User-userMakePersistentPost-0-python">Python</a></li>
+
+
                         </ul>
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-userMakePersistentPost-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">post</span> "https://apistaging.boxitnow.com/api/user/makePersistent?target[username]=&target[password]=&newUser[username]="</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-User-userMakePersistentPost-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.UserApi;
 
-import java.io.File;
-import java.util.*;
-
-public class UserApiExample {
-
-    public static void main(String[] args) {
-        
-        UserApi apiInstance = new UserApi();
-        String target[username] = target[username]_example; // String | The ephermeral user's username
-        String target[password] = target[password]_example; // String | The ephermeral user's password
-        String newUser[username] = newUser[username]_example; // String | The new user's username
-        try {
-            Object result = apiInstance.userMakePersistentPost(target[username], target[password], newUser[username]);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#userMakePersistentPost");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-User-userMakePersistentPost-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.UserApi;
-
-public class UserApiExample {
-
-    public static void main(String[] args) {
-        UserApi apiInstance = new UserApi();
-        String target[username] = target[username]_example; // String | The ephermeral user's username
-        String target[password] = target[password]_example; // String | The ephermeral user's password
-        String newUser[username] = newUser[username]_example; // String | The new user's username
-        try {
-            Object result = apiInstance.userMakePersistentPost(target[username], target[password], newUser[username]);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#userMakePersistentPost");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-User-userMakePersistentPost-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-User-userMakePersistentPost-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">String *target[username] = target[username]_example; // The ephermeral user's username
-String *target[password] = target[password]_example; // The ephermeral user's password
-String *newUser[username] = newUser[username]_example; // The new user's username
-
-UserApi *apiInstance = [[UserApi alloc] init];
-
-// Changes ephemeral user to a permanent
-[apiInstance userMakePersistentPostWith:target[username]
-    target[password]:target[password]
-    newUser[username]:newUser[username]
-              completionHandler: ^(Object output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-User-userMakePersistentPost-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
@@ -3764,39 +2771,7 @@ api.userMakePersistentPost(target[username], target[password], newUser[username]
                             <!--<div class="tab-pane" id="examples-User-userMakePersistentPost-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-User-userMakePersistentPost-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
 
-namespace Example
-{
-    public class userMakePersistentPostExample
-    {
-        public void main()
-        {
-            
-            var apiInstance = new UserApi();
-            var target[username] = target[username]_example;  // String | The ephermeral user's username
-            var target[password] = target[password]_example;  // String | The ephermeral user's password
-            var newUser[username] = newUser[username]_example;  // String | The new user's username
-
-            try
-            {
-                // Changes ephemeral user to a permanent
-                Object result = apiInstance.userMakePersistentPost(target[username], target[password], newUser[username]);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling UserApi.userMakePersistentPost: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-User-userMakePersistentPost-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
@@ -3816,45 +2791,7 @@ try {
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-userMakePersistentPost-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::UserApi;
 
-my $api_instance = WWW::SwaggerClient::UserApi->new();
-my $target[username] = target[username]_example; # String | The ephermeral user's username
-my $target[password] = target[password]_example; # String | The ephermeral user's password
-my $newUser[username] = newUser[username]_example; # String | The new user's username
-
-eval { 
-    my $result = $api_instance->userMakePersistentPost(target[username] => $target[username], target[password] => $target[password], newUser[username] => $newUser[username]);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling UserApi->userMakePersistentPost: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-User-userMakePersistentPost-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = swagger_client.UserApi()
-target[username] = target[username]_example # String | The ephermeral user's username
-target[password] = target[password]_example # String | The ephermeral user's password
-newUser[username] = newUser[username]_example # String | The new user's username
-
-try: 
-    # Changes ephemeral user to a permanent
-    api_response = api_instance.userMakePersistentPost(target[username], target[password], newUser[username])
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UserApi->userMakePersistentPost: %s\n" % e)</code></pre>
-                            </div>
                           </div>
 
                           <h2>Parameters</h2>
@@ -4078,99 +3015,22 @@ except ApiException as e:
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
                           <li class="active"><a href="#examples-User-userMergePost-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-User-userMergePost-0-java">Java</a></li>
-                          <li class=""><a href="#examples-User-userMergePost-0-android">Android</a></li>
+
+
                           <!--<li class=""><a href="#examples-User-userMergePost-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-User-userMergePost-0-objc">Obj-C</a></li>
+
                           <li class=""><a href="#examples-User-userMergePost-0-javascript">JavaScript</a></li>
                           <!--<li class=""><a href="#examples-User-userMergePost-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-User-userMergePost-0-csharp">C#</a></li>
+
                           <li class=""><a href="#examples-User-userMergePost-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-User-userMergePost-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-User-userMergePost-0-python">Python</a></li>
+
+
                         </ul>
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-userMergePost-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">post</span> "https://apistaging.boxitnow.com/api/user/merge?target[username]=&target[password]=&source[username]=&source[password]="</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-User-userMergePost-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.UserApi;
-
-import java.io.File;
-import java.util.*;
-
-public class UserApiExample {
-
-    public static void main(String[] args) {
-        
-        UserApi apiInstance = new UserApi();
-        String target[username] = target[username]_example; // String | The permanent user's username
-        String target[password] = target[password]_example; // String | The permanent user's password
-        String source[username] = source[username]_example; // String | The ephemeral user's username
-        String source[password] = source[password]_example; // String | The ephemeral user's password
-        try {
-            Object result = apiInstance.userMergePost(target[username], target[password], source[username], source[password]);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#userMergePost");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-User-userMergePost-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.UserApi;
-
-public class UserApiExample {
-
-    public static void main(String[] args) {
-        UserApi apiInstance = new UserApi();
-        String target[username] = target[username]_example; // String | The permanent user's username
-        String target[password] = target[password]_example; // String | The permanent user's password
-        String source[username] = source[username]_example; // String | The ephemeral user's username
-        String source[password] = source[password]_example; // String | The ephemeral user's password
-        try {
-            Object result = apiInstance.userMergePost(target[username], target[password], source[username], source[password]);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#userMergePost");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-User-userMergePost-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-User-userMergePost-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">String *target[username] = target[username]_example; // The permanent user's username
-String *target[password] = target[password]_example; // The permanent user's password
-String *source[username] = source[username]_example; // The ephemeral user's username
-String *source[password] = source[password]_example; // The ephemeral user's password
-
-UserApi *apiInstance = [[UserApi alloc] init];
-
-// User Merge
-[apiInstance userMergePostWith:target[username]
-    target[password]:target[password]
-    source[username]:source[username]
-    source[password]:source[password]
-              completionHandler: ^(Object output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-User-userMergePost-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
@@ -4200,40 +3060,6 @@ api.userMergePost(target[username], target[password], source[username], source[p
                             <!--<div class="tab-pane" id="examples-User-userMergePost-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-User-userMergePost-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class userMergePostExample
-    {
-        public void main()
-        {
-            
-            var apiInstance = new UserApi();
-            var target[username] = target[username]_example;  // String | The permanent user's username
-            var target[password] = target[password]_example;  // String | The permanent user's password
-            var source[username] = source[username]_example;  // String | The ephemeral user's username
-            var source[password] = source[password]_example;  // String | The ephemeral user's password
-
-            try
-            {
-                // User Merge
-                Object result = apiInstance.userMergePost(target[username], target[password], source[username], source[password]);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling UserApi.userMergePost: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                            </div>
 
                             <div class="tab-pane" id="examples-User-userMergePost-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
@@ -4254,47 +3080,7 @@ try {
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-userMergePost-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::UserApi;
 
-my $api_instance = WWW::SwaggerClient::UserApi->new();
-my $target[username] = target[username]_example; # String | The permanent user's username
-my $target[password] = target[password]_example; # String | The permanent user's password
-my $source[username] = source[username]_example; # String | The ephemeral user's username
-my $source[password] = source[password]_example; # String | The ephemeral user's password
-
-eval { 
-    my $result = $api_instance->userMergePost(target[username] => $target[username], target[password] => $target[password], source[username] => $source[username], source[password] => $source[password]);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling UserApi->userMergePost: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-User-userMergePost-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = swagger_client.UserApi()
-target[username] = target[username]_example # String | The permanent user's username
-target[password] = target[password]_example # String | The permanent user's password
-source[username] = source[username]_example # String | The ephemeral user's username
-source[password] = source[password]_example # String | The ephemeral user's password
-
-try: 
-    # User Merge
-    api_response = api_instance.userMergePost(target[username], target[password], source[username], source[password])
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UserApi->userMergePost: %s\n" % e)</code></pre>
-                            </div>
                           </div>
 
                           <h2>Parameters</h2>
