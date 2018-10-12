@@ -833,6 +833,20 @@ defs.inline_response_200_3 = {
     }
   }
 };
+
+defs.inline_response_token = {
+"properties" : {
+  "result" : {
+    "type" : "string"
+  },
+  "message" : {
+    "type" : "string"
+  },
+  "token" : {
+    "type" : "string"
+  }
+}
+};
     defs.Item = {
   "type" : "object",
   "properties" : {
@@ -1008,18 +1022,23 @@ defs.inline_response_200_3 = {
 
 
                             <div class="tab-pane" id="examples-Item-categoryGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
+                              <pre class="prettyprint"><code class="language-js">
+                                $.ajax({
+                                    url: {API_URL}/api/category,
+                                    type: 'GET',
+                                    success: function (value) {
 
-var api = new BoxItNowApi.ItemApi()
+                                        console.log(value);
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.categoryGet(callback);
+                                    },
+                                    error : function(xhr, textStatus, errorThrown ) {
+
+                                        console.log(textStatus + " : " + errorThrown);
+
+                                        return;
+
+                                    }
+                                });
 </code></pre>
                             </div>
 
@@ -1030,16 +1049,14 @@ api.categoryGet(callback);
 
                             <div class="tab-pane" id="examples-Item-categoryGet-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
+  $ch = curl_init();
 
-$api_instance = new Swagger\Client\Api\ItemApi();
+  curl_setopt($ch, CURLOPT_URL,"https://{{API URL}}/api/category");
+  curl_setopt($ch, CURLOPT_HTTPGET, 1);
 
-try {
-    $result = $api_instance->categoryGet();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ItemApi->categoryGet: ', $e->getMessage(), PHP_EOL;
-}
+  $server_output = curl_exec ($ch);
+
+  echo $server_output;
 ?></code></pre>
                             </div>
 
@@ -1187,21 +1204,24 @@ try {
 
 
                             <div class="tab-pane" id="examples-Item-categoryIdItemsGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
+                              <pre class="prettyprint"><code class="language-js">
 
-var api = new BoxItNowApi.ItemApi()
+                                $.ajax({
+                                    url: {API_URL}/api/category/{id}/items,
+                                    type: 'GET',
+                                    success: function (value) {
 
-var id = 3.4; // {BigDecimal} category id
+                                        console.log(value);
 
+                                    },
+                                    error : function(xhr, textStatus, errorThrown ) {
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.categoryIdItemsGet(id, callback);
+                                        console.log(textStatus + " : " + errorThrown);
+
+                                        return;
+
+                                    }
+                                });
 </code></pre>
                             </div>
 
@@ -1212,17 +1232,14 @@ api.categoryIdItemsGet(id, callback);
 
                             <div class="tab-pane" id="examples-Item-categoryIdItemsGet-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
+  $ch = curl_init();
 
-$api_instance = new Swagger\Client\Api\ItemApi();
-$id = 3.4; // BigDecimal | category id
+  curl_setopt($ch, CURLOPT_URL,"https://{{API URL}}/api/category/{id}/items");
+  curl_setopt($ch, CURLOPT_HTTPGET, 1);
 
-try {
-    $result = $api_instance->categoryIdItemsGet($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ItemApi->categoryIdItemsGet: ', $e->getMessage(), PHP_EOL;
-}
+  $server_output = curl_exec ($ch);
+
+  echo $server_output;
 ?></code></pre>
                             </div>
 
@@ -1406,21 +1423,24 @@ try {
 
 
                             <div class="tab-pane" id="examples-Item-itemStudioIdGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
+                              <pre class="prettyprint"><code class="language-js">
 
-var api = new BoxItNowApi.ItemApi()
+                                $.ajax({
+                                    url: {API_URL}/api/item/studio/{id},
+                                    type: 'GET',
+                                    success: function (value) {
 
-var id = 3.4; // {BigDecimal} item id
+                                        console.log(value);
 
+                                    },
+                                    error : function(xhr, textStatus, errorThrown ) {
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.itemStudioIdGet(id, callback);
+                                        console.log(textStatus + " : " + errorThrown);
+
+                                        return;
+
+                                    }
+                                });
 </code></pre>
                             </div>
 
@@ -1430,17 +1450,14 @@ api.itemStudioIdGet(id, callback);
 
                             <div class="tab-pane" id="examples-Item-itemStudioIdGet-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
+  $ch = curl_init();
 
-$api_instance = new Swagger\Client\Api\ItemApi();
-$id = 3.4; // BigDecimal | item id
+  curl_setopt($ch, CURLOPT_URL,"https://{{API URL}}/api/item/studio/{id}");
+  curl_setopt($ch, CURLOPT_HTTPGET, 1);
 
-try {
-    $result = $api_instance->itemStudioIdGet($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ItemApi->itemStudioIdGet: ', $e->getMessage(), PHP_EOL;
-}
+  $server_output = curl_exec ($ch);
+
+  echo $server_output;
 ?></code></pre>
                             </div>
                           </div>
@@ -1624,21 +1641,25 @@ try {
 
 
                             <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
+                              <pre class="prettyprint"><code class="language-js">
 
-var api = new BoxItNowApi.ResizeApi()
+                                $.ajax({
+                                    url: {API_URL}/api/resize/compiledPdf/{id},
+                                    type: 'GET',
+                                    success: function (value) {
 
-var id = 3.4; // {BigDecimal} item id
+                                        console.log(value);
 
+                                    },
+                                    error : function(xhr, textStatus, errorThrown ) {
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.resizeCompiledPdfIdGet(id, callback);
+                                        console.log(textStatus + " : " + errorThrown);
+
+                                        return;
+
+                                    }
+                                });
+
 </code></pre>
                             </div>
 
@@ -1647,17 +1668,14 @@ api.resizeCompiledPdfIdGet(id, callback);
             </div>-->
                             <div class="tab-pane" id="examples-Resize-resizeCompiledPdfIdGet-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
+  $ch = curl_init();
 
-$api_instance = new Swagger\Client\Api\ResizeApi();
-$id = 3.4; // BigDecimal | item id
+  curl_setopt($ch, CURLOPT_URL,"https://{{API URL}}/api/resize/compiledpdf/{id}");
+  curl_setopt($ch, CURLOPT_HTTPGET, 1);
 
-try {
-    $result = $api_instance->resizecompiledPdfIdGet($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ResizeApi->resizecompiledPdfIdGet: ', $e->getMessage(), PHP_EOL;
-}
+  $server_output = curl_exec ($ch);
+
+  echo $server_output;
 ?></code></pre>
                             </div>
 
@@ -1840,21 +1858,23 @@ try {
 
 
                             <div class="tab-pane" id="examples-Resize-resizeInfoIdGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
+                              <pre class="prettyprint"><code class="language-js">
+    $.ajax({
+      url: {API_URL}/api/category,
+      type: 'GET',
+      success: function (value) {
 
-var api = new BoxItNowApi.ResizeApi()
+        console.log(value);
 
-var id = 3.4; // {BigDecimal} item id
+      },
+      error : function(xhr, textStatus, errorThrown ) {
 
+        console.log(textStatus + " : " + errorThrown);
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.resizeInfoIdGet(id, callback);
+        return;
+
+      }
+    });
 </code></pre>
                             </div>
 
@@ -1864,36 +1884,17 @@ api.resizeInfoIdGet(id, callback);
 
                             <div class="tab-pane" id="examples-Resize-resizeInfoIdGet-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
+  $ch = curl_init();
 
-$api_instance = new Swagger\Client\Api\ResizeApi();
-$id = 3.4; // BigDecimal | item id
+  curl_setopt($ch, CURLOPT_URL,"https://{{API URL}}/api/resize/info/{id}");
+  curl_setopt($ch, CURLOPT_HTTPGET, 1);
 
-try {
-    $result = $api_instance->resizeInfoIdGet($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ResizeApi->resizeInfoIdGet: ', $e->getMessage(), PHP_EOL;
-}
+  $server_output = curl_exec ($ch);
+
+  echo $server_output;
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Resize-resizeInfoIdGet-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::ResizeApi;
-
-my $api_instance = WWW::SwaggerClient::ResizeApi->new();
-my $id = 3.4; # BigDecimal | item id
-
-eval {
-    my $result = $api_instance->resizeInfoIdGet(id => $id);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling ResizeApi->resizeInfoIdGet: $@\n";
-}</code></pre>
-                            </div>
 
                           </div>
 
@@ -2075,23 +2076,24 @@ if ($@) {
                           </div>
 
                             <div class="tab-pane" id="examples-User-loginPost-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
+                              <pre class="prettyprint"><code class="language-js">
+    $.ajax({
+        url: {API_URL}/api/login,
+        data:  $('#LoginForm').serialize(),
+        type: 'POST',
+        success: function (value) {
 
-var api = new BoxItNowApi.UserApi()
+            console.log(value);
 
-var LoginForm[username] = LoginForm[username]_example; // {String} The user's username or email
+        },
+        error : function(xhr, textStatus, errorThrown ) {
 
-var LoginForm[password] = LoginForm[password]_example; // {String} The user's password
+            console.log(textStatus + " : " + errorThrown);
 
+            return;
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.loginPost(LoginForm[username], LoginForm[password], callback);
+        }
+    });
 </code></pre>
                             </div>
 
@@ -2101,18 +2103,19 @@ api.loginPost(LoginForm[username], LoginForm[password], callback);
 
                             <div class="tab-pane" id="examples-User-loginPost-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
+  $ch = curl_init();
 
-$api_instance = new Swagger\Client\Api\UserApi();
-$LoginForm[username] = LoginForm[username]_example; // String | The user's username or email
-$LoginForm[password] = LoginForm[password]_example; // String | The user's password
+  curl_setopt($ch, CURLOPT_URL,"https://{{API URL}}/api/login");
+  curl_setopt($ch, CURLOPT_POST, 1);
+  curl_setopt($ch, CURLOPT_POSTFIELDS,
+      http_build_query(array('LoginForm[username]' => {{username}},
+                             'LoginForm[password]' => {{password}})));
 
-try {
-    $result = $api_instance->loginPost($LoginForm[username], $LoginForm[password]);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling UserApi->loginPost: ', $e->getMessage(), PHP_EOL;
-}
+
+
+  $server_output = curl_exec ($ch);
+
+  echo $server_output;
 ?></code></pre>
                             </div>
 
@@ -2167,7 +2170,7 @@ try {
                                 <tr><td style="width:150px;">LoginForm[password]*</td>
 <td>
 
-
+                        <div id="d2e199_loginPost_LoginForm[password]"></div>
 <script>
 												$(document).ready(function() {
 													var schemaWrapper = {
@@ -2188,12 +2191,13 @@ try {
 													result.append(view.render());
 
 
-
+                          console.log("SCHEMAAEEA!!!!!!!");
+                          console.log(schemaWrapper);
 
 
 												});
 												</script>
-												<div id="d2e199_loginPost_LoginForm[password]"></div>
+
 </td>
 </tr>
 
@@ -2217,8 +2221,7 @@ try {
                                         var schemaWrapper = {
   "description" : "The login result, gives errors if invalid credentials",
   "schema" : {
-    "type" : "object",
-    "properties" : { }
+    "$ref" : "#/definitions/inline_response_token"
   }
 };
                                         var schema = schemaWrapper.schema;
@@ -2325,31 +2328,24 @@ try {
                           </div>
 
                             <div class="tab-pane" id="examples-User-registerPost-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
+                              <pre class="prettyprint"><code class="language-js">
+    $.ajax({
+      url: {API_URL}/api/register,
+      data:  $('#RegisterForm').serialize(),
+      type: 'POST',
+      success: function (value) {
 
-var api = new BoxItNowApi.UserApi()
+          console.log(value);
 
-var RegisterForm[username] = RegisterForm[username]_example; // {String} The user's username
+      },
+      error : function(xhr, textStatus, errorThrown ) {
 
-var RegisterForm[password] = RegisterForm[password]_example; // {String} The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
+          console.log(textStatus + " : " + errorThrown);
 
-var RegisterForm[email] = RegisterForm[email]_example; // {String} The user's email
+          return;
 
-var opts = {
-  'RegisterForm[firstName]': RegisterForm[firstName]_example, // {String} The user's email
-  'RegisterForm[lastName]': RegisterForm[lastName]_example, // {String} The user's email
-  'RegisterForm[activate]': RegisterForm[activate]_example, // {String} Automatically initate the user, default=false
-  'RegisterForm[ephemeral]': RegisterForm[ephemeral]_example // {String} Set this true if the user is created for temporary reasons. default=false
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.registerPost(RegisterForm[username], RegisterForm[password], RegisterForm[email], opts, callback);
+      }
+    });
 </code></pre>
                             </div>
 
@@ -2360,23 +2356,26 @@ api.registerPost(RegisterForm[username], RegisterForm[password], RegisterForm[em
 
                             <div class="tab-pane" id="examples-User-registerPost-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
+                                $ch = curl_init();
 
-$api_instance = new Swagger\Client\Api\UserApi();
-$RegisterForm[username] = RegisterForm[username]_example; // String | The user's username
-$RegisterForm[password] = RegisterForm[password]_example; // String | The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
-$RegisterForm[email] = RegisterForm[email]_example; // String | The user's email
-$RegisterForm[firstName] = RegisterForm[firstName]_example; // String | The user's email
-$RegisterForm[lastName] = RegisterForm[lastName]_example; // String | The user's email
-$RegisterForm[activate] = RegisterForm[activate]_example; // String | Automatically initate the user, default=false
-$RegisterForm[ephemeral] = RegisterForm[ephemeral]_example; // String | Set this true if the user is created for temporary reasons. default=false
+                                curl_setopt($ch, CURLOPT_URL,"https://{{API URL}}/api/login");
+                                curl_setopt($ch, CURLOPT_POST, 1);
+                                curl_setopt($ch, CURLOPT_POSTFIELDS,
+                                http_build_query(array('RegisterForm[username]' => {{username}},
+                                                       'RegisterForm[password]' => {{password}},
+                                                       'RegisterForm[email]' => {{email}},
+                                                       'RegisterForm[firstName]' => {{firstName}},
+                                                       'RegisterForm[lastName]' => {{lastName}},
+                                                       'RegisterForm[activate]' => {{activate}},
+                                                       'RegisterForm[ephemeral]' => {{ephemeral}})));
 
-try {
-    $result = $api_instance->registerPost($RegisterForm[username], $RegisterForm[password], $RegisterForm[email], $RegisterForm[firstName], $RegisterForm[lastName], $RegisterForm[activate], $RegisterForm[ephemeral]);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling UserApi->registerPost: ', $e->getMessage(), PHP_EOL;
-}
+
+
+                                $server_output = curl_exec ($ch);
+
+                                echo $server_output;
+
+
 ?></code></pre>
                             </div>
 
@@ -2421,6 +2420,23 @@ try {
 
 
 
+                        /*  $.ajax({
+                            url: 'http://localhost/boxitnowff/api/register/test',
+                            data:  JSON.stringify({'Target': schema, 'Source': "this is the source" }),
+                            type: 'POST',
+                            success: function (value) {
+
+                                console.log(value);
+
+                            },
+                            error : function(xhr, textStatus, errorThrown ) {
+
+                                console.log(textStatus + " : " + errorThrown);
+
+                                return;
+
+                            }
+                          });*/
 
 												});
 												</script>
@@ -2646,8 +2662,7 @@ try {
                                         var schemaWrapper = {
   "description" : "The login result, gives errors if invalid credentials",
   "schema" : {
-    "type" : "object",
-    "properties" : { }
+    "$ref" : "#/definitions/inline_response_token"
   }
 };
                                         var schema = schemaWrapper.schema;
@@ -2726,7 +2741,7 @@ try {
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">This will all you to log a user into a session.
+                        <p class="marked">This will allow you to log a user into a session.
 </p>
                         <p></p>
                         <br />
@@ -2750,30 +2765,30 @@ try {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-userMakePersistentPost-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">post</span> "https://dev.boxitnow.com/api/user/makePersistent?Target[username]=&Target[password]=&NewUser[username]="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">post</span> "https://dev.boxitnow.com/api/user/makePersistent?Target[username]=&Target[password]=&Target[newuser_username]="</code></pre>
                           </div>
 
 
                             <div class="tab-pane" id="examples-User-userMakePersistentPost-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
+                              <pre class="prettyprint"><code class="language-js">
 
-var api = new BoxItNowApi.UserApi()
+                                $.ajax({
+                                    url: {API_URL}/api/user/makePersistent,
+                                    data:  $('#Target').serialize(),
+                                    type: 'POST',
+                                    success: function (value) {
 
-var Target[username] = Target[username]_example; // {String} The ephermeral user's username
+                                        console.log(value);
 
-var Target[password] = Target[password]_example; // {String} The ephermeral user's password
+                                    },
+                                    error : function(xhr, textStatus, errorThrown ) {
 
-var NewUser[username] = NewUser[username]_example; // {String} The new user's username
+                                        console.log(textStatus + " : " + errorThrown);
 
+                                        return;
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.userMakePersistentPost(Target[username], Target[password], NewUser[username], callback);
+                                    }
+                                });
 </code></pre>
                             </div>
 
@@ -2784,19 +2799,22 @@ api.userMakePersistentPost(Target[username], Target[password], NewUser[username]
 
                             <div class="tab-pane" id="examples-User-userMakePersistentPost-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
+                                $ch = curl_init();
 
-$api_instance = new Swagger\Client\Api\UserApi();
-$Target[username] = Target[username]_example; // String | The ephermeral user's username
-$Target[password] = Target[password]_example; // String | The ephermeral user's password
-$NewUser[username] = NewUser[username]_example; // String | The new user's username
+                                curl_setopt($ch, CURLOPT_URL,"https://{{API URL}}/api/login");
+                                curl_setopt($ch, CURLOPT_POST, 1);
+                                curl_setopt($ch, CURLOPT_POSTFIELDS,
+                                http_build_query(array('Target[username]' => {{username}},
+                                                       'Target[password]' => {{password}},
+                                                       'Target[newuser_username]' => {{newuser_username}})));
 
-try {
-    $result = $api_instance->userMakePersistentPost($Target[username], $Target[password], $NewUser[username]);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling UserApi->userMakePersistentPost: ', $e->getMessage(), PHP_EOL;
-}
+
+
+                                $server_output = curl_exec ($ch);
+
+                                echo $server_output;
+
+
 ?></code></pre>
                             </div>
 
@@ -2881,14 +2899,14 @@ try {
 </td>
 </tr>
 
-                                <tr><td style="width:150px;">NewUser[username]*</td>
+                                <tr><td style="width:150px;">Target[newuser_username]*</td>
 <td>
 
 
 <script>
 												$(document).ready(function() {
 													var schemaWrapper = {
-  "name" : "NewUser[username]",
+  "name" : "Target[newuser_username]",
   "in" : "query",
   "description" : "The new user's username",
   "required" : true,
@@ -2900,7 +2918,7 @@ try {
 
 
 													var view = new JSONSchemaView(schema,1);
-													var result = $('#d2e199_userMakePersistentPost_NewUser[username]');
+													var result = $('#d2e199_userMakePersistentPost_Target[newuser_username]');
 													result.empty();
 													result.append(view.render());
 
@@ -2910,7 +2928,7 @@ try {
 
 												});
 												</script>
-												<div id="d2e199_userMakePersistentPost_NewUser[username]"></div>
+												<div id="d2e199_userMakePersistentPost_Target[newuser_username]"></div>
 </td>
 </tr>
 
@@ -3038,31 +3056,29 @@ try {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-userMergePost-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">post</span> "https://dev.boxitnow.com/api/user/merge?Target[username]=&Target[password]=&Source[username]=&Source[password]="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">post</span> "https://dev.boxitnow.com/api/user/merge?Target[username]=&Target[password]=&Target[source_username]=&Target[source_password]="</code></pre>
                           </div>
 
                             <div class="tab-pane" id="examples-User-userMergePost-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BoxItNowApi = require('box_it_now_api');
+                              <pre class="prettyprint"><code class="language-js">
 
-var api = new BoxItNowApi.UserApi()
+                                $.ajax({
+                                    url: {API_URL}/api/merge,
+                                    data:  $('#Target').serialize(),
+                                    type: 'POST',
+                                    success: function (value) {
 
-var Target[username] = Target[username]_example; // {String} The permanent user's username
+                                        console.log(value);
 
-var Target[password] = Target[password]_example; // {String} The permanent user's password
+                                    },
+                                    error : function(xhr, textStatus, errorThrown ) {
 
-var Source[username] = Source[username]_example; // {String} The ephemeral user's username
+                                        console.log(textStatus + " : " + errorThrown);
 
-var Source[password] = Source[password]_example; // {String} The ephemeral user's password
+                                        return;
 
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.userMergePost(Target[username], Target[password], Source[username], Source[password], callback);
+                                    }
+                                });
 </code></pre>
                             </div>
 
@@ -3072,20 +3088,23 @@ api.userMergePost(Target[username], Target[password], Source[username], Source[p
 
                             <div class="tab-pane" id="examples-User-userMergePost-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
+                                $ch = curl_init();
 
-$api_instance = new Swagger\Client\Api\UserApi();
-$Target[username] = Target[username]_example; // String | The permanent user's username
-$Target[password] = Target[password]_example; // String | The permanent user's password
-$Source[username] = Source[username]_example; // String | The ephemeral user's username
-$Source[password] = Source[password]_example; // String | The ephemeral user's password
+                                curl_setopt($ch, CURLOPT_URL,"https://{{API URL}}/api/login");
+                                curl_setopt($ch, CURLOPT_POST, 1);
+                                curl_setopt($ch, CURLOPT_POSTFIELDS,
+                                http_build_query(array('Target[username]' => {{username}},
+                                                       'Target[password]' => {{password}},
+                                                       'Target[source_username]' => {{source_username}},
+                                                       'Target[source_password]' => {{source_password}})));
 
-try {
-    $result = $api_instance->userMergePost($Target[username], $Target[password], $Source[username], $Source[password]);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling UserApi->userMergePost: ', $e->getMessage(), PHP_EOL;
-}
+
+
+                                $server_output = curl_exec ($ch);
+
+                                echo $server_output;
+
+
 ?></code></pre>
                             </div>
 
@@ -3170,14 +3189,14 @@ try {
 </td>
 </tr>
 
-                                <tr><td style="width:150px;">Source[username]*</td>
+                                <tr><td style="width:150px;">Target[source_username]*</td>
 <td>
 
 
 <script>
 												$(document).ready(function() {
 													var schemaWrapper = {
-  "name" : "Source[username]",
+  "name" : "Target[source_username]",
   "in" : "query",
   "description" : "The ephemeral user's username",
   "required" : true,
@@ -3189,7 +3208,7 @@ try {
 
 
 													var view = new JSONSchemaView(schema,1);
-													var result = $('#d2e199_userMergePost_Source[username]');
+													var result = $('#d2e199_userMergePost_Target[source_username]');
 													result.empty();
 													result.append(view.render());
 
@@ -3199,18 +3218,18 @@ try {
 
 												});
 												</script>
-												<div id="d2e199_userMergePost_Source[username]"></div>
+												<div id="d2e199_userMergePost_Target[source_username]"></div>
 </td>
 </tr>
 
-                                <tr><td style="width:150px;">Source[password]*</td>
+                                <tr><td style="width:150px;">Target[source_password]*</td>
 <td>
 
 
 <script>
 												$(document).ready(function() {
 													var schemaWrapper = {
-  "name" : "Source[password]",
+  "name" : "Target[source_password]",
   "in" : "query",
   "description" : "The ephemeral user's password",
   "required" : true,
@@ -3222,7 +3241,7 @@ try {
 
 
 													var view = new JSONSchemaView(schema,1);
-													var result = $('#d2e199_userMergePost_Source[password]');
+													var result = $('#d2e199_userMergePost_Target[source_password]');
 													result.empty();
 													result.append(view.render());
 
@@ -3232,7 +3251,7 @@ try {
 
 												});
 												</script>
-												<div id="d2e199_userMergePost_Source[password]"></div>
+												<div id="d2e199_userMergePost_Target[source_password]"></div>
 </td>
 </tr>
 
