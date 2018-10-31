@@ -102,8 +102,8 @@
     //LOAD bin libraries
     BIN.Bootstrap.load({
       //the root of the BIN HOST site
-      apiUrl: "https://[[API URL]]",
-      apiKey: "[[API KEY]]"
+      apiUrl: "https://[API ENDPOINT]/",
+      apiKey: "VGL6TmfXuFMprVPy"
 
     }, function() {
 
@@ -141,8 +141,9 @@
 
           parameters: {
             Length: "15.1",
-            ...,
-            Finish: "Kraft" //** Deprecated **//
+
+            //** Deprecated **//
+            //Finish : "White/White",
           }
 
 
@@ -206,17 +207,20 @@
           //** Defines custome settings for the resize interface (measurements section)
           //**
           //** enable - whether or not to show the section
+          //** readonly - whether or not inputs are editable
           //** modules - string array containing module names to be included
           //** trimParams - whether or not to trim *2* trailing zeroes from params
           //**
           //** Formally defined by
           //** resizer{...} = [
           //**                  (enable : (true | false),)?
+          //**                  (readonly : (true | false),)?
           //**                  (modules : [(('mod_advanced' | (''+.*)) ,)?]?
           //**                  (trimParams : (true | false),)?
           //**                ]
               resizer: {
-                enable: true,
+                enabled: false,
+                readonly: false,
                 modules: [],
                 trimParams: true
               },
@@ -293,7 +297,7 @@
 
           //** Defines the labels for section tabs in the studio tool panel
           //**
-          //**  measurements - the label text for the measurement section tab
+          //**  resizer - the label text for the measurement section tab
           //**  graphics - the label text for the graphics section tab
           //**  export - the label text for the export section tab
           //**
@@ -301,12 +305,12 @@
           //**
           //** Formally defined by
           //** tabs{...} = [
-          //**            (measurements : ''+.*,)?
+          //**            (resizer : ''+.*,)?
           //**            (graphics : ''+.*,)?
           //**            (export : ''+.*,)?
           //**           ]
               tabs: {
-                measurements : 'Default Dimensions',
+                resizer : 'Default Dimensions',
                 graphics : 'Default Graphics',
                 export : 'Default <br /> Share',
               },

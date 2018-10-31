@@ -823,6 +823,16 @@ defs.inline_response_200_3 = {
 }
 }
 };
+
+
+defs.inline_response_200_4 = {
+"properties" : {
+"parameters" : {
+  "type" : "Object",
+  "description" : "Layout Parameters of Design"
+}
+}
+};
     defs.inline_response_default = {
   "properties" : {
     "message" : {
@@ -945,6 +955,9 @@ defs.inline_response_token = {
                     <li data-group="Resize" data-name="resizeInfoIdGet" class="">
                       <a href="#api-Resize-resizeInfoIdGet">resizeInfoIdGet</a>
                     </li>
+                    <li data-group="Resize" data-name="itemDesignLayoutPost" class="">
+                      <a href="#api-Resize-itemDesignLayoutPost">itemDesignLayoutPost</a>
+                    </li>
                   <li class="nav-header" data-group="User"><a href="#api-User">API Methods - User</a></li>
                     <li data-group="User" data-name="loginPost" class="">
                       <a href="#api-User-loginPost">loginPost</a>
@@ -971,7 +984,7 @@ defs.inline_response_token = {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 1.5.2</div>
+              <div class="app-desc">Version: 1.5.3</div>
             <hr>
             <p class="marked">Access BIN functionality remotely</p>
           </div>
@@ -2036,6 +2049,343 @@ defs.inline_response_token = {
                         </article>
                       </div>
                       <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      <div id="api-Resize-itemDesignLayoutPost">
+                        <article id="api-Resize-itemDesignLayoutPost-0" data-group="User" data-name="itemDesignLayoutPost" data-version="0">
+                          <div class="pull-left">
+                            <h1>itemDesignLayoutPost</h1>
+                            <p>Generates a resized design from specific parameters and returns the design info.</p>
+                          </div>
+                          <div class="pull-right"></div>
+                          <div class="clearfix"></div>
+                          <p></p>
+                          <p class="marked">Get the design info for a design with specific parameters
+                      </p>
+                          <p></p>
+                          <br />
+                          <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/design/layout/{id}</span></code></pre>
+                          <p>
+                            <h3>Usage and SDK Samples</h3>
+                          </p>
+                          <ul class="nav nav-tabs nav-tabs-examples">
+                            <li class="active"><a href="#examples-Resize-itemDesignLayoutPost-0-curl">Curl</a></li>
+
+
+                            <!--<li class=""><a href="#examples-Resize-itemDesignLayoutPost-0-groovy">Groovy</a></li>-->
+
+                            <li class=""><a href="#examples-Resize-itemDesignLayoutPost-0-javascript">JavaScript</a></li>
+                            <!--<li class=""><a href="#examples-Resize-itemDesignLayoutPost-0-angular">Angular</a></li>-->
+
+                            <li class=""><a href="#examples-Resize-itemDesignLayoutPost-0-php">PHP</a></li>
+
+
+                          </ul>
+
+                          <div class="tab-content">
+                            <div class="tab-pane active" id="examples-Resize-itemDesignLayoutPost-0-curl">
+                              <pre class="prettyprint"><code class="language-bsh">curl -X <span style="text-transform: uppercase;">post</span> "https://dev.boxitnow.com/api/design/layout/{id}"</code></pre>
+                            </div>
+
+
+                              <div class="tab-pane" id="examples-Resize-itemDesignLayoutPost-0-javascript">
+                                <pre class="prettyprint"><code class="language-js">
+
+                                  $.ajax({
+                                      url: {API_URL}/api/design/layout/{id},
+                                      type: 'POST',
+                                      success: function (value) {
+
+                                          console.log(value);
+
+                                      },
+                                      error : function(xhr, textStatus, errorThrown ) {
+
+                                          console.log(textStatus + " : " + errorThrown);
+
+                                          return;
+
+                                      }
+                                  });
+                      </code></pre>
+                              </div>
+
+                              <!--<div class="tab-pane" id="examples-Resize-itemDesignLayoutPost-0-angular">
+                      <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+                      </div>-->
+
+                              <div class="tab-pane" id="examples-Resize-itemDesignLayoutPost-0-php">
+                                <pre class="prettyprint"><code class="language-php"><&#63;php
+                      $ch = curl_init();
+
+                      curl_setopt($ch, CURLOPT_URL,"https://{{API URL}}/api/design/layout/{id}");
+                      curl_setopt($ch, CURLOPT_HTTPGET, 1);
+
+                      $server_output = curl_exec ($ch);
+
+                      echo $server_output;
+                      ?></code></pre>
+                              </div>
+                            </div>
+
+                            <h2>Parameters</h2>
+
+                              <div class="methodsubtabletitle">Path parameters</div>
+                              <table id="methodsubtable">
+                                  <tr>
+                                    <th width="150px">Name</th>
+                                    <th>Description</th>
+                                  </tr>
+                                    <tr><td style="width:150px;">id*</td>
+                      <td>
+
+
+                      <script>
+                          $(document).ready(function() {
+                            var schemaWrapper = {
+                      "name" : "id",
+                      "in" : "path",
+                      "description" : "item id",
+                      "required" : true,
+                      "type" : "number"
+                      };
+                            var schema = schemaWrapper;
+
+
+
+
+                            var view = new JSONSchemaView(schema,1);
+                            var result = $('#d2e199_itemDesignLayoutPost_id');
+                            result.empty();
+                            result.append(view.render());
+
+
+
+
+
+                          });
+                          </script>
+                          <div id="d2e199_itemDesignLayoutPost_id"></div>
+                      </td>
+                      </tr>
+
+
+
+                      <tr><td style="width:150px;">type*</td>
+                      <td>
+
+
+                      <script>
+                      $(document).ready(function() {
+                      var schemaWrapper = {
+                      "name" : "type",
+                      "in" : "path",
+                      "description" : "item id",
+                      "required" : true,
+                      "type" : "string"
+                      };
+                      var schema = schemaWrapper;
+
+
+
+
+                      var view = new JSONSchemaView(schema,1);
+                      var result = $('#d2e199_itemDesignLayoutPost_id4');
+                      result.empty();
+                      result.append(view.render());
+
+
+
+
+
+                      });
+                      </script>
+                      <div id="d2e199_itemDesignLayoutPost_id4"></div>
+                      </td>
+                      </tr>
+
+
+
+
+
+
+
+
+
+
+
+                      <tr><td style="width:150px;">parameters*</td>
+                      <td>
+
+
+                      <script>
+                      $(document).ready(function() {
+                      var schemaWrapper = {
+                      "name" : "parameters",
+                      "in" : "path",
+                      "description" : "Dimensions and other specifics for design",
+                      "required" : true,
+                      "type" : "Object"
+                      };
+                      var schema = schemaWrapper;
+
+
+
+
+                      var view = new JSONSchemaView(schema,1);
+                      var result = $('#d2e199_itemDesignLayoutPost_id2');
+                      result.empty();
+                      result.append(view.render());
+
+
+
+
+
+                      });
+                      </script>
+                      <div id="d2e199_itemDesignLayoutPost_id2"></div>
+                      </td>
+                      </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                              </table>
+
+
+
+
+
+                            <h2>Responses</h2>
+                              <h3> Status: 200 - Gives errors if invalid item id </h3>
+
+                              <ul class="nav nav-tabs nav-tabs-examples" >
+                                  <li class="active">
+                                    <a data-toggle="tab" href="#responses-itemDesignLayoutPost-200-schema">Schema</a>
+                                  </li>
+
+                              </ul>
+
+                              <div class="tab-content" style='margin-bottom: 10px;'>
+                                  <div class="tab-pane active" id="responses-itemDesignLayoutPost-200-schema">
+                                    <div id='responses-itemDesignLayoutPost-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                                                 <script>
+                                        $(document).ready(function() {
+                                          var schemaWrapper = {
+                      "description" : "Gives errors if invalid item id",
+                      "schema" : {
+                      "type" : "array",
+                      "items" : {
+                      "$ref" : "#/definitions/inline_response_200_4"
+                      }
+                      }
+                      };
+                                          var schema = schemaWrapper.schema;
+                                          schemaWrapper.definitions = defs;
+                                          //console.log(JSON.stringify(schema))
+                                          JsonRefs.resolveRefs(schemaWrapper, {
+                                              "depth": 3,
+                                              "resolveRemoteRefs": false,
+                                              "resolveFileRefs": false
+                                          }, function(err, resolved, metadata) {
+                                            //console.log(JSON.stringify(resolved));
+                                            var view = new JSONSchemaView(resolved.schema, 3);
+                                            $('#responses-itemDesignLayoutPost-200-schema-data').val(JSON.stringify(resolved.schema));
+                                            var result = $('#responses-itemDesignLayoutPost-200-schema-200');
+                                            result.empty();
+                                            result.append(view.render());
+                                          });
+                                        });
+                                      </script>
+                                    </div>
+                                    <input id='responses-itemDesignLayoutPost-200-schema-data' type='hidden' value=''></input>
+                                  </div>
+                              </div>
+
+                              <h3> Status: 0 - Unexpected error </h3>
+
+                              <ul class="nav nav-tabs nav-tabs-examples" >
+                                  <li class="active">
+                                    <a data-toggle="tab" href="#responses-itemDesignLayoutPost-0-schema">Schema</a>
+                                  </li>
+
+                              </ul>
+
+                              <div class="tab-content" style='margin-bottom: 10px;'>
+                                  <div class="tab-pane active" id="responses-itemDesignLayoutPost-0-schema">
+                                    <div id='responses-itemDesignLayoutPost-0-schema-0' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                                                 <script>
+                                        $(document).ready(function() {
+                                          var schemaWrapper = {
+                      "description" : "Unexpected error",
+                      "schema" : {
+                      "$ref" : "#/definitions/inline_response_default"
+                      }
+                      };
+                                          var schema = schemaWrapper.schema;
+                                          schemaWrapper.definitions = defs;
+                                          //console.log(JSON.stringify(schema))
+                                          JsonRefs.resolveRefs(schemaWrapper, {
+                                              "depth": 3,
+                                              "resolveRemoteRefs": false,
+                                              "resolveFileRefs": false
+                                          }, function(err, resolved, metadata) {
+                                            //console.log(JSON.stringify(resolved));
+                                            var view = new JSONSchemaView(resolved.schema, 3);
+                                            $('#responses-itemDesignLayoutPost-0-schema-data').val(JSON.stringify(resolved.schema));
+                                            var result = $('#responses-itemDesignLayoutPost-0-schema-0');
+                                            result.empty();
+                                            result.append(view.render());
+                                          });
+                                        });
+                                      </script>
+                                    </div>
+                                    <input id='responses-itemDesignLayoutPost-0-schema-data' type='hidden' value=''></input>
+                                  </div>
+                              </div>
+
+                          </article>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                   </section>
                 <section id="api-User">
                   <h1>User</h1>
@@ -2189,11 +2539,6 @@ defs.inline_response_token = {
 													var result = $('#d2e199_loginPost_LoginForm[password]');
 													result.empty();
 													result.append(view.render());
-
-
-                          console.log("SCHEMAAEEA!!!!!!!");
-                          console.log(schemaWrapper);
-
 
 												});
 												</script>
