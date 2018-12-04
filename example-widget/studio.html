@@ -3,12 +3,24 @@
 <head>
 
   <!-- BoxItNow CSS -->
-   <link rel="stylesheet" type="text/css" href="https://[API URL]/css/bin.cache.min.css" />
+   <!--<link rel="stylesheet" type="text/css" href="https://[API URL]/css/bin.cache.min.css" /> -->
 
 
    <!-- (Required) -->
   <!-- BoxItNow JS -->
-   <script type="text/javascript" src="https://[API URL]/js/bin.bootstrap.js"></script>
+   <!--<script type="text/javascript" src="https://[API URL]/js/bin.bootstrap.js"></script> -->
+
+
+
+   <!-- BoxItNow CSS -->
+  <link rel="stylesheet" type="text/css" href="http://localhost/boxitnow/css/bin.cache.min.css" />
+  <!--<link rel="stylesheet" type="text/css" href="https://staging-fantastapack.boxitnow.com/css/bin.cache.min.css" /> -->
+
+  <!-- BoxItNow JS -->
+ <script type="text/javascript" src="http://localhost/boxitnow/js/bin.bootstrap.js"></script>
+<!--  <script type="text/javascript" src="https://staging-fantastapack.boxitnow.com/js/bin.bootstrap.js"></script> -->
+
+
 
 
   <!-- CLIENT CSS -->
@@ -102,8 +114,10 @@
     //LOAD bin libraries
     BIN.Bootstrap.load({
       //the root of the BIN HOST site
-      apiUrl: "https://[API URL]/",
-      apiKey: "[API KEY]"
+      //apiUrl: "https://[API URL]/",
+      //apiKey: "[API KEY]"
+      apiUrl: "http://localhost/boxitnow/",
+      apiKey: "VGL6TmfXuFMprVPy"
 
     }, function() {
 
@@ -128,6 +142,10 @@
           type: 'standard',
           //(Required) id of item or resize
           id: '79',
+
+
+          //(optional) 'imperial' or 'metric'
+          unitSystem: 'imperial',
 
           //(Optional)
           //** Parameters are mapped from here to the studio verbatim, i.e.
@@ -192,12 +210,279 @@
           //**            (saveButtonText : ''+.*,)?
           //**            (saveProgressText : ''+.*,)?
           //**            (saveFinishText : ''+.*,)?
+          //**            (studio : {
+          //**                section : {
+          //**                    item : ''+.*,
+          //**                      }
+          //**                    })?
           //**           ]
               ui: {
                 initialTab: 'graphics',
                 saveButtonText: 'SAVE DESIGN',
                 saveProgressText: 'Saving...',
-                saveFinishText: 'DESIGN SAVED'
+                saveFinishText: 'DESIGN SAVED',
+
+                studio : {
+
+                  info :
+                                {
+                                      register : 'Register',
+                                      singup : 'Sign Up',
+                                      usernameEmail : 'Username or Email',
+                                      password : 'Password',
+                                },
+                  menu :
+                                {
+                                      delete : 'Delete',
+                                      forward : 'Bring Forward',
+                                      front : 'Bring to Front',
+                                      backwards : 'Send Backwards',
+                                      back : 'Send To Back',
+                                },
+
+                  ie :
+                              {
+                                    title : 'Sorry...',
+                                    label : 'The main functionality of this site is not supported by IE. Please try one of the following:',
+                                    chrome : 'Chrome',
+                                    firefox : 'Firefox',
+                                    Edge : 'Edge/Safari',
+
+                              },
+
+                  loading :
+
+                              {
+                                    data : 'Loading Data',
+                                    resize : 'Resizing Your Design',
+                                    printos : 'Exporting Your Design',
+                                    export : 'Exporting Your Design',
+                                    export2 : 'May take a few minutes...',
+                                    loading : 'Loading 3D Design',
+                                    error : 'WebGl is not enabled. Please enabled it to use this feature.',
+
+                            },
+
+
+                  panel :
+
+                              {
+                                    inside : 'Inside View',
+                                    insideLabel : 'Choose a color and then click on a panel to apply the selected color. Click again to remove color.',
+                                    outside : 'Outside View',
+                                    outsideLabel : 'Choose a color and then click on a panel to apply the selected color. Click again to remove color.',
+
+                              },
+
+                  details :
+
+                              {
+                                    client : 'Client',
+                                    quantity : 'Quantity',
+                                    projectname : 'Project Name',
+                                    description : 'Description',
+                                    notes : 'Notes',
+                                    pdfpreview : 'PDF Preview',
+                                    edit : 'Edit',
+
+                              },
+
+
+                  legend :
+
+                            {
+                                  more : 'more...',
+                                  shiftDrag : 'Shift+Drag: Proportionately Scale Graphic',
+                                  delete : 'DEL/BKSP: Delete Graphic',
+                                  save : 'Ctrl+S: Save Design',
+                                  mouseTitle : 'Mouse Actions:',
+                                  keyTitle : 'Key Commands:',
+                                  doubleClick : 'Double-Click: Fold/Unfold',
+                                  dragMouse : 'Drag Mouse on Design: Rotate 3D',
+                                  mouseWheel : 'Mouse Wheel: Zoom 3D',
+                                  arrows : 'Arrows: Move Graphic',
+                                  duplicate : 'Ctrl+D: Duplicate Graphic',
+                                  lines : 'L: Toggle Score Lines',
+
+                            },
+
+                          },
+
+
+                resizer : {
+
+                    info :  {
+
+                        title : 'Measurements',
+                        label : 'View Conversion Chart',
+                        labelHint : 'Conversion Chart',
+                        resetHint : 'Reset Value',
+                        warning : '* Resize required to apply changes. *',
+                        fieldError : 'This field accepts only the numerical and decimal inputs.  Please try again',
+                        select : 'Select a material',
+                        custom : 'Custom',
+                        title2 : 'Advanced',
+                        resize : 'Resize',
+                        resizeLoading : 'Resizing Your Design',
+                        convertInches : 'Convert to Inches',
+                        convertMetric : 'Convert to Metric',
+
+                        },
+
+                    parameters :  {
+
+                        finish : 'Finish',
+                        material : 'Board Type',
+                        allowance : 'Allowance',
+                        length : 'Length',
+                        width : 'Width',
+                        depth : 'Depth',
+                        slotLength : 'Slotlength',
+                        slotSpacing : 'SlotSpacing',
+                        headerWidth : 'HeaderWidth',
+                        headerHeight : 'HeaderHeight',
+
+                        }
+                    },
+
+                  graphics : {
+
+                      user : {
+
+                        title : "My Graphics",
+                        upload: "Choose Graphic",
+                        accepted: "Accepted Filetypes: JPEG,JPG,PNG,SVG,PDF",
+
+                      },
+
+                      standard : {
+
+                        title : "Standard Graphics",
+
+                      },
+
+                      text : {
+
+                        title : "Add Text",
+                        label: "Text",
+                        font: "Font",
+                        color: "Color",
+                        bold: "Bold",
+                        italic: "Italic",
+                      },
+
+                      pattern : {
+
+                        title : "Color Settings & Patterns",
+                        outsideColor: "Outside Color",
+                        outsidePattern: "Outside Pattern",
+                        insideColor: "Inside Color",
+                        insidePattern: "Inside Pattern",
+                        showScores: "Show Scores",
+                        horizontal: "Horizontal Shift",
+                        vertical: "Vertical Shift",
+                        scale: "Scale",
+                        rotation: "Rotation",
+
+                      },
+
+                      panel : {
+
+                        title : "Panel Color",
+                        label: "Panel Color",
+                        instruction: "Choose a color and then click on a panel to apply the selected color. Click again to remove color.",
+                        buttonOutside: "Remove All (Outside)",
+                        buttonInside: "Remove All (Inside)",
+
+                      },
+
+
+                      litho : {
+
+                        title : "Full Page Graphics",
+                        label: "Available for Outside Graphics Only",
+                        instructions: "Instructions",
+                        upload: "Choose Graphic",
+
+                      },
+
+
+                      nonstandard: {
+
+                        title : "Line Graphics",
+
+                      },
+
+
+                  },
+
+
+                  export : {
+                      info :
+                                    {
+                                          title : 'Measurements',
+                                          label : 'View Conversion Chart',
+                                          loading : 'Exporting...',
+                                          saved : 'You must save the design to email files.',
+                                          empty : 'No Settings Enabled. Please contact your administrator.',
+
+                                    }
+                            ,
+
+                      email :
+                                    {
+                                          title : 'Email Files',
+                                          name : 'Name for Files',
+                                          email : 'Email To',
+                                          subject : 'Subject',
+                                          details : 'Details',
+                                          zip : 'Zip Files',
+                                          action : 'Send Email',
+
+                                    }
+                            ,
+
+                      share :
+                                    {
+                                          title : 'Share a Link',
+                                          email : 'Email',
+                                          action : 'Share Link',
+
+                                    }
+                            ,
+
+                      title :
+                                    {
+                                          title : 'Upload to FTP',
+                                          action : 'Upload to FTP',
+
+                                    }
+                            ,
+
+                      printos :
+                                    {
+                                          title : 'Share a Link',
+                                          apiKey : 'API Key',
+                                          apiSecret : 'API Secret',
+                                          action : 'Export',
+                                          error : 'No Key Secret Field',
+                                          uploadSuccess : 'Successfully Uploaded.',
+                                          uploadError : 'Upload Failed. Please check your credentials and try again.',
+                                          connectionError : 'Connection Failed. Please try again.'
+
+                                    }
+                            ,
+
+                      download :
+                                    {
+                                          title : 'Download Files',
+                                          hint : 'Download File Type',
+                                          action : 'Download Files',
+                                          error : 'No Files Selected',
+
+                                    }
+                            ,
+                      },
                 },
 
 
@@ -403,22 +688,36 @@
           //**(Required)
           //**Fires after action sent
         		onSave : function(userSessionHandle, parameters) {
+              console.log("onSave returned");
         		},
 
       		//**(optional)
           //**Fires after studio is loaded
         		onLoad: function(userSessionHandle) {
+              console.log("onLoad returned");
         		},
 
       		//**(optional)
           //**Fires after *successful* resize
         		onResize: function(userSessionHandle, parameters) {
+              console.log("onResize returned");
         		},
 
-      		//**(required)
+      		//**(optional)
           //**Fires after action sent
         		onExport: function() {
+              console.log("onExport returned");
             },
+
+            //**(optional)
+            onTabsReady : function() {
+              console.log("onTabsReady returned");
+    		    },
+
+            //**(optional)
+            onTabsReadyAll : function() {
+              console.log("onTabsReadyAll returned");
+    		    },
 
 
       });
