@@ -1,13 +1,13 @@
 <html>
     <head>
       <!-- BoxItNow CSS -->
-      <link rel="stylesheet" type="text/css" href="http://[API ENDPOINT]/css/bin.cache.min.css" />
+      <link rel="stylesheet" type="text/css" href="https://[API ENDPOINT]/css/bin.cache.min.css" />
 
 
 
       <!-- (Required) -->
       <!-- BoxItNow JS -->
-      <script type="text/javascript" src="http://[API ENDPOINT]/js/bin.bootstrap.js"></script>
+      <script type="text/javascript" src="https://[API ENDPOINT]/js/bin.bootstrap.js"></script>
 
 
         <!-- CLIENT CSS -->
@@ -29,7 +29,7 @@
             //LOAD bin libraries
             BIN.Bootstrap.load({
                 //the root of the BIN HOST site
-                apiUrl: 'http://[API ENDPOINT]/',
+                apiUrl: 'https://[API ENDPOINT]/',
                 apiKey: '[API KEY]'
 
             }, function () {
@@ -48,19 +48,20 @@
                         id: 60,
                     },
 
+                    //optional
                     options:{
                         //Rotate Design on viewer start
-                        //default/null = false
-                        rotate: false,
+                        //default/null = true
+                        rotate: true,
                         //Initial Design rotate speed (radians [0,1])
-                        //default/null = 0
-                        rotateSpeed: .0,
+                        //default/null = .01
+                        rotateSpeed: .01,
                         //Initial Design viewing angle (degrees, [-180, 180])
-                        //default/null = 0
-                        startAngle: 45,
+                        //default/null = 90
+                        startAngle: 90,
                         //Initial Design zoom ([.5,3])
-                        //default/null = 1
-                        zoom: 1,
+                        //default/null = 2
+                        zoom: 2,
                       },
 
                   //**(optional)
