@@ -135,6 +135,11 @@
           //(optional) 'imperial' or 'metric'
           unitSystem: 'imperial',
 
+          //(optional) true/False
+          //default/null false
+          //Generate new design from id - "save As" (trigger resize on load)
+          isTemplate: true,
+
           //(Optional)
           //** Parameters are mapped from here to the studio verbatim, i.e.
           //** parameters{x : a} : data['Params['x']'] = a
@@ -615,6 +620,7 @@
           //**          - renderBase : colorized or cardboard look and feel
           //**          - renderSurface : shiny or dull (reflective or not)
           //**          - interior : ???
+          //**          - id : finish identifier
           //**
           //** enable - null/default = false
           //** label - null/default = '' (empty string)
@@ -629,6 +635,7 @@
           //**                                        (renderBase : (('color' | 'kraft') | (''+.*)),)?
           //**                                        (renderSurface :  (('gloss') | (''+.*)),)?
           //**                                        (interior :  (('white') | (''+.*)),)?
+          //**                                        (id :  ((''+.*)))?
           //**                                        }
           //**                               ,)*
           //**                            ],)+
@@ -639,7 +646,8 @@
                 options: {
                   'Standard White': {
                     renderBase: 'color',
-                    interior: 'white'
+                    interior: 'white',
+                    id: 1
                   },
                   'Premium White': {
                     renderBase: 'color',

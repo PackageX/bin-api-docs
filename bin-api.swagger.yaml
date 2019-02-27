@@ -2,10 +2,10 @@ swagger: '2.0'
 info:
   title: Box It Now API
   description: Access BIN functionality remotely
-  version: "1.5.0"
+  version: "1.7.0"
 # the domain of the service
-host: 
-  - [API URL]
+host:
+   "apistaging.boxitnow.com"
 # array of all schemes that your API supports
 schemes:
   - https
@@ -36,9 +36,7 @@ paths:
         200:
           description: The login result, gives errors if invalid credentials
           schema:
-            type: object
-            items:
-              $ref: '#/definitions/Result'
+            $ref: '#/definitions/LoginSuccess'
         default:
           description: Unexpected error
           schema:
@@ -90,9 +88,7 @@ paths:
         200:
           description: The login result, gives errors if invalid credentials
           schema:
-            type: object
-            items:
-              $ref: '#/definitions/Result'
+            $ref: '#/definitions/LoginSuccess'
         default:
           description: Unexpected error
           schema:
@@ -113,12 +109,12 @@ paths:
           description: The permanent user's password
           required: true
           type: string
-        - name: Source[username]
+        - name: Target[source_username]
           in: query
           description: The ephemeral user's username
           required: true
           type: string
-        - name: Source[password]
+        - name: Target[source_password]
           in: query
           description: The ephemeral user's password
           required: true
@@ -152,7 +148,7 @@ paths:
           description: The ephermeral user's password
           required: true
           type: string
-        - name: NewUser[username]
+        - name: Target[newuser_username]
           in: query
           description: The new user's username
           required: true
@@ -236,6 +232,42 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+
+  /design/layout/{id}:
+    post:
+      summary: Generates a resized design from specific parameters and returns the design info.
+      description: |
+        Get the design info for a design with specific parameters
+      parameters:
+        - name: id
+          in: path
+          description: The ephermeral user's username
+          required: true
+          type: string
+        - name: type
+          in: query
+          description: design type
+          required: true
+          type: string
+        - name: parameters
+          in: query
+          description: design parameters
+          required: false
+          type: array
+          items : {}
+      tags:
+        - Resize
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Resize'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
   /resize/info/{id}:
     get:
       summary: Gets information about a resize, including file URLs
@@ -280,6 +312,54 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Resize'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /resize/delete/{id}:
+    get:
+      summary: Removes the design for future viewing and searches
+      description: |
+        Delete design from system
+      parameters:
+        - name: id
+          in: path
+          description: resize id
+          required: true
+          type: number
+      tags:
+        - Resize
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/Result'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /media/delete/{id}:
+    get:
+      summary: Removes the image for use in future designs
+      description: |
+        Delete image from media manager
+      parameters:
+        - name: id
+          in: path
+          description: node id
+          required: true
+          type: number
+      tags:
+        - Media
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/Result'
         default:
           description: Unexpected error
           schema:
@@ -346,6 +426,21 @@ definitions:
         type: string
       errors:
         type: string
+  Success:
+    type: object
+    properties:
+      message:
+        type: string
+        description: Success
+  LoginSuccess:
+    type: object
+    properties:
+      message:
+        type: string
+        description: Success
+      token:
+        type: string
+        description: User token
   Error:
     type: object
     properties:
