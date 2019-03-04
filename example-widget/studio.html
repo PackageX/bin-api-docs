@@ -223,6 +223,8 @@
                                       singup : 'Sign Up',
                                       usernameEmail : 'Username or Email',
                                       password : 'Password',
+                                      view : 'View:',
+                                      screenshotTooltip : 'Save Box Screenshot',
                                 },
                   menu :
                                 {
@@ -325,15 +327,11 @@
                     parameters :  {
 
                         finish : 'Finish',
+                        finishSelect : 'Select a Finish',
                         material : 'Board Type',
-                        allowance : 'Allowance',
-                        length : 'Length',
-                        width : 'Width',
-                        depth : 'Depth',
-                        slotLength : 'Slotlength',
-                        slotSpacing : 'SlotSpacing',
-                        headerWidth : 'HeaderWidth',
-                        headerHeight : 'HeaderHeight',
+                        materialSelect : 'Select a Board Type',
+
+                      /*  Re-labeling dimensional parameters is not supported at this time. */
 
                         }
                     },
@@ -376,6 +374,8 @@
                         vertical: "Vertical Shift",
                         scale: "Scale",
                         rotation: "Rotation",
+                        none : "None",
+                        close : "Close",
 
                       },
 
@@ -413,8 +413,8 @@
                   export : {
                       info :
                                     {
-                                          title : 'Measurements',
-                                          label : 'View Conversion Chart',
+                                          title : '',
+                                          label : '',
                                           loading : 'Exporting...',
                                           saved : 'You must save the design to email files.',
                                           empty : 'No Settings Enabled. Please contact your administrator.',
@@ -642,7 +642,8 @@
           //**                ]
               finishes: {
                 enable: true,
-                label: 'Materials',
+              // NOTE: Label: Finishes moved to ui[resizer[parameters]] section
+              //  label: 'Materials',
                 options: {
                   'Standard White': {
                     renderBase: 'color',
