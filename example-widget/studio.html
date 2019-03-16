@@ -636,6 +636,7 @@
           //**          - renderSurface : shiny or dull (reflective or not)
           //**          - interior : ???
           //**          - id : finish identifier
+          //**          - isDefault : initially selected finish
           //**
           //** enable - null/default = false
           //** label - null/default = '' (empty string)
@@ -650,7 +651,8 @@
           //**                                        (renderBase : (('color' | 'kraft') | (''+.*)),)?
           //**                                        (renderSurface :  (('gloss') | (''+.*)),)?
           //**                                        (interior :  (('white') | (''+.*)),)?
-          //**                                        (id :  ((''+.*)))?
+          //**                                        (id :  ((''+.*)),)?
+          //**                                        (isDefault : (true | false),)?
           //**                                        }
           //**                               ,)*
           //**                            ],)+
@@ -663,7 +665,8 @@
                   'Standard White': {
                     renderBase: 'color',
                     interior: 'white',
-                    id: 1
+                    id: 1,
+                    isDefault: true
                   },
                   'Premium White': {
                     renderBase: 'color',
