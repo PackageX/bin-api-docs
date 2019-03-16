@@ -135,6 +135,11 @@
           //(optional) 'imperial' or 'metric'
           unitSystem: 'imperial',
 
+          //(optional) 'vertical' or 'horizontal'
+          //default/null : vertical
+          fluting: 'vertical',
+
+
           //(optional) true/False
           //default/null false
           //Generate new design from id - "save As" (trigger resize on load)
@@ -318,6 +323,9 @@
                         custom : 'Custom',
                         title2 : 'Advanced',
                         resize : 'Resize',
+                        fluting : 'Corrugation',
+                        horizontal : 'Horizontal',
+                        vertical : 'Vertical',
                         resizeLoading : 'Resizing Your Design',
                         convertInches : 'Convert to Inches',
                         convertMetric : 'Convert to Metric',
@@ -330,6 +338,10 @@
                         finishSelect : 'Select a Finish',
                         material : 'Board Type',
                         materialSelect : 'Select a Board Type',
+                        allowance : 'Allowance',
+                        length : 'Length',
+                        width : 'Width',
+                        depth : 'Depth',
 
                       /*  Re-labeling dimensional parameters is not supported at this time. */
 
@@ -485,6 +497,7 @@
           //** readonly - whether or not inputs are editable
           //** modules - string array containing module names to be included
           //** trimParams - whether or not to trim *2* trailing zeroes from params
+          //** editFluting - enable/disable the fluting edit button
           //**
           //** Formally defined by
           //** resizer{...} = [
@@ -492,12 +505,14 @@
           //**                  (readonly : (true | false),)?
           //**                  (modules : [(('mod_advanced' | (''+.*)) ,)?]?
           //**                  (trimParams : (true | false),)?
+          //**                  (trimParams : (true | false),)?
           //**                ]
               resizer: {
                 enabled: true,
                 readonly: false,
                 modules: [],
-                trimParams: true
+                trimParams: true,
+                editFluting: true
               },
 
           //** Defines custom settings for the export section
