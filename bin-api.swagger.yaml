@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Box It Now API
   description: Access BIN functionality remotely
-  version: "1.7.0"
+  version: "1.7.1"
 # the domain of the service
 host:
    "yourendpoint.boxitnow.com"
@@ -28,6 +28,11 @@ paths:
         - name: LoginForm[password]
           in: query
           description: The user's password
+          required: true
+          type: string
+        - name: apiKey
+          in: query
+          description: api access token
           required: true
           type: string
       tags:
@@ -82,6 +87,11 @@ paths:
           description: Set this true if the user is created for temporary reasons. default=false
           required: false
           type: string
+        - name: apiKey
+          in: query
+          description: api access token
+          required: true
+          type: string
       tags:
         - User
       responses:
@@ -119,6 +129,11 @@ paths:
           description: The ephemeral user's password
           required: true
           type: string
+        - name: apiKey
+          in: query
+          description: api access token
+          required: true
+          type: string
       tags:
         - User
       responses:
@@ -151,6 +166,11 @@ paths:
         - name: Target[newuser_username]
           in: query
           description: The new user's username
+          required: true
+          type: string
+        - name: apiKey
+          in: query
+          description: api access token
           required: true
           type: string
       tags:
@@ -255,6 +275,11 @@ paths:
           required: false
           type: array
           items : {}
+        - name: apiKey
+          in: query
+          description: api access token
+          required: true
+          type: string
       tags:
         - Resize
       responses:
