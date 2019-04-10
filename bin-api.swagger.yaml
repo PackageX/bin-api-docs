@@ -82,7 +82,7 @@ paths:
           description: Automatically initate the user, default=false
           required: false
           type: string
-        - name: RegisterForm[emphemeral]
+        - name: RegisterForm[ephemeral]
           in: query
           description: Set this true if the user is created for temporary reasons. default=false
           required: false
