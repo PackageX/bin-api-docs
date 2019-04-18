@@ -336,7 +336,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Resize'
+              $ref: '#/definitions/ResizePdf'
         default:
           description: Unexpected error
           schema:
@@ -444,6 +444,12 @@ definitions:
       hpgl:
         type: string
         description: HPGL cutting file
+  ResizePdf:
+    type: object
+    properties:
+      highrespdf:
+        type: object
+        description: Hi-Resolution PDF compilation file
   Result:
     type: object
     properties:
