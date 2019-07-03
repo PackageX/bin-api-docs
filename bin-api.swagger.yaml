@@ -297,7 +297,7 @@ paths:
     get:
       summary: Gets information about a resize, including file URLs
       description: |
-        Gets information about a resize, including file URLs
+        Gets information about a resize, including file URLs. NOTE: Low Res PNG images are not available until AFTER the low res PDF has been generated.
       parameters:
         - name: id
           in: path
@@ -322,6 +322,30 @@ paths:
       summary: Gets the hi-res compiled pdf of deisgn
       description: |
         Gets the hi-res compiled pdf of deisgn. If file does not exist, it may take ~30s to generate.
+      parameters:
+        - name: id
+          in: path
+          description: item id
+          required: true
+          type: string
+      tags:
+        - Resize
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ResizePdf'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /resize/compiledLowPdf/{id}:
+    get:
+      summary: Gets the low-res compiled pdf of deisgn
+      description: |
+        Gets the low-res compiled pdf of design. If file does not exist, it may take ~30s to generate. This call will also generate the low res png images.
       parameters:
         - name: id
           in: path
