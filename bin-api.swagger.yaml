@@ -341,11 +341,11 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-  /resize/compiledLowPdf/{id}:
+  /resize/generateProofPdf/{id}:
     get:
-      summary: Gets the low-res compiled pdf of deisgn
+      summary: Generates the low-res pdf, proof, and related png images.
       description: |
-        Gets the low-res compiled pdf of design. If file does not exist, it may take ~30s to generate. This call will also generate the low res png images.
+        Generates the low-res compiled pdf of design. If file does not exist, it may take ~30s to generate. This call will also generate the low res png images.
       parameters:
         - name: id
           in: path
