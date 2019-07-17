@@ -16,7 +16,7 @@ produces:
 paths:
   /login:
     post:
-      summary: User Login
+      summary: Login
       description: |
         This will allow you to log a user into a session.
       parameters:
@@ -48,7 +48,7 @@ paths:
             $ref: '#/definitions/Error'
   /register:
     post:
-      summary: User Registration
+      summary: Register
       description: |
         This will allow you to create a new user
       parameters:
@@ -69,17 +69,17 @@ paths:
           type: string
         - name: RegisterForm[firstName]
           in: query
-          description: The user's email
+          description: The user's first name
           required: false
           type: string
         - name: RegisterForm[lastName]
           in: query
-          description: The user's email
+          description: The user's last name
           required: false
           type: string
         - name: RegisterForm[activate]
           in: query
-          description: Automatically initate the user, default=false
+          description: Automatically initiate the user, default=false
           required: false
           type: string
         - name: RegisterForm[ephemeral]
@@ -103,9 +103,93 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+  /user/updatePassword:
+    post:
+      summary: Update
+      description: |
+        This will allow you to update user password
+      parameters:
+        - name: username
+          in: query
+          description: The user's username
+          required: true
+          type: string
+        - name: password
+          in: query
+          description: The original password
+          required: true
+          type: string
+        - name: passwordNew
+          in: query
+          description: The new password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
+          required: true
+          type: string
+        - name: apiKey
+          in: query
+          description: api access token
+          required: true
+          type: string
+      tags:
+        - User
+      responses:
+        200:
+          description: The update result, gives errors if invalid credentials
+          schema:
+            $ref: '#/definitions/LoginSuccess'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/update:
+    post:
+      summary: Update
+      description: |
+        This will allow you to update user information
+      parameters:
+        - name: username
+          in: query
+          description: The user's username
+          required: true
+          type: string
+        - name: password
+          in: query
+          description: The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
+          required: true
+          type: string
+        - name: email
+          in: query
+          description: The user's email
+          required: true
+          type: string
+        - name: firstName
+          in: query
+          description: The user's first name
+          required: false
+          type: string
+        - name: lastName
+          in: query
+          description: The user's last name
+          required: false
+          type: string
+        - name: apiKey
+          in: query
+          description: api access token
+          required: true
+          type: string
+      tags:
+        - User
+      responses:
+        200:
+          description: The update result, gives errors if invalid credentials
+          schema:
+            $ref: '#/definitions/LoginSuccess'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
   /user/merge:
     post:
-      summary: User Merge
+      summary: Merge
       description: |
         Merges ephemeral users into main users
       parameters:
@@ -149,9 +233,9 @@ paths:
             $ref: '#/definitions/Error'
   /user/makePersistent:
     post:
-      summary: Changes ephemeral user to a permanent
+      summary: Persist
       description: |
-        This will all you to log a user into a session.
+        Changes ephemeral user to a permanent
       parameters:
         - name: Target[username]
           in: query
@@ -188,7 +272,7 @@ paths:
             $ref: '#/definitions/Error'
   /category:
     get:
-      summary: Get a list of available categories
+      summary: Categories
       description: |
         Get a list of available categories
       tags:
@@ -206,7 +290,7 @@ paths:
             $ref: '#/definitions/Error'
   /category/{id}/items:
     get:
-      summary: Gets a list of available Items in the specified Category
+      summary: Items
       description: |
         Gets a list of available Items in the specified Category
       parameters:
@@ -230,9 +314,9 @@ paths:
             $ref: '#/definitions/Error'
   /item/studio/{id}:
     get:
-      summary: Gets the studio html data, requires preloading necesary libraries
+      summary: Studio
       description: |
-        Get a item html view
+        Gets the studio html data, requires preloading necessary libraries
       parameters:
         - name: id
           in: path
@@ -255,13 +339,13 @@ paths:
 
   /design/layout/{id}:
     post:
-      summary: Generates a resized design from specific parameters and returns the design info.
+      summary: Layout
       description: |
-        Get the design info for a design with specific parameters
+        Generates a resized design from specific parameters and returns the design info.
       parameters:
         - name: id
           in: path
-          description: The ephermeral user's username
+          description: The base design id
           required: true
           type: string
         - name: type
@@ -295,7 +379,7 @@ paths:
             $ref: '#/definitions/Error'
   /resize/info/{id}:
     get:
-      summary: Gets information about a resize, including file URLs
+      summary: Info
       description: |
         Gets information about a resize, including file URLs. NOTE: Low Res PNG images are not available until AFTER the low res PDF has been generated.
       parameters:
@@ -319,7 +403,7 @@ paths:
             $ref: '#/definitions/Error'
   /resize/compiledPdf/{id}:
     get:
-      summary: Gets the hi-res compiled pdf of deisgn
+      summary: Hi-Res PDF
       description: |
         Gets the hi-res compiled pdf of deisgn. If file does not exist, it may take ~30s to generate.
       parameters:
@@ -343,7 +427,7 @@ paths:
             $ref: '#/definitions/Error'
   /resize/generateProofPdf/{id}:
     get:
-      summary: Generates the low-res pdf, proof, and related png images.
+      summary: Generate Proof
       description: |
         Generates the low-res compiled pdf of design. If file does not exist, it may take ~30s to generate. This call will also generate the low res png images.
       parameters:
@@ -367,9 +451,9 @@ paths:
             $ref: '#/definitions/Error'
   /resize/delete/{id}:
     get:
-      summary: Removes the design for future viewing and searches
+      summary: Delete
       description: |
-        Delete design from system
+        Removes the design for future viewing and searches, Delete design from system
       parameters:
         - name: id
           in: path
@@ -391,9 +475,9 @@ paths:
             $ref: '#/definitions/Error'
   /media/delete/{id}:
     get:
-      summary: Removes the image for use in future designs
+      summary: Delete
       description: |
-        Delete image from media manager
+        Removes the image for use in future designs, Delete image from media manager
       parameters:
         - name: id
           in: path
@@ -450,7 +534,31 @@ definitions:
       thumbnail:
         type: string
         description: Thumbnail of resize
+      pdf:
+        type: string
+        description: Form PDF file
       pdfLayout:
+        type: string
+        description: Hi-Resolution PDF compilation file
+      pdfLowres:
+        type: string
+        description: Low-Resolution PDF compilation file
+      pngLowresOutside:
+        type: string
+        description: PNG Image with Transparency of the design Outside View
+      pngLowresInside:
+        type: string
+        description: PNG Image with Transparency of the design Inside View
+      artwork:
+        type: string
+        description: Outside and Inside layout screenshot png
+      outside:
+        type: string
+        description: Outside View screenshot png
+      inside:
+        type: string
+        description: Inside View screenshot png
+      parameters:
         type: string
         description: Hi-Resolution PDF compilation file
       cad_dims:
