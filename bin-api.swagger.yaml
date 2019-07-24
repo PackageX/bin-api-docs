@@ -105,7 +105,7 @@ paths:
             $ref: '#/definitions/Error'
   /user/updatePassword:
     post:
-      summary: Update
+      summary: Update Password
       description: |
         This will allow you to update user password
       parameters:
@@ -142,7 +142,7 @@ paths:
             $ref: '#/definitions/Error'
   /user/updateInfo:
     post:
-      summary: Update
+      summary: Update Info
       description: |
         This will allow you to update user information
       parameters:
