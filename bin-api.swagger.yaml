@@ -444,7 +444,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/ResizePdf'
+              $ref: '#/definitions/ResizeLowPdf'
         default:
           description: Unexpected error
           schema:
@@ -500,7 +500,7 @@ paths:
         200:
           description: Gives errors if invalid item id, or filetype
           schema:
-            type: object
+            type: array
             items:
               $ref: '#/definitions/DefaultFilesetResult'
         default:
@@ -640,6 +640,12 @@ definitions:
       highrespdf:
         type: object
         description: Hi-Resolution PDF compilation file
+  ResizeLowPdf:
+    type: object
+    properties:
+      proofpdf:
+        type: object
+        description: Low-Resolution (Proof) PDF compilation file
   DefaultFileResult:
     type: object
     properties:
