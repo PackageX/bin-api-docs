@@ -96,7 +96,7 @@ paths:
         - User
       responses:
         200:
-          description: The login result, gives errors if invalid credentials
+          description: The registration result, with user token, gives errors if invalid
           schema:
             $ref: '#/definitions/LoginSuccess'
         default:
@@ -135,12 +135,12 @@ paths:
         200:
           description: The update result, gives errors if invalid credentials
           schema:
-            $ref: '#/definitions/LoginSuccess'
+            $ref: '#/definitions/DefaultResult'
         default:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-  /user/update:
+  /user/updateInfo:
     post:
       summary: Update
       description: |
@@ -182,7 +182,7 @@ paths:
         200:
           description: The update result, gives errors if invalid credentials
           schema:
-            $ref: '#/definitions/LoginSuccess'
+            $ref: '#/definitions/DefaultResult'
         default:
           description: Unexpected error
           schema:
@@ -222,11 +222,11 @@ paths:
         - User
       responses:
         200:
-          description: The login result, gives errors if invalid credentials
+          description: The merge result, gives errors if invalid credentials
           schema:
-            type: object
+            type: array
             items:
-              $ref: '#/definitions/Result'
+              $ref: '#/definitions/DefaultResult'
         default:
           description: Unexpected error
           schema:
@@ -261,11 +261,11 @@ paths:
         - User
       responses:
         200:
-          description: The login result, gives errors if invalid credentials
+          description: The persist result, gives errors if invalid credentials
           schema:
-            type: object
+            type: array
             items:
-              $ref: '#/definitions/Result'
+              $ref: '#/definitions/DefaultResult'
         default:
           description: Unexpected error
           schema:
@@ -279,7 +279,7 @@ paths:
         - Item
       responses:
         200:
-          description: The login result, gives errors if invalid credentials
+          description: The list and description available categories
           schema:
             type: array
             items:
@@ -303,7 +303,7 @@ paths:
         - Item
       responses:
         200:
-          description: Gives errors if invalid category id
+          description: The list of items, gives errors if invalid category id
           schema:
             type: array
             items:
@@ -327,7 +327,7 @@ paths:
         - Item
       responses:
         200:
-          description: Gives errors if invalid item id
+          description: Studio widget module, Gives errors if invalid item id
           schema:
             type: array
             items:
@@ -403,7 +403,7 @@ paths:
             $ref: '#/definitions/Error'
   /resize/compiledPdf/{id}:
     get:
-      summary: Hi-Res PDF
+      summary: Hi-Res PDF - (Marked for Deprecation)
       description: |
         Gets the hi-res compiled pdf of deisgn. If file does not exist, it may take ~30s to generate.
       parameters:
@@ -427,7 +427,7 @@ paths:
             $ref: '#/definitions/Error'
   /resize/generateProofPdf/{id}:
     get:
-      summary: Generate Proof
+      summary: Generate Proof - (Marked for Deprecation)
       description: |
         Generates the low-res compiled pdf of design. If file does not exist, it may take ~30s to generate. This call will also generate the low res png images.
       parameters:
@@ -449,6 +449,64 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+  /resize/download/{id}/{file}:
+    get:
+      summary: Download File
+      description: |
+        Initiates file download for a specific filetype, from a specific resized design
+      parameters:
+        - name: id
+          in: path
+          description: resize id
+          required: true
+          type: string
+        - name: file
+          in: path
+          description: file type
+          required: true
+          type: string
+      tags:
+        - Resize
+      responses:
+        200:
+          description: Gives errors if invalid item id, or filetype
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/DefaultFileResult'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /resize/download/{id}:
+    post:
+      summary: Download Fileset
+      description: |
+        Initiates file download for a specific filetype, from a specific resized design
+      parameters:
+        - name: id
+          in: path
+          description: resize id
+          required: true
+          type: string
+        - name: fileset
+          in: path
+          description: file types
+          required: true
+          type: array
+      tags:
+        - Resize
+      responses:
+        200:
+          description: Gives errors if invalid item id, or filetype
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/DefaultFilesetResult'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
   /resize/delete/{id}:
     get:
       summary: Delete
@@ -466,9 +524,9 @@ paths:
         200:
           description: Gives errors if invalid item id
           schema:
-            type: object
+            type: array
             items:
-              $ref: '#/definitions/Result'
+              $ref: '#/definitions/DefaultResult'
         default:
           description: Unexpected error
           schema:
@@ -490,9 +548,9 @@ paths:
         200:
           description: Gives errors if invalid item id
           schema:
-            type: object
+            type: array
             items:
-              $ref: '#/definitions/Result'
+              $ref: '#/definitions/DefaultResult'
         default:
           description: Unexpected error
           schema:
@@ -582,13 +640,36 @@ definitions:
       highrespdf:
         type: object
         description: Hi-Resolution PDF compilation file
+  DefaultFileResult:
+    type: object
+    properties:
+      projectFile:
+        type: object
+        description: A file from the specific resize
+  DefaultFilesetResult:
+    type: object
+    properties:
+      projectFile:
+        type: object
+        description: A fileset from the specific resize
   Result:
     type: object
     properties:
       message:
         type: string
+        description: Success
       errors:
         type: string
+        description: Error
+  DefaultResult:
+    type: object
+    properties:
+      message:
+        type: string
+        description: Success
+      errors:
+        type: string
+        description: Error
   Success:
     type: object
     properties:
