@@ -1,10 +1,11 @@
 swagger: '2.0'
 info:
-  title: BoxItNow API
+  title: Box It Now API
   description: Access BIN functionality remotely
   version: "1.5.0"
 # the domain of the service
-host: apistaging.boxitnow.com
+host: 
+  - [API URL]
 # array of all schemes that your API supports
 schemes:
   - https
@@ -137,7 +138,7 @@ paths:
             $ref: '#/definitions/Error'
   /user/makePersistent:
     post:
-      summary: Changes ephemeral user to a permanent 
+      summary: Changes ephemeral user to a permanent
       description: |
         This will all you to log a user into a session.
       parameters:
@@ -171,9 +172,9 @@ paths:
             $ref: '#/definitions/Error'
   /category:
     get:
-      summary: Get a list of categories
+      summary: Get a list of available categories
       description: |
-        Get a list of categories
+        Get a list of available categories
       tags:
         - Item
       responses:
@@ -189,9 +190,9 @@ paths:
             $ref: '#/definitions/Error'
   /category/{id}/items:
     get:
-      summary: Get a list of categories
+      summary: Gets a list of available Items in the specified Category
       description: |
-        Get a list of categories
+        Gets a list of available Items in the specified Category
       parameters:
         - name: id
           in: path
@@ -237,9 +238,9 @@ paths:
             $ref: '#/definitions/Error'
   /resize/info/{id}:
     get:
-      summary: Gets information about a resize
+      summary: Gets information about a resize, including file URLs
       description: |
-        Gets information about a resize
+        Gets information about a resize, including file URLs
       parameters:
         - name: id
           in: path

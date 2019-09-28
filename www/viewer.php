@@ -1,10 +1,14 @@
 <html>
     <head>
       <!-- BoxItNow CSS -->
-      <link rel="stylesheet" type="text/css" href="http://tim-dev.packagex.local/boxitnow/css/bin.cache.min.css" />
+      <link rel="stylesheet" type="text/css" href="http://[API ENDPOINT]/css/bin.cache.min.css" />
 
+
+
+      <!-- (Required) -->
       <!-- BoxItNow JS -->
-      <script type="text/javascript" src="http://tim-dev.packagex.local/boxitnow/js/bin.bootstrap.js"></script>
+      <script type="text/javascript" src="http://[API ENDPOINT]/js/bin.bootstrap.js"></script>
+
 
         <!-- CLIENT CSS -->
         <!--<link rel="stylesheet" type="text/css" href="spectrum.css" />-->
@@ -30,8 +34,8 @@
             //LOAD bin libraries
             BIN.Bootstrap.load({
                 //the root of the BIN HOST site
-                apiUrl: 'http://tim-dev.packagex.local/boxitnow/',
-                apiKey: "VGL6TmfXuFMprVPy"
+                apiUrl: 'http://[API ENDPOINT]/',
+                apiKey: '[API KEY]'
 
             }, function () {
 
@@ -46,18 +50,28 @@
                         //(require) 'standard' or 'user'
                         type: newType,
                         //(require) id of item or resize
-                        id: newId,
+                        id: 60,
                     },
 
                     options:{
-                        //rotate on start
+                        //Rotate Design on viewer start
+                        //default/null = false
                         rotate: false,
-                        //Initial rotate speed
-                        rotateSpeed: 0,
-                        //Initial viewing angle
+                        //Initial Design rotate speed (radians [0,1])
+                        //default/null = 0
+                        rotateSpeed: .0,
+                        //Initial Design viewing angle (degrees, [-180, 180])
+                        //default/null = 0
                         startAngle: 45,
-                      }
+                        //Initial Design zoom ([.5,3])
+                        //default/null = 1
+                        zoom: 1,
+                      },
 
+                  //**(optional)
+                  //**Fires after studio is loaded
+                  	onLoad: function(userSessionHandle) {
+                  	},
                 });
             });
         </script>
