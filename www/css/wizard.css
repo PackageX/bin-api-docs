@@ -1,0 +1,438 @@
+/*
+    Created on : Jul 15, 2016, 12:47:21 PM
+    Author     : ktabert
+*/
+
+/*
+OUTER DIALOG
+*/
+#wizard-dialog {
+    position: fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    right: 0;
+    z-index: 999999999;
+    background-color: rgba(0,0,0,0.8);
+}
+
+
+#step1.wizard .category:hover,
+#step1.wizard .item:hover {
+    background-color: #dddddd;
+    /* Do NOT edit. Always place before .selected */
+}
+
+
+/* White label branding colors go here */
+#step1.wizard .category.selected,
+#step1.wizard .item.selected,
+#step1 #preview .wizard-btn,
+#step2 #actions .wizard-btn {
+    background-color: #165EBE;
+    /*     Customizable highlight color. */
+}
+/* End of White label branding colors */
+
+
+
+/* Category/List items */
+
+#step1.wizard .category.selected {
+    color: #ffffff;
+}
+
+#step1.wizard .item.selected {
+    color: #ffffff;
+}
+
+/* End of Category/List items */
+
+
+/* Next Button */
+
+#step1 #preview .wizard-btn {
+    cursor: pointer;
+    margin: 0;
+    border: none;
+    line-height: 55px;
+    height: 55px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 400;
+    opacity: 0.3;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: relative;
+    bottom: -53px;
+    width: 100%;
+}
+
+#step1.wizard #next.active {
+    opacity: 0.85;
+}
+
+#step1.wizard #next.active:hover {
+    opacity: 1;
+}
+
+/* End of Next Button */
+
+
+/* Action Buttons */
+
+#step2 #actions .wizard-btn {
+    cursor: pointer;
+    margin: 46px auto;
+    border: none;
+    line-height: 30px;
+    padding: 18px 0 5px 0;
+    height: 40px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 400;
+    opacity: 0.85;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: relative;
+}
+
+#step2 #actions .wizard-btn:hover {
+    opacity: 1;
+}
+
+#step2 #actions .wizard-btn:first-child {
+    margin-top: 0;
+}
+
+#step2 #actions .wizard-btn:last-child {
+    margin-bottom: 0;
+}
+
+/* End of Action Button */
+
+
+.back-wizard {
+    height: 75%; /*525px;*/
+    margin: 30px auto;
+    padding: 20px;
+    width: 90%; /*850px;*/
+    background-color: #f8f8f8;
+    border: none;
+    position: relative;
+    top: 50px;
+
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    /* Box Shadow */
+    -webkit-box-shadow: 1px 1px 12px 0px rgba(48,48,48,0.52);
+    -moz-box-shadow: 1px 1px 12px 0px rgba(48,48,48,0.52);
+    box-shadow: 1px 1px 12px 0px rgba(48,48,48,0.52);
+
+
+}
+
+.wizard {
+    width: 99%;
+    margin: 0px;
+    height: 99%;
+    position: relative;
+}
+
+#close {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #C00B20;
+    font-size: 21pt;
+    font-weight: bold;
+    opacity: 0.5;
+    z-index: 1000;
+}
+
+#close:hover {
+    opacity: 1;
+}
+
+.wizardTitles {
+    width: auto;
+    position: relative;
+    padding: 5px;
+    margin-bottom: 40px;
+/*Category styling*/
+    font-size: 26px;
+    text-align: center;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+    background-color: #266EAE;
+    text-shadow: 1px 1px 1px #666;
+}
+
+#step1.wizard #categories,
+#step1.wizard #items,
+#step1.wizard #preview {
+    display: block;
+    float: left;
+    text-align: center;
+    height: 430px;
+    width: 32%;
+    margin: 0px;
+    border: 1px solid #9d9d9d;
+}
+
+#step1.wizard #items {
+    border: 1px solid #e7e7e7;
+    overflow-y: hidden;
+}
+
+#step1.wizard #items.active {
+    border: 1px solid #9d9d9d;
+    overflow-y: scroll;
+}
+
+#step1.wizard #categories {
+    margin-left: 7px;
+}
+
+#step1.wizard #categories,
+#step1.wizard #items {
+    margin-right: 8px;
+}
+
+#step1.wizard #preview {
+    border: none;
+}
+
+.select {
+    overflow-y: scroll;
+}
+
+#step1.wizard .category,
+#step1.wizard .item {
+    border-bottom: 1px solid #9d9d9d;
+    padding: 10px;
+    margin: 0;
+    height: 65px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 500;
+    color: #000000;
+    cursor: pointer;
+}
+
+
+.ui-effects-wrapper {
+    position: absolute;
+}
+
+#step1.wizard .category:last-child,
+#step1.wizard .item:last-child {
+    border-bottom: none;
+}
+
+#step1.wizard .imageBox {
+    width: 90px;
+    height: 60px;
+    position: relative;
+}
+
+#step1.wizard .category img,
+#step1.wizard .item img {
+    width: auto;
+    height: 100%;
+    max-width: 100px;
+    position:absolute;
+    top:50%;
+    left:25%;
+    margin-top:-25px;
+    margin-left:-25px;
+}
+
+#step1.wizard .CatName {
+    width: 57%;
+    height: auto;
+    display: block;
+    position: relative;
+    top: -60%;
+    left: 45%;
+}
+
+#step1.wizard .BoxName {
+    width: 67%;
+    height: auto;
+    display: block;
+    position: relative;
+    top: -60%;
+    left: 35%;
+    line-height: 14px;
+}
+
+/*
+#step1.wizard .category:focus,
+#step1.wizard .item:focus {
+    background-color: #165EBE;
+    color: #ffffff;
+}
+*/
+
+#step1.wizard #items.select #instructionBox {
+    display: block;
+    color: #6c6c6c;
+    background-color: #dddddd;
+    height: 45px;
+    width: 90%;
+    margin: 0 auto;
+    line-height: 55px;
+
+    position: relative;
+    top: 40%;
+}
+
+.wizard #name {
+    width:99%;
+    text-align: left;
+    padding: 5px 0;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.wizard #desc {
+    width:99%;
+    text-align: left;
+    height: 65px;
+    padding: 5px 0;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 300;
+    color: #000000;
+}
+
+.wizard #view3d {
+    width: 100%;
+    height: 220px;
+    padding: 0px;
+    overflow: hidden;
+    position: relative;
+}
+
+.wizard canvas {
+    cursor: move;
+    z-index: 1000;
+    position: relative;
+}
+
+#view3d p {
+    display: block;
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+    /*
+            line-height: 38px;
+            width: 44px;
+            height: 40px;
+    */
+    color: #000000;
+    opacity: 0.1;
+    text-align: center;
+    z-index: 900;
+}
+
+#step1.wizard #view3d p {
+    right: 0;
+}
+
+#step2.wizard #view3d p {
+    left: 0;
+}
+
+#substep {
+    width:100%;
+    text-align: center;
+    font-size:20px;
+}
+
+.wizard #actions {
+    float:left;
+}
+
+
+/* Wizard Step 2 */
+
+#step2.wizard #preview {
+    display: block;
+    float: left;
+    text-align: center;
+    height: 350px;
+    width: 40%;
+    margin: 0px 30px 0px 12px;
+    border: none;
+    padding: 0px 20px 20px 20px;
+}
+
+#step2.wizard #actions {
+    display: block;
+    float: left;
+    text-align: center;
+    height: 390px;
+    width: 49%;
+    margin: 0px;
+    border: none;
+}
+
+
+#step2.wizard #preview #back.wizard-btn {
+    cursor: pointer;
+    position: absolute;
+    margin: 0px auto;
+    /* 	padding-left: 20px; */
+    bottom: 0;
+    left: 0;
+    width: 99%;
+    font-size: 15px;
+    text-align: center;
+    font-weight: 400;
+    color: #6c6c6c;
+}
+
+#step2.wizard #preview #back.wizard-btn:hover {
+    color: #000000;
+}
+
+#step2.wizard #preview table#boxInfo {
+    table-layout: fixed;
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    border: 1px solid #bebebe;
+    width: 99%;
+}
+
+#step2.wizard #preview table#boxInfo td {
+    padding: 4px;
+}
+
+#step2.wizard #preview table#boxInfo td.label {
+    font-weight: bold;
+    text-align: left;
+}
+
+#step2.wizard #preview table#boxInfo td.value {
+    text-align: right;
+}
+
+#step2.wizard #preview table#boxInfo td.value.endCol1 {
+    border-right: 1px solid #bebebe;
+}
+
+#step2.wizard #preview table#boxInfo tr {
+    border-bottom: 1px solid #bebebe;
+}

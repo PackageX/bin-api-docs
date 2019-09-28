@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="http://localhost/boxitnow/css/bin.cache.min.css" />
 
   <!-- BoxItNow JS -->
-  <script type="text/javascript" src="http://localhost/boxitnow/js/bin.bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://localhost/boxitnow/js/bin.bootstrap.js"></script>
 
   <!-- CLIENT CSS -->
   <!--<link rel="stylesheet" type="text/css" href="spectrum.css" />-->
@@ -32,18 +32,7 @@
 	    box-sizing: border-box;
 	}
 
-	#tab {
-	    position: absolute;
-	    left: 0;
-	    width: 20%;
-	    top: 0;
-	    bottom: 0;
-	    border: 1px solid #444;
-	    text-align: center;
-	    line-height: 150px;
-	    font-size: 30px;
-	    box-sizing: border-box;
-	}
+	
 
 	#studio, #viewer {
 	    position: absolute;
@@ -84,12 +73,17 @@
 
   <!-- EXAMPLE LOAD/CREATE SCRIPT -->
   <script>
+
+
+      var newToken = '<?php echo $_GET['token'] ? $_GET['token'] : '2328e16dcef34fe4cb54a57aace29d05' ?>';
+
+
     //LOAD bin libraries
     BIN.Bootstrap.load({
       //the root of the BIN HOST site
 	  //http://localhost/bindev/
 	  //https://staging.boxitnow.com/
-      apiUrl: 'https://localhost/boxitnow/',
+      apiUrl: 'http://localhost/boxitnow/',
       apiKey: "VGL6TmfXuFMprVPy"
 
     }, function() {
@@ -97,13 +91,13 @@
       //Begin create studio
       BIN.Widgets.Create({
         //can be: 'viewer' (3d viewer), 'studio' (3d design studio) , 'boxes' (My Boxes), 'media' (Media Manager)
-        type: 'studio',
+        type: 'media',
         //(require)Html div to attach the widget to
         tag: $('#studio'),
         //(optional) required if loading user design, user media or user projects
-        userToken: '2328e16dcef34fe4cb54a57aace29d05',
+        userToken: newToken,
         //(require for design studio)design information to load
-        design: {
+      /*  design: {
           //(require) 'standard' or 'user'
           type: 'standard',
           //(require) id of item or resize
@@ -138,12 +132,10 @@
                 modules: ['mod_share']
               },
               views: {
-                //to entirely disable a view, remove it from this list
-                //values from this list will be used as the title for the respective section
-                //null gives the default title
                 '3d': '3D',
                 'outside': 'Outside View',
                 'inside': 'Inside View',
+                'cad': null,
                 'details': null,
                 'fullscreen': null,
                 '2nd_view': null
@@ -183,7 +175,7 @@
               graphics: {
                 enabled: true,
                 useKraft: false,
-                modules: ['mod_standard', 'mod_graphics', 'mod_text', 'mod_color','mod_panel', 'mod_pattern']
+                modules: ['mod_standard', 'mod_graphics', 'mod_text', 'mod_color', 'mod_panel', 'mod_pattern']
               }
             },
 		onSave : function() {
@@ -194,7 +186,7 @@
         //(optional)user does a resize
         onResize: function(userSessionHandle, parameters) {
           console.log(parameters);
-        },
+        },*/
         //(required)
 
       });
@@ -206,10 +198,12 @@
 <body>
   <!-- BEGIN PAGE -->
   <div id='header'>
-    header
+
+    <?php include 'views/header.php'; ?>
+
   </div>
   <div id='body'>
-    <div id='tab'>tab</div>
+    <?php include 'views/debug.php'; ?>
     <div id='studio'></div>
   </div>
   <div id='footer'>

@@ -1,0 +1,109 @@
+<html>
+
+  <head>
+    <!-- BoxItNow CSS -->
+    <link rel="stylesheet" type="text/css" href="http://tim-dev.packagex.local/boxitnow/css/bin.cache.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/wizard.css" />
+    <link rel="stylesheet" type="text/css" href="css/categories.css" />
+
+  <!--
+    <script type="text/javascript" src="js/headerHandlers.js"></script>
+    <link rel="import" href="views/wizard.html" onload="handleLoad(event)" onerror="handleError(event)">
+  -->
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r72/three.js"></script>
+    <script type="text/javascript" src="https://tim-dev.packagex.local/boxitnow/js/design/webGlViewer3d.js"> </script>
+
+  </head>
+
+  <body>
+
+  <!-- BEGIN PAGE -->
+    <div id='header'>
+      <div id='nav' data-include="nav"></div>
+      <div id='nav2' data-include="login"></div>
+    </div>
+
+    <div id='body'>
+      <div class="back-wizard" id="wizard">
+              <div id="step1" class="wizard" >
+                  <div id="substep1" class="wizardTitles">Start by choosing a category.</div>
+                  <div id="categories" class="select" >  </div>
+
+
+                  <div id="items" class="select"><p id="instructionBox">Choose a category to view styles.</p></div>
+                  <div id="preview">
+                      <div id="view3d"><p>3D</p></div>
+                      <div id="name">Name</div>
+                      <div id="desc">Description</div>
+                      <div id="next" class="wizard-btn" style="display:none">Next</div>
+                  </div>
+                  <br style="clear:both;"/>
+              </div>
+
+              <div id="step2" class="wizard" style="display: none" >
+                  <div id="substep4" class="wizardTitles">What would you like to do with your item?</div>
+                  <div id="preview" >
+                      <div id="view3d" ><p>3D</p></div>
+                      <div id="name">Name</div>
+                      <div id="desc">Description</div>
+                      <div id="table">
+                          <table id="boxInfo" border="0" cellpadding="0" cellspacing="0">
+                              <tbody>
+                                  <tr class="odd_row">
+                                      <td id="param1" class="label">Length</td>
+                                      <td id="value1" class="value endCol1">12.00000</td>
+                                      <td id="param4" class="label">Material</td>
+                                      <td id="value4"  class="value">32 ECT B</td>
+                                  </tr>
+                                  <tr class="even_row">
+                                      <td id="param2" class="label">Width</td>
+                                      <td id="value2"  class="value endCol1">12.00000</td>
+                                      <td id="param5" class="label">Allowance</td>
+                                      <td id="value5"  class="value">2.50000</td>
+                                  </tr>
+                                  <tr class="odd_row">
+                                      <td id="param3" class="label">Depth</td>
+                                      <td id="value3"  class="value endCol1">3.50000</td>
+                                      <td id="param6" class="label">Radius</td>
+                                      <td id="value6" class="value">Value</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                      <div id="back" class="wizard-btn" >&#8678; Back</div>
+                  </div>
+                  <div id="actions">
+                      <div class="wizard-btn action-btn" action="measurements" >Change dimensions</div>
+                      <div class="wizard-btn action-btn" action="graphics" >Customize colors &amp; graphics</div>
+                      <div class="wizard-btn action-btn" action="graphics" >Add full page graphic</div>
+                      <div class="wizard-btn action-btn" action="export" >Share it</div>
+                  </div>
+                  <br style="clear:both;"/>
+              </div>
+
+          </div>
+
+    </div>
+
+    <div id='footer'>
+      footer
+    </div>
+
+
+  <!-- END PAGE -->
+
+<script type='text/javascript' src="js/dataInclude.js" ></script>
+
+<script type='text/javascript' src="js/viewer.js" ></script>
+
+<script type='text/javascript' src="js/wizard.js" ></script>
+
+
+  </body>
+
+
+</html>
