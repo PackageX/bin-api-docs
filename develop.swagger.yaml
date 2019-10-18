@@ -1,0 +1,189 @@
+swagger: '2.0'
+info:
+  title: Box It Now Developer API
+  description: Define BIN functionality
+  version: "0.0.1"
+# the domain of the service
+host:
+   "pdfcompositor.boxitnow.com"
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath:
+produces:
+  - application/json
+paths:
+  /pdf:
+    post:
+      summary: PDF
+      description: |
+        Generates and returns the PDF
+      parameters:
+        - name: PDFPath
+          in: query
+          description: Path to the Executable
+          required: true
+          type: string
+        - name: PDFSettings
+          in: query
+          description: Settings for the operation
+          required: true
+          type: object
+        - name: Design
+          in: query
+          description: Design File
+          required: true
+          type: string
+        - name: Layout
+          in: query
+          description: Layout File
+          required: true
+          type: string
+        - name: PDFOut
+          in: query
+          description: Path for Output
+          required: true
+          type: string
+        - name: Meta
+          in: query
+          description: Additional information for the request
+          required: true
+          type: object
+      tags:
+        - PDF
+      responses:
+        200:
+          description: Successful File Generation
+          schema:
+            $ref: '#/definitions/Success'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+definitions:
+  Category:
+    type: object
+    properties:
+      categoryGroupRefNo:
+        type: string
+        description: Category id
+      categoryGroupDesc:
+        type: string
+        description: Description of category.
+      image1:
+        type: string
+        description: Image URL representing the cateogry.
+      image2:
+        type: string
+        description: Image URL representing the cateogry.
+  Item:
+    type: object
+    properties:
+      itemRefNo:
+        type: string
+        description: Item id
+      categoryGroupNo:
+        type: string
+        description: Category id
+      itemNo:
+        type: string
+        description: Item number
+      itemQuickDesc:
+        type: string
+        description: Item desc
+  Resize:
+    type: object
+    properties:
+      thumbnail:
+        type: string
+        description: Thumbnail of resize
+      pdf:
+        type: string
+        description: Form PDF file
+      pdfLayout:
+        type: string
+        description: Hi-Resolution PDF compilation file
+      pdfLowres:
+        type: string
+        description: Low-Resolution PDF compilation file
+      pngLowresOutside:
+        type: string
+        description: PNG Image with Transparency of the design Outside View
+      pngLowresInside:
+        type: string
+        description: PNG Image with Transparency of the design Inside View
+      artwork:
+        type: string
+        description: Outside and Inside layout screenshot png
+      outside:
+        type: string
+        description: Outside View screenshot png
+      inside:
+        type: string
+        description: Inside View screenshot png
+      parameters:
+        type: string
+        description: Hi-Resolution PDF compilation file
+      cad_dims:
+        type: string
+        description: CAD view of design with dimension
+      cad_flat:
+        type: string
+        description: CAD view of design without dimension
+      eps:
+        type: string
+        description: EPS file
+      dxf:
+        type: string
+        description: DXF cad file
+      hpgl:
+        type: string
+        description: HPGL cutting file
+  ResizePdf:
+    type: object
+    properties:
+      highrespdf:
+        type: object
+        description: Hi-Resolution PDF compilation file
+  ResizeLowPdf:
+    type: object
+    properties:
+      proofpdf:
+        type: object
+        description: Low-Resolution (Proof) PDF compilation file
+  DefaultFileResult:
+    type: object
+    properties:
+      projectFile:
+        type: object
+        description: A file from the specific resize
+  DefaultFilesetResult:
+    type: object
+    properties:
+      projectFile:
+        type: object
+        description: A fileset from the specific resize
+  Result:
+    type: object
+    properties:
+      message:
+        type: string
+        description: Success
+      errors:
+        type: string
+        description: Error
+  Success:
+    type: object
+    properties:
+      message:
+        type: string
+        description: Success
+  Error:
+    type: object
+    properties:
+      message:
+        type: string
+      fields:
+        type: string

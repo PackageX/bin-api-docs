@@ -2,10 +2,10 @@ swagger: '2.0'
 info:
   title: Box It Now API
   description: Access BIN functionality remotely
-  version: "1.5.0"
+  version: "1.7.1"
 # the domain of the service
-host: 
-  - [API URL]
+host:
+   "yourendpoint.boxitnow.com"
 # array of all schemes that your API supports
 schemes:
   - https
@@ -16,7 +16,7 @@ produces:
 paths:
   /login:
     post:
-      summary: User Login
+      summary: Login
       description: |
         This will allow you to log a user into a session.
       parameters:
@@ -30,22 +30,25 @@ paths:
           description: The user's password
           required: true
           type: string
+        - name: apiKey
+          in: query
+          description: api access token
+          required: true
+          type: string
       tags:
         - User
       responses:
         200:
           description: The login result, gives errors if invalid credentials
           schema:
-            type: object
-            items:
-              $ref: '#/definitions/Result'
+            $ref: '#/definitions/LoginSuccess'
         default:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
   /register:
     post:
-      summary: User Registration
+      summary: Register
       description: |
         This will allow you to create a new user
       parameters:
@@ -66,40 +69,127 @@ paths:
           type: string
         - name: RegisterForm[firstName]
           in: query
-          description: The user's email
+          description: The user's first name
           required: false
           type: string
         - name: RegisterForm[lastName]
           in: query
-          description: The user's email
+          description: The user's last name
           required: false
           type: string
         - name: RegisterForm[activate]
           in: query
-          description: Automatically initate the user, default=false
+          description: Automatically initiate the user, default=false
           required: false
           type: string
-        - name: RegisterForm[emphemeral]
+        - name: RegisterForm[ephemeral]
           in: query
           description: Set this true if the user is created for temporary reasons. default=false
           required: false
+          type: string
+        - name: apiKey
+          in: query
+          description: api access token
+          required: true
           type: string
       tags:
         - User
       responses:
         200:
-          description: The login result, gives errors if invalid credentials
+          description: The registration result, with user token, gives errors if invalid
           schema:
-            type: object
-            items:
-              $ref: '#/definitions/Result'
+            $ref: '#/definitions/LoginSuccess'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/updatePassword:
+    post:
+      summary: Update Password
+      description: |
+        This will allow you to update user password
+      parameters:
+        - name: username
+          in: query
+          description: The user's username
+          required: true
+          type: string
+        - name: password
+          in: query
+          description: The original password
+          required: true
+          type: string
+        - name: passwordNew
+          in: query
+          description: The new password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
+          required: true
+          type: string
+        - name: apiKey
+          in: query
+          description: api access token
+          required: true
+          type: string
+      tags:
+        - User
+      responses:
+        200:
+          description: The update result, gives errors if invalid credentials
+          schema:
+            $ref: '#/definitions/DefaultResult'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/updateInfo:
+    post:
+      summary: Update Info
+      description: |
+        This will allow you to update user information
+      parameters:
+        - name: username
+          in: query
+          description: The user's username
+          required: true
+          type: string
+        - name: password
+          in: query
+          description: The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
+          required: true
+          type: string
+        - name: email
+          in: query
+          description: The user's email
+          required: true
+          type: string
+        - name: firstName
+          in: query
+          description: The user's first name
+          required: false
+          type: string
+        - name: lastName
+          in: query
+          description: The user's last name
+          required: false
+          type: string
+        - name: apiKey
+          in: query
+          description: api access token
+          required: true
+          type: string
+      tags:
+        - User
+      responses:
+        200:
+          description: The update result, gives errors if invalid credentials
+          schema:
+            $ref: '#/definitions/DefaultResult'
         default:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
   /user/merge:
     post:
-      summary: User Merge
+      summary: Merge
       description: |
         Merges ephemeral users into main users
       parameters:
@@ -113,34 +203,39 @@ paths:
           description: The permanent user's password
           required: true
           type: string
-        - name: Source[username]
+        - name: Target[source_username]
           in: query
           description: The ephemeral user's username
           required: true
           type: string
-        - name: Source[password]
+        - name: Target[source_password]
           in: query
           description: The ephemeral user's password
+          required: true
+          type: string
+        - name: apiKey
+          in: query
+          description: api access token
           required: true
           type: string
       tags:
         - User
       responses:
         200:
-          description: The login result, gives errors if invalid credentials
+          description: The merge result, gives errors if invalid credentials
           schema:
-            type: object
+            type: array
             items:
-              $ref: '#/definitions/Result'
+              $ref: '#/definitions/DefaultResult'
         default:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
   /user/makePersistent:
     post:
-      summary: Changes ephemeral user to a permanent
+      summary: Persist
       description: |
-        This will all you to log a user into a session.
+        Changes ephemeral user to a permanent
       parameters:
         - name: Target[username]
           in: query
@@ -152,34 +247,39 @@ paths:
           description: The ephermeral user's password
           required: true
           type: string
-        - name: NewUser[username]
+        - name: Target[newuser_username]
           in: query
           description: The new user's username
+          required: true
+          type: string
+        - name: apiKey
+          in: query
+          description: api access token
           required: true
           type: string
       tags:
         - User
       responses:
         200:
-          description: The login result, gives errors if invalid credentials
+          description: The persist result, gives errors if invalid credentials
           schema:
-            type: object
+            type: array
             items:
-              $ref: '#/definitions/Result'
+              $ref: '#/definitions/DefaultResult'
         default:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
   /category:
     get:
-      summary: Get a list of available categories
+      summary: Categories
       description: |
         Get a list of available categories
       tags:
         - Item
       responses:
         200:
-          description: The login result, gives errors if invalid credentials
+          description: The list and description available categories
           schema:
             type: array
             items:
@@ -190,7 +290,7 @@ paths:
             $ref: '#/definitions/Error'
   /category/{id}/items:
     get:
-      summary: Gets a list of available Items in the specified Category
+      summary: Items
       description: |
         Gets a list of available Items in the specified Category
       parameters:
@@ -198,12 +298,12 @@ paths:
           in: path
           description: category id
           required: true
-          type: number
+          type: string
       tags:
         - Item
       responses:
         200:
-          description: Gives errors if invalid category id
+          description: The list of items, gives errors if invalid category id
           schema:
             type: array
             items:
@@ -214,20 +314,20 @@ paths:
             $ref: '#/definitions/Error'
   /item/studio/{id}:
     get:
-      summary: Gets the studio html data, requires preloading necesary libraries
+      summary: Studio
       description: |
-        Get a item html view
+        Gets the studio html data, requires preloading necessary libraries
       parameters:
         - name: id
           in: path
           description: item id
           required: true
-          type: number
+          type: string
       tags:
         - Item
       responses:
         200:
-          description: Gives errors if invalid item id
+          description: Studio widget module, Gives errors if invalid item id
           schema:
             type: array
             items:
@@ -236,17 +336,58 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+
+  /design/layout/{id}:
+    post:
+      summary: Layout
+      description: |
+        Generates a resized design from specific parameters and returns the design info.
+      parameters:
+        - name: id
+          in: path
+          description: The base design id
+          required: true
+          type: string
+        - name: type
+          in: query
+          description: design type
+          required: true
+          type: string
+        - name: parameters
+          in: query
+          description: design parameters
+          required: false
+          type: array
+          items : {}
+        - name: apiKey
+          in: query
+          description: api access token
+          required: true
+          type: string
+      tags:
+        - Resize
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Resize'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
   /resize/info/{id}:
     get:
-      summary: Gets information about a resize, including file URLs
+      summary: Info
       description: |
-        Gets information about a resize, including file URLs
+        Gets information about a resize, including file URLs. NOTE: Low Res PNG images are not available until AFTER the low res PDF has been generated.
       parameters:
         - name: id
           in: path
           description: item id
           required: true
-          type: number
+          type: string
       tags:
         - Resize
       responses:
@@ -262,7 +403,7 @@ paths:
             $ref: '#/definitions/Error'
   /resize/compiledPdf/{id}:
     get:
-      summary: Gets the hi-res compiled pdf of deisgn
+      summary: Hi-Res PDF - (Marked for Deprecation)
       description: |
         Gets the hi-res compiled pdf of deisgn. If file does not exist, it may take ~30s to generate.
       parameters:
@@ -270,7 +411,7 @@ paths:
           in: path
           description: item id
           required: true
-          type: number
+          type: string
       tags:
         - Resize
       responses:
@@ -279,7 +420,137 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Resize'
+              $ref: '#/definitions/ResizePdf'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /resize/generateProofPdf/{id}:
+    get:
+      summary: Generate Proof - (Marked for Deprecation)
+      description: |
+        Generates the low-res compiled pdf of design. If file does not exist, it may take ~30s to generate. This call will also generate the low res png images.
+      parameters:
+        - name: id
+          in: path
+          description: item id
+          required: true
+          type: string
+      tags:
+        - Resize
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ResizeLowPdf'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /resize/download/{id}/{file}:
+    get:
+      summary: Download File
+      description: |
+        Initiates file download for a specific filetype, from a specific resized design
+      parameters:
+        - name: id
+          in: path
+          description: resize id
+          required: true
+          type: string
+        - name: file
+          in: path
+          description: file type
+          required: true
+          type: string
+      tags:
+        - Resize
+      responses:
+        200:
+          description: Gives errors if invalid item id, or filetype
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/DefaultFileResult'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /resize/download/{id}:
+    post:
+      summary: Download Fileset
+      description: |
+        Initiates file download for a specific filetype, from a specific resized design
+      parameters:
+        - name: id
+          in: path
+          description: resize id
+          required: true
+          type: string
+        - name: fileset
+          in: path
+          description: file types
+          required: true
+          type: array
+      tags:
+        - Resize
+      responses:
+        200:
+          description: Gives errors if invalid item id, or filetype
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DefaultFilesetResult'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /resize/delete/{id}:
+    get:
+      summary: Delete
+      description: |
+        Removes the design for future viewing and searches, Delete design from system
+      parameters:
+        - name: id
+          in: path
+          description: resize id
+          required: true
+          type: string
+      tags:
+        - Resize
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DefaultResult'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /media/delete/{id}:
+    get:
+      summary: Delete
+      description: |
+        Removes the image for use in future designs, Delete image from media manager
+      parameters:
+        - name: id
+          in: path
+          description: node id
+          required: true
+          type: string
+      tags:
+        - Media
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DefaultResult'
         default:
           description: Unexpected error
           schema:
@@ -321,7 +592,31 @@ definitions:
       thumbnail:
         type: string
         description: Thumbnail of resize
+      pdf:
+        type: string
+        description: Form PDF file
       pdfLayout:
+        type: string
+        description: Hi-Resolution PDF compilation file
+      pdfLowres:
+        type: string
+        description: Low-Resolution PDF compilation file
+      pngLowresOutside:
+        type: string
+        description: PNG Image with Transparency of the design Outside View
+      pngLowresInside:
+        type: string
+        description: PNG Image with Transparency of the design Inside View
+      artwork:
+        type: string
+        description: Outside and Inside layout screenshot png
+      outside:
+        type: string
+        description: Outside View screenshot png
+      inside:
+        type: string
+        description: Inside View screenshot png
+      parameters:
         type: string
         description: Hi-Resolution PDF compilation file
       cad_dims:
@@ -339,13 +634,63 @@ definitions:
       hpgl:
         type: string
         description: HPGL cutting file
+  ResizePdf:
+    type: object
+    properties:
+      highrespdf:
+        type: object
+        description: Hi-Resolution PDF compilation file
+  ResizeLowPdf:
+    type: object
+    properties:
+      proofpdf:
+        type: object
+        description: Low-Resolution (Proof) PDF compilation file
+  DefaultFileResult:
+    type: object
+    properties:
+      projectFile:
+        type: object
+        description: A file from the specific resize
+  DefaultFilesetResult:
+    type: object
+    properties:
+      projectFile:
+        type: object
+        description: A fileset from the specific resize
   Result:
     type: object
     properties:
       message:
         type: string
+        description: Success
       errors:
         type: string
+        description: Error
+  DefaultResult:
+    type: object
+    properties:
+      message:
+        type: string
+        description: Success
+      errors:
+        type: string
+        description: Error
+  Success:
+    type: object
+    properties:
+      message:
+        type: string
+        description: Success
+  LoginSuccess:
+    type: object
+    properties:
+      message:
+        type: string
+        description: Success
+      token:
+        type: string
+        description: User token
   Error:
     type: object
     properties:

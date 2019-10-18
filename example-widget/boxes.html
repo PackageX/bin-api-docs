@@ -90,21 +90,19 @@
     //LOAD bin libraries
     BIN.Bootstrap.load({
       //the root of the BIN HOST site
-      apiUrl: 'https://[API ENDPOINT]/',
-      apiKey: '[API KEY]'
+    apiUrl: 'https://[API ENDPOINT]/',
+    apiKey: '[API KEY]'
 
     }, function() {
 
       //Begin create studio
       BIN.Widgets.Create({
         //can be: 'viewer' (3d viewer), 'studio' (3d design studio) , 'boxes' (My Boxes), 'media' (Media Manager)
-        type: 'media',
+        type: 'boxes',
         //(require)Html div to attach the widget to
         tag: $('#studio'),
         //(optional) required if loading user design, user media or user projects
         userToken: '2328e16dcef34fe4cb54a57aace29d05',
-        //(require for design studio)design information to load
-
 
       });
     });
