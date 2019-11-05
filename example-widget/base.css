@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    font-family: arial;
+}
+
+#header {
+    width: 100%;
+    text-align: center;
+    line-height: 150px;
+    height: 150px;
+    font-size: 30px;
+    border: 1px solid #444;
+    box-sizing: border-box;
+}
+
+#body {
+    min-height: 800px;
+    border: 0px solid #444;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#tab {
+    position: absolute;
+    left: 0;
+    width: 20%;
+    top: 0;
+    bottom: 0;
+    border: 1px solid #444;
+    text-align: center;
+    line-height: 150px;
+    font-size: 30px;
+    box-sizing: border-box;
+}
+
+#studio, #viewer {
+    position: absolute;
+    right: 0;
+    width: 80%;
+    top: 0;
+    bottom: 0;
+    border: 1px solid #444;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#footer {
+    width: 100%;
+    text-align: center;
+    line-height: 150px;
+    height: 150px;
+    font-size: 30px;
+    border: 1px solid #444;
+    box-sizing: border-box;
+}
