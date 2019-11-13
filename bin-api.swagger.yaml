@@ -372,7 +372,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Resize'
+              $ref: '#/definitions/ResizeParameters'
         default:
           description: Unexpected error
           schema:
@@ -427,7 +427,7 @@ paths:
             $ref: '#/definitions/Error'
   /resize/generateProofPdf/{id}:
     get:
-      summary: Generate Proof - (Marked for Deprecation)
+      summary: Generate Proof
       description: |
         Generates the low-res compiled pdf of design. If file does not exist, it may take ~30s to generate. This call will also generate the low res png images.
       parameters:
@@ -616,9 +616,6 @@ definitions:
       inside:
         type: string
         description: Inside View screenshot png
-      parameters:
-        type: string
-        description: Hi-Resolution PDF compilation file
       cad_dims:
         type: string
         description: CAD view of design with dimension
@@ -631,9 +628,21 @@ definitions:
       dxf:
         type: string
         description: DXF cad file
+      dds3:
+        type: string
+        description: DDS3 file
       hpgl:
         type: string
         description: HPGL cutting file
+      parameters:
+        type: array
+        description: Layout Parameters
+  ResizeParameters:
+    type: object
+    properties:
+      parameters:
+        type: array
+        description: Layout Parameters
   ResizePdf:
     type: object
     properties:
