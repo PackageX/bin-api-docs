@@ -342,46 +342,6 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 
-  /design/layout/{id}:
-    post:
-      summary: Layout
-      description: |
-        Generates a resized design from specific parameters and returns the design info.
-      parameters:
-        - name: id
-          in: path
-          description: The base design id
-          required: true
-          type: string
-        - name: type
-          in: query
-          description: design type
-          required: true
-          type: string
-        - name: parameters
-          in: query
-          description: design parameters
-          required: false
-          type: array
-          items : {}
-        - name: apiKey
-          in: query
-          description: api access token
-          required: true
-          type: string
-      tags:
-        - Resize
-      responses:
-        200:
-          description: Gives errors if invalid item id
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Resize'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
   /resize/info/{id}:
     get:
       summary: Info
@@ -450,64 +410,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/ResizeLowPdf'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
-  /resize/download/{id}/{file}:
-    get:
-      summary: Download File
-      description: |
-        Initiates file download for a specific filetype, from a specific resized design
-      parameters:
-        - name: id
-          in: path
-          description: resize id
-          required: true
-          type: string
-        - name: file
-          in: path
-          description: file type
-          required: true
-          type: string
-      tags:
-        - Resize
-      responses:
-        200:
-          description: Gives errors if invalid item id, or filetype
-          schema:
-            type: object
-            items:
-              $ref: '#/definitions/DefaultFileResult'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
-  /resize/download/{id}:
-    post:
-      summary: Download Fileset
-      description: |
-        Initiates file download for a specific filetype, from a specific resized design
-      parameters:
-        - name: id
-          in: path
-          description: resize id
-          required: true
-          type: string
-        - name: fileset
-          in: path
-          description: file types
-          required: true
-          type: array
-      tags:
-        - Resize
-      responses:
-        200:
-          description: Gives errors if invalid item id, or filetype
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/DefaultFilesetResult'
         default:
           description: Unexpected error
           schema:
