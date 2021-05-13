@@ -2,14 +2,10 @@ swagger: '2.0'
 info:
   title: Box It Now API
   description: Access BIN functionality remotely
-  version: "1.7.1"
-# the domain of the service
-host:
-   "yourendpoint.boxitnow.com"
-# array of all schemes that your API supports
+  version: 1.7.1
+host: yourendpoint.boxitnow.com
 schemes:
   - https
-# will be prefixed to all paths
 basePath: /api
 produces:
   - application/json
@@ -20,12 +16,12 @@ paths:
       description: |
         This will allow you to log a user into a session.
       parameters:
-        - name: LoginForm[username]
+        - name: 'LoginForm[username]'
           in: query
           description: The user's username or email
           required: true
           type: string
-        - name: LoginForm[password]
+        - name: 'LoginForm[password]'
           in: query
           description: The user's password
           required: true
@@ -38,8 +34,8 @@ paths:
       tags:
         - User
       responses:
-        200:
-          description: The login result, gives errors if invalid credentials
+        '200':
+          description: 'The login result, gives errors if invalid credentials'
           schema:
             $ref: '#/definitions/LoginSuccess'
         default:
@@ -52,42 +48,37 @@ paths:
       description: |
         This will allow you to create a new user
       parameters:
-        - name: RegisterForm[username]
+        - name: 'RegisterForm[username]'
           in: query
           description: The user's username
           required: true
           type: string
-        - name: RegisterForm[password]
+        - name: 'RegisterForm[password]'
           in: query
-          description: The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
+          description: 'The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user'
           required: true
           type: string
-        - name: RegisterForm[email]
+        - name: 'RegisterForm[email]'
           in: query
           description: The user's email
           required: true
           type: string
-        - name: RegisterForm[firstName]
+        - name: 'RegisterForm[firstName]'
           in: query
           description: The user's first name
           required: false
           type: string
-        - name: RegisterForm[lastName]
+        - name: 'RegisterForm[lastName]'
           in: query
           description: The user's last name
           required: false
           type: string
-        - name: RegisterForm[activate]
+        - name: 'RegisterForm[activate]'
           in: query
-          description: Automatically initiate the user, default=false
+          description: 'Automatically initiate the user, default=false'
           required: false
           type: string
-        - name: RegisterForm[agreement]
-          in: query
-          description: Agreement. default=false
-          required: true
-          type: string
-        - name: RegisterForm[ephemeral]
+        - name: 'RegisterForm[ephemeral]'
           in: query
           description: Set this true if the user is created for temporary reasons. default=false
           required: false
@@ -100,8 +91,8 @@ paths:
       tags:
         - User
       responses:
-        200:
-          description: The registration result, with user token, gives errors if invalid
+        '200':
+          description: 'The registration result, with user token, gives errors if invalid'
           schema:
             $ref: '#/definitions/LoginSuccess'
         default:
@@ -126,7 +117,7 @@ paths:
           type: string
         - name: passwordNew
           in: query
-          description: The new password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
+          description: 'The new password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user'
           required: true
           type: string
         - name: apiKey
@@ -137,8 +128,8 @@ paths:
       tags:
         - User
       responses:
-        200:
-          description: The update result, gives errors if invalid credentials
+        '200':
+          description: 'The update result, gives errors if invalid credentials'
           schema:
             $ref: '#/definitions/DefaultResult'
         default:
@@ -158,7 +149,7 @@ paths:
           type: string
         - name: password
           in: query
-          description: The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user
+          description: 'The password, must be more than 6 characters. Invalid password will give you and JSON error when you can show the user'
           required: true
           type: string
         - name: email
@@ -184,8 +175,8 @@ paths:
       tags:
         - User
       responses:
-        200:
-          description: The update result, gives errors if invalid credentials
+        '200':
+          description: 'The update result, gives errors if invalid credentials'
           schema:
             $ref: '#/definitions/DefaultResult'
         default:
@@ -198,22 +189,22 @@ paths:
       description: |
         Merges ephemeral users into main users
       parameters:
-        - name: Target[username]
+        - name: 'Target[username]'
           in: query
           description: The permanent user's username
           required: true
           type: string
-        - name: Target[password]
+        - name: 'Target[password]'
           in: query
           description: The permanent user's password
           required: true
           type: string
-        - name: Target[source_username]
+        - name: 'Target[source_username]'
           in: query
           description: The ephemeral user's username
           required: true
           type: string
-        - name: Target[source_password]
+        - name: 'Target[source_password]'
           in: query
           description: The ephemeral user's password
           required: true
@@ -226,8 +217,8 @@ paths:
       tags:
         - User
       responses:
-        200:
-          description: The merge result, gives errors if invalid credentials
+        '200':
+          description: 'The merge result, gives errors if invalid credentials'
           schema:
             type: array
             items:
@@ -242,17 +233,17 @@ paths:
       description: |
         Changes ephemeral user to a permanent
       parameters:
-        - name: Target[username]
+        - name: 'Target[username]'
           in: query
           description: The ephermeral user's username
           required: true
           type: string
-        - name: Target[password]
+        - name: 'Target[password]'
           in: query
           description: The ephermeral user's password
           required: true
           type: string
-        - name: Target[newuser_username]
+        - name: 'Target[newuser_username]'
           in: query
           description: The new user's username
           required: true
@@ -265,8 +256,8 @@ paths:
       tags:
         - User
       responses:
-        200:
-          description: The persist result, gives errors if invalid credentials
+        '200':
+          description: 'The persist result, gives errors if invalid credentials'
           schema:
             type: array
             items:
@@ -283,7 +274,7 @@ paths:
       tags:
         - Item
       responses:
-        200:
+        '200':
           description: The list and description available categories
           schema:
             type: array
@@ -293,7 +284,7 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-  /category/{id}/items:
+  '/category/{id}/items':
     get:
       summary: Items
       description: |
@@ -307,8 +298,8 @@ paths:
       tags:
         - Item
       responses:
-        200:
-          description: The list of items, gives errors if invalid category id
+        '200':
+          description: 'The list of items, gives errors if invalid category id'
           schema:
             type: array
             items:
@@ -317,7 +308,7 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-  /item/studio/{id}:
+  '/item/studio/{id}':
     get:
       summary: Studio
       description: |
@@ -331,8 +322,8 @@ paths:
       tags:
         - Item
       responses:
-        200:
-          description: Studio widget module, Gives errors if invalid item id
+        '200':
+          description: 'Studio widget module, Gives errors if invalid item id'
           schema:
             type: array
             items:
@@ -341,8 +332,47 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-
-  /resize/info/{id}:
+  '/design/layout/{id}':
+    post:
+      summary: Layout
+      description: |
+        Generates a resized design from specific parameters and returns the design info.
+      parameters:
+        - name: id
+          in: path
+          description: The base design id
+          required: true
+          type: string
+        - name: type
+          in: query
+          description: design type
+          required: true
+          type: string
+        - name: parameters
+          in: query
+          description: design parameters
+          required: false
+          type: array
+          items: {}
+        - name: apiKey
+          in: query
+          description: api access token
+          required: true
+          type: string
+      tags:
+        - Resize
+      responses:
+        '200':
+          description: Gives errors if invalid item id
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ResizeParameters'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  '/resize/info/{id}':
     get:
       summary: Info
       description: |
@@ -356,7 +386,7 @@ paths:
       tags:
         - Resize
       responses:
-        200:
+        '200':
           description: Gives errors if invalid item id
           schema:
             type: array
@@ -366,7 +396,7 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-  /resize/compiledPdf/{id}:
+  '/resize/compiledPdf/{id}':
     get:
       summary: Hi-Res PDF - (Marked for Deprecation)
       description: |
@@ -380,7 +410,7 @@ paths:
       tags:
         - Resize
       responses:
-        200:
+        '200':
           description: Gives errors if invalid item id
           schema:
             type: array
@@ -390,9 +420,9 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-  /resize/generateProofPdf/{id}:
+  '/resize/generateProofPdf/{id}':
     get:
-      summary: Generate Proof - (Marked for Deprecation)
+      summary: Generate Proof
       description: |
         Generates the low-res compiled pdf of design. If file does not exist, it may take ~30s to generate. This call will also generate the low res png images.
       parameters:
@@ -404,7 +434,7 @@ paths:
       tags:
         - Resize
       responses:
-        200:
+        '200':
           description: Gives errors if invalid item id
           schema:
             type: array
@@ -414,7 +444,65 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-  /resize/delete/{id}:
+  '/resize/download/{id}/{file}':
+    get:
+      summary: Download File
+      description: |
+        Initiates file download for a specific filetype, from a specific resized design
+      parameters:
+        - name: id
+          in: path
+          description: resize id
+          required: true
+          type: string
+        - name: file
+          in: path
+          description: file type
+          required: true
+          type: string
+      tags:
+        - Resize
+      responses:
+        '200':
+          description: 'Gives errors if invalid item id, or filetype'
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/DefaultFileResult'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  '/resize/download/{id}':
+    post:
+      summary: Download Fileset
+      description: |
+        Initiates file download for a specific filetype, from a specific resized design
+      parameters:
+        - name: id
+          in: path
+          description: resize id
+          required: true
+          type: string
+        - name: fileset
+          in: path
+          description: file types
+          required: true
+          type: array
+      tags:
+        - Resize
+      responses:
+        '200':
+          description: 'Gives errors if invalid item id, or filetype'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DefaultFilesetResult'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  '/resize/delete/{id}':
     get:
       summary: Delete
       description: |
@@ -428,7 +516,7 @@ paths:
       tags:
         - Resize
       responses:
-        200:
+        '200':
           description: Gives errors if invalid item id
           schema:
             type: array
@@ -438,7 +526,7 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-  /media/delete/{id}:
+  '/media/delete/{id}':
     get:
       summary: Delete
       description: |
@@ -452,7 +540,7 @@ paths:
       tags:
         - Media
       responses:
-        200:
+        '200':
           description: Gives errors if invalid item id
           schema:
             type: array
@@ -462,7 +550,113 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-definitions:
+  /project:
+    post:
+        tags:
+        - "Project"
+        summary: "Add a new folder to the logged in user's list"
+        description: ""
+        operationId: "addFolder"
+        consumes:
+        - "application/x-www-form-urlencoded"
+        - "multipart/form-data"
+        produces:
+        - "application/json"
+        parameters:
+        - in: "formData"
+          name: "folderName"
+          description: "Name of the new folder to be added"
+          required: true
+          type: "string"
+        responses:
+          "200":
+            description: "Success"
+          "405":
+            description: "Invalid Folder Name"
+  /project/all:
+    get:
+      tags:
+      - "Project"
+      summary: "Returns a list of all project folder information and contents for the logged in user"
+      description: ""
+      operationId: "getAllProjectFolders"
+      produces:
+      - "application/json"
+      responses:
+        default:
+          description: "Success"
+  /project/{folderId}:
+    get:
+      tags:
+      - "Project"
+      summary: "Returns a list of project folder information and contents for the specified folder"
+      description: ""
+      operationId: "getSingleProjectFolder"
+      consumes:
+        - "application/x-www-form-urlencoded"
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "folderId"
+          in: "path"
+          description: "The folderId that needs to be retrieved."
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid folderId supplied"
+    put:
+      tags:
+      - "Project"
+      summary: "Update folder info"
+      description: "This can only be done by the logged in user."
+      operationId: "updateFolder"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "folderId"
+        in: "path"
+        description: "name that need to be updated"
+        required: true
+        type: "integer"
+      responses:
+        "200": 
+          description: "Success"
+        "400":
+          description: "Invalid folder data supplied"
+        "404":
+          description: "Invalid folderId, folder not found"
+    delete: 
+      tags:
+      - "Project"
+      summary: "Deletes specified Folder"
+      description: "This can only be done by the logged in user."
+      operationId: "deleteFolder"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "folderId"
+        in: "path"
+        description: "The name that needs to be deleted"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "Success"
+        "400":
+          description: "User not logged in"
+        "404":
+          description: "Invalid folderId, folder not found"
+definitions: 
   Category:
     type: object
     properties:
@@ -477,7 +671,35 @@ definitions:
         description: Image URL representing the cateogry.
       image2:
         type: string
-        description: Image URL representing the cateogry.
+        description: Image URL representing the category.
+  DefaultFilesetResult:
+    type: object
+    properties:
+      projectFile:
+        type: object
+        description: A fileset from the specific resize
+  DefaultFileResult:
+    type: object
+    properties:
+      projectFile:
+        type: object
+        description: A file from the specific resize
+  DefaultResult:
+    type: object
+    properties:
+      message:
+        type: string
+        description: Success
+      errors:
+        type: string
+        description: Error
+  Error:
+    type: object
+    properties:
+      message:
+        type: string
+      fields:
+        type: string
   Item:
     type: object
     properties:
@@ -493,6 +715,33 @@ definitions:
       itemQuickDesc:
         type: string
         description: Item desc
+  LoginSuccess:
+    type: object
+    properties:
+      message:
+        type: string
+        description: Success
+      token:
+        type: string
+        description: User token
+  Project:
+    type: object
+    properties:
+      folderId:
+        type: integer
+        format: int64
+      folderName:
+        type: string
+        example: "Customer 1"
+  Result:
+    type: object
+    properties:
+      message:
+        type: string
+        description: Success
+      errors:
+        type: string
+        description: Error
   Resize:
     type: object
     properties:
@@ -523,9 +772,6 @@ definitions:
       inside:
         type: string
         description: Inside View screenshot png
-      parameters:
-        type: string
-        description: Hi-Resolution PDF compilation file
       cad_dims:
         type: string
         description: CAD view of design with dimension
@@ -538,70 +784,36 @@ definitions:
       dxf:
         type: string
         description: DXF cad file
+      dds3:
+        type: string
+        description: DDS3 file
       hpgl:
         type: string
         description: HPGL cutting file
-  ResizePdf:
-    type: object
-    properties:
-      highrespdf:
-        type: object
-        description: Hi-Resolution PDF compilation file
+      parameters:
+        type: array
+        description: Layout Parameters
   ResizeLowPdf:
     type: object
     properties:
       proofpdf:
         type: object
         description: Low-Resolution (Proof) PDF compilation file
-  DefaultFileResult:
+  ResizeParameters:
     type: object
     properties:
-      projectFile:
+      parameters:
+        type: array
+        description: Layout Parameters
+  ResizePdf:
+    type: object
+    properties:
+      highrespdf:
         type: object
-        description: A file from the specific resize
-  DefaultFilesetResult:
-    type: object
-    properties:
-      projectFile:
-        type: object
-        description: A fileset from the specific resize
-  Result:
-    type: object
-    properties:
-      message:
-        type: string
-        description: Success
-      errors:
-        type: string
-        description: Error
-  DefaultResult:
-    type: object
-    properties:
-      message:
-        type: string
-        description: Success
-      errors:
-        type: string
-        description: Error
+        description: Hi-Resolution PDF compilation file
   Success:
     type: object
     properties:
       message:
         type: string
         description: Success
-  LoginSuccess:
-    type: object
-    properties:
-      message:
-        type: string
-        description: Success
-      token:
-        type: string
-        description: User token
-  Error:
-    type: object
-    properties:
-      message:
-        type: string
-      fields:
-        type: string
