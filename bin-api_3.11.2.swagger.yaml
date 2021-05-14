@@ -656,6 +656,56 @@ paths:
           description: "User not logged in"
         "404":
           description: "Invalid folderId, folder not found"
+   /project/add/{folderId}:
+    post:
+      tags:
+      - "Project"
+      summary: "Update folder info"
+      description: "This can only be done by the logged in user."
+      operationId: "updateFolder"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "folderId"
+        in: "path"
+        description: "name that need to be updated"
+        required: true
+        type: "integer"
+      responses:
+        "200": 
+          description: "Success"
+        "400":
+          description: "Invalid folder data supplied"
+        "404":
+          description: "Invalid folderId, folder not found"
+   /project/delete/{folderId}:
+    post:
+      tags:
+      - "Project"
+      summary: "Deletes specified Folder"
+      description: "This can only be done by the logged in user."
+      operationId: "deleteFolder"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "folderId"
+        in: "path"
+        description: "The name that needs to be deleted"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "Success"
+        "400":
+          description: "User not logged in"
+        "404":
+          description: "Invalid folderId, folder not found"     
 definitions: 
   Category:
     type: object
