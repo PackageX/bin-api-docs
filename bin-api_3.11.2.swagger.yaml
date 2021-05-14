@@ -656,7 +656,7 @@ paths:
           description: "User not logged in"
         "404":
           description: "Invalid folderId, folder not found"
-  /project/add/{folderId}:
+   /project/add/{folderId}:
     post:
       tags:
       - "Project"
