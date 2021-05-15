@@ -662,7 +662,7 @@ paths:
         - "Project"
         summary: "Add a new folder to the logged in user's list"
         description: ""
-        operationId: "addFolder"
+        operationId: "addNewFolder"
         consumes:
         - "application/x-www-form-urlencoded"
         - "multipart/form-data"
