@@ -658,11 +658,57 @@ paths:
           description: "Invalid folderId, folder not found"
   /project/add/{folderId}:
     post:
+        tags:
+        - "Project"
+        summary: "Add a new folder to the logged in user's list"
+        description: ""
+        operationId: "addFolder"
+        consumes:
+        - "application/x-www-form-urlencoded"
+        - "multipart/form-data"
+        produces:
+        - "application/json"
+        parameters:
+        - in: "formData"
+          name: "folderName"
+          description: "Name of the new folder to be added"
+          required: true
+          type: "string"
+        responses:
+          "200":
+            description: "Success"
+          "405":
+            description: "Invalid Folder Name"
+  /project/rename/{folderId}:
+    post:
+        tags:
+        - "Project"
+        summary: "Rename a new folder in the logged in user's list"
+        description: ""
+        operationId: "renameFolder"
+        consumes:
+        - "application/x-www-form-urlencoded"
+        - "multipart/form-data"
+        produces:
+        - "application/json"
+        parameters:
+        - in: "formData"
+          name: "folderName"
+          description: "Name of the folder"
+          required: true
+          type: "string"
+        responses:
+          "200":
+            description: "Success"
+          "405":
+            description: "Invalid Folder Name"
+  /project/delete/{folderId}:
+    post: 
       tags:
       - "Project"
-      summary: "Update folder info"
+      summary: "Deletes specified Folder"
       description: "This can only be done by the logged in user."
-      operationId: "updateFolder"
+      operationId: "removeFolder"
       consumes:
       - "application/x-www-form-urlencoded"
       - "multipart/form-data"
@@ -671,16 +717,16 @@ paths:
       parameters:
       - name: "folderId"
         in: "path"
-        description: "name that need to be updated"
+        description: "The name that needs to be deleted"
         required: true
         type: "integer"
       responses:
-        "200": 
+        "200":
           description: "Success"
         "400":
-          description: "Invalid folder data supplied"
+          description: "User not logged in"
         "404":
-          description: "Invalid folderId, folder not found"   
+          description: "Invalid folderId, folder not found"
 definitions: 
   Category:
     type: object
