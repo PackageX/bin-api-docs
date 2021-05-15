@@ -598,8 +598,8 @@ paths:
         produces:
         - "application/json"
         parameters:
-        - in: "formData"
-          name: "folderName"
+        - in: "path"
+          name: "folderId"
           description: "Name of the new folder to be added"
           required: true
           type: "string"
@@ -612,7 +612,7 @@ paths:
     post:
         tags:
         - "Project"
-        summary: "Rename a new folder in the logged in user's list"
+        summary: "Rename a folder in the logged in user's list"
         description: ""
         operationId: "renameFolder"
         consumes:
@@ -621,21 +621,21 @@ paths:
         produces:
         - "application/json"
         parameters:
-        - in: "formData"
-          name: "folderName"
-          description: "Name of the folder"
+        - in: "path"
+          name: "folderId"
+          description: "Id of the folder"
           required: true
           type: "string"
         responses:
           "200":
             description: "Success"
           "405":
-            description: "Invalid Folder Name"
+            description: "Invalid Folder Id"
   /project/update/{folderId}:
     post:
         tags:
         - "Project"
-        summary: "Update a new folder in the logged in user's list"
+        summary: "Update a folder in the logged in user's list"
         description: ""
         operationId: "updateFolder"
         consumes:
@@ -644,16 +644,16 @@ paths:
         produces:
         - "application/json"
         parameters:
-        - in: "formData"
-          name: "folderName"
-          description: "Name of the folder"
+        - in: "path"
+          name: "folderId"
+          description: "Id of the folder"
           required: true
           type: "string"
         responses:
           "200":
             description: "Success"
           "405":
-            description: "Invalid Folder Name"
+            description: "Invalid Folder Id"
   /project/delete/{folderId}:
     post: 
       tags:
