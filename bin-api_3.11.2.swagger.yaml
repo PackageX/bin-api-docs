@@ -635,7 +635,7 @@ paths:
     post: 
       tags:
       - "Project"
-      summary: "Deletes specified Folder"
+      summary: "Deletes specified Folder123"
       description: "This can only be done by the logged in user."
       operationId: "removeFolder"
       consumes:
