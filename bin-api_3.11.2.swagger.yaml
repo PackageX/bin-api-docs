@@ -631,6 +631,29 @@ paths:
             description: "Success"
           "405":
             description: "Invalid Folder Name"
+  /project/update/{folderId}:
+    post:
+        tags:
+        - "Project"
+        summary: "Update a new folder in the logged in user's list"
+        description: ""
+        operationId: "updateFolder"
+        consumes:
+        - "application/x-www-form-urlencoded"
+        - "multipart/form-data"
+        produces:
+        - "application/json"
+        parameters:
+        - in: "formData"
+          name: "folderName"
+          description: "Name of the folder"
+          required: true
+          type: "string"
+        responses:
+          "200":
+            description: "Success"
+          "405":
+            description: "Invalid Folder Name"
   /project/delete/{folderId}:
     post: 
       tags:
