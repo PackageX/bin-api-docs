@@ -550,29 +550,6 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-  /project:
-    post:
-        tags:
-        - "Project"
-        summary: "Add a new folder to the logged in user's list"
-        description: ""
-        operationId: "addFolder"
-        consumes:
-        - "application/x-www-form-urlencoded"
-        - "multipart/form-data"
-        produces:
-        - "application/json"
-        parameters:
-        - in: "formData"
-          name: "folderName"
-          description: "Name of the new folder to be added"
-          required: true
-          type: "string"
-        responses:
-          "200":
-            description: "Success"
-          "405":
-            description: "Invalid Folder Name"
   /project/all:
     get:
       tags:
@@ -608,54 +585,6 @@ paths:
           description: "successful operation"
         "400":
           description: "Invalid folderId supplied"
-    put:
-      tags:
-      - "Project"
-      summary: "Update folder info"
-      description: "This can only be done by the logged in user."
-      operationId: "updateFolder"
-      consumes:
-      - "application/x-www-form-urlencoded"
-      - "multipart/form-data"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "folderId"
-        in: "path"
-        description: "name that need to be updated"
-        required: true
-        type: "integer"
-      responses:
-        "200": 
-          description: "Success"
-        "400":
-          description: "Invalid folder data supplied"
-        "404":
-          description: "Invalid folderId, folder not found"
-    delete: 
-      tags:
-      - "Project"
-      summary: "Deletes specified Folder"
-      description: "This can only be done by the logged in user."
-      operationId: "deleteFolder"
-      consumes:
-      - "application/x-www-form-urlencoded"
-      - "multipart/form-data"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "folderId"
-        in: "path"
-        description: "The name that needs to be deleted"
-        required: true
-        type: "integer"
-      responses:
-        "200":
-          description: "Success"
-        "400":
-          description: "User not logged in"
-        "404":
-          description: "Invalid folderId, folder not found"
   /project/add/{folderId}:
     post:
         tags:
