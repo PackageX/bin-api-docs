@@ -562,6 +562,8 @@ paths:
       responses:
         default:
           description: "Success"
+          schema:
+            $ref: '#/definitions/ProjectSuccess'
   /project/{folderId}:
     get:
       tags:
@@ -583,6 +585,8 @@ paths:
       responses:
         "200":
           description: "successful operation"
+          schema:
+            $ref: '#/definitions/Project'
         "400":
           description: "Invalid folderId supplied"
   /project/add/{folderId}:
@@ -747,6 +751,15 @@ definitions:
       token:
         type: string
         description: User token
+  ProjectSuccess:
+    type: object
+    properties:
+      message:
+        type: string
+        description: Success
+      projects:
+        type: object
+        description: List of User Projects
   Project:
     type: object
     properties:
