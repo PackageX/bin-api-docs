@@ -604,9 +604,14 @@ paths:
         parameters:
         - in: "path"
           name: "folderId"
-          description: "Name of the new folder to be added"
+          description: "Id of the new folder to be added"
           required: true
           type: "string"
+        - in: "path"
+          name: "folderName"
+          description: "Name of the new folder to be added"
+          required: true
+          type: "string"  
         responses:
           "200":
             description: "Success"
@@ -630,6 +635,11 @@ paths:
           description: "Id of the folder"
           required: true
           type: "string"
+        - in: "path"
+          name: "folderName"
+          description: "Name of the new folder to be added"
+          required: true
+          type: "string"  
         responses:
           "200":
             description: "Success"
