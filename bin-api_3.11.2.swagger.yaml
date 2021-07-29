@@ -632,7 +632,8 @@ paths:
           description: "Invalid folder data supplied"
         "404":
           description: "Invalid folderId, folder not found"
-    delete: 
+    /project/delete/{folderId}:
+    post: 
       tags:
       - "Project"
       summary: "Deletes specified Folder"
