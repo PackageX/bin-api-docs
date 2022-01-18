@@ -1,0 +1,774 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+  <head>
+    <!-- BoxItNow CSS -->
+    <link rel="stylesheet" type="text/css" href="https://demo.boxitnow.com/css/bin.cache.min.css" />
+    <!-- (Required) -->
+    <!-- BoxItNow JS -->
+    <script type="text/javascript" src="https://demo.boxitnow.com/js/bin.bootstrap.js"></script>
+    <!-- CLIENT CSS -->
+    <!--<link rel="stylesheet" type="text/css" href="spectrum.css" />-->
+    <style>
+      body {
+        margin: 0;
+        font-family: arial;
+      }
+
+      #header {
+        width: 100%;
+        text-align: center;
+        line-height: 150px;
+        height: 150px;
+        font-size: 30px;
+        border: 1px solid #444;
+        box-sizing: border-box;
+      }
+
+      #body {
+        min-height: 800px;
+        border: 0px solid #444;
+        position: relative;
+        box-sizing: border-box;
+      }
+
+      #tab {
+        position: absolute;
+        left: 0;
+        width: 20%;
+        top: 0;
+        bottom: 0;
+        border: 1px solid #444;
+        text-align: center;
+        line-height: 150px;
+        font-size: 30px;
+        box-sizing: border-box;
+      }
+
+      #studio,
+      #viewer {
+        position: absolute;
+        right: 0;
+        width: 80%;
+        top: 0;
+        bottom: 0;
+        border: 1px solid #444;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+
+      #console {
+        position: absolute;
+        left: 0;
+        width: 20%;
+        top: 0;
+        bottom: 0;
+        border: 1px solid #444;
+        box-sizing: border-box;
+        overflow: auto;
+      }
+
+      #console h3 {
+        text-align: center;
+        position: absolute;
+        top: 0;
+        height: 30px;
+        width: 100%;
+        left: 0;
+        display: block;
+      }
+
+      #eventLog {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: 30px;
+        bottom: 0;
+        border: 1px solid #444;
+        box-sizing: border-box;
+        overflow: auto;
+        display: block;
+        font-size: 11px;
+        padding: 0 3px 2px;
+        color: #333;
+      }
+
+      /**#footer {
+	    width: 100%;
+	    text-align: left;
+	    height: 100%;
+	    font-size: 12px;
+	    border: 1px solid #444;
+	    box-sizing: border-box;
+	    display: flex;
+	    flex-flow: column;
+	}**/
+      /*#loading{
+    display:block;
+    width:100%;
+    height:100%;
+  }
+
+  #loading img {
+    position:absolute;
+    left:45%;
+    top:20%
+  }*/
+    </style>
+    <!-- CLIENT JS -->
+    <!-- You can pre load the following, BIN will load if they are not already loaded -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.js"></script>
+    <!--<script type="text/javascript" src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>-->
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r72/three.js"></script>-->
+    <!--<script type="text/javascript" src="spectrum.js"></script>-->
+    <!-- EXAMPLE LOAD/CREATE SCRIPT -->
+    <script>
+      //** Define the Box It Now server endpoint and apiKey values that the Login API and Widget will connect
+      //** to and/or load from.  These should be provided to you by your Box It Now Representative.
+      var apiKey = "";
+      var apiURL = "https://demo.boxitnow.com/";
+      //** To save the design created in the design studio, or to view previously created designs, a valid
+      //** Box It Now user must be registered and/or logged in before loading the design studio widget.
+      //** This can be a real or ephemeral user that has already been registered elsewhere in the integration
+      //** or one that is created just before loading the studio by calling the Registration API.  The values
+      //** below are provided as an example of how to use the Login API to log in a user that already exists
+      //** on the relevent Box It Now server.  Please modify them to reflect valid test or personal username,
+      //** and password values.
+      var user = "";
+      var pass = "";
+      //** Login data that is submitted to the Login API must be formatted as a FormData object, as shown below.
+      //** Data that exists in other object formats (such as JSON) must be converted to FormData before
+      //** calling the doUserLogin() function below or the call will error out.
+      //** The code below is provided as an example of how to build a FormData object and no modifications
+      //** should be necessary for this test page to successfully load the Studio widget.
+      var formData = new FormData();
+      formData.append("LoginForm[username]", user);
+      formData.append("LoginForm[password]", pass);
+      formData.append("apiKey", apiKey);
+      //** calls the sample function defined at the bottom of the <script> section of this file.
+      //** requires the "user" and "pass" variables defined above to exist and not be empty before
+      //** the Login API is called.
+      doUserLogin();
+
+      function loadStudioWidget() {
+        //alert(loggedInUserToken);
+        //** Configure and invoke the Box It Now ("BIN") Studio Widget.  Valid options and default values are
+        //** outlined for their corresponding parameter(s) below.
+        BIN.Bootstrap.load({
+          //the root of the BIN HOST site
+          apiUrl: apiURL,
+          apiKey: apiKey
+        }, function() {
+          //Begin create studio
+          BIN.Widgets.Create({
+            //can be: 'viewer' (3d viewer), 'studio' (3d design studio) , 'boxes' (My Boxes), 'media' (Media Manager)
+            type: 'studio',
+            //(Required) Html div to attach the widget to
+            tag: $('#studio'),
+            //*********
+            //[USER_TOKEN] is returned from successful login action
+            //
+            //(Required for 'user' type)
+            userToken: loggedInUserToken,
+            //*********
+            //(required for design studio) design information to load
+            design: {
+              //(Required) 'standard' or 'user'
+              type: 'standard',
+              id: '79',
+              //(Required) id of item or resize (resizeId, NOT resizeToken if loading a 'user' design)
+              //type: 'user',
+              //id: '9761',
+              //(optional) 'imperial' or 'metric'
+              unitSystem: 'metric',
+              //(optional) 'vertical' or 'horizontal'
+              //default/null : vertical
+              fluting: 'vertical',
+              //(optional) true/False
+              //default/null false
+              //Generate new design from id - "save As" (trigger resize on load)
+              isTemplate: false,
+              //(Optional)
+              //** Parameters are mapped from here to the studio verbatim, i.e.
+              //** parameters{x : a} : data['Params['x']'] = a
+              //**
+              //** A note for design types:
+              //** There may be more than Length, Width, and Depth available, depending on design.
+              //**
+              //** Formally defined by the general definition
+              //** parameters{...} = [(String x : int a,)*]
+              parameters: {
+                //Length: "12.5",
+              }
+            },
+            //(Optional) Customizations for Design Studio
+            options: {
+              //** saving - default/null = folder required (false)
+              //**
+              //** Formally defined by the general
+              //** user{...} = [(String a: String b)?]
+              //**
+              //** and more specifically for this case
+              //** user{...} = [(saving: ('simple' | ''+.*)?]
+              user: {
+                saving: 'simple'
+              },
+              //** Defines whether or not to show score marks on flat views (Outside/Inside)
+              //** "Show Scores" button is always enabled
+              //**
+              //** showScores - null/default = true/enabled
+              //**
+              //** Formally defined by the general
+              //** defaultLayout{...} = [(String s : boolean a,)*]
+              //**
+              //** and for the specific case
+              //** defaultLayout{...} = [(showScores : (true | false),)?]
+              defaultLayout: {
+                showScores: false,
+              },
+              //** Defines custom settings for the user interface
+              //**
+              //** initialTab - the tab to show when the studio first loads
+              //** saveButtonText - the text label for the save button
+              //** saveProgressText - the text label for the save button during a save operation
+              //** saveFinishText - the text label for the save button after a successful save operation
+              //**
+              //** null = default = specified (current)
+              //**
+              //** Formally defined by the general
+              //** ui{...} = [(String s : String a,)*]
+              //**
+              //** and for the specific case
+              //** ui{...} = [
+              //**            (initialTab : (('measurements' | 'graphics' | export) | (''+.*)) ,)?
+              //**            (saveButtonText : ''+.*,)?
+              //**            (saveProgressText : ''+.*,)?
+              //**            (saveFinishText : ''+.*,)?
+              //**            (studio : {
+              //**                section : {
+              //**                    item : ''+.*,
+              //**                      }
+              //**                    })?
+              //**           ]
+              ui: {
+                initialTab: 'measurements',
+                saveButtonText: 'SAVE DESIGN',
+                saveProgressText: 'Saving...',
+                saveFinishText: 'DESIGN SAVED',
+                studio: {
+                  info: {
+                    register: 'Register',
+                    singup: 'Sign Up',
+                    usernameEmail: 'Username or Email',
+                    password: 'Password',
+                    view: 'View:',
+                    screenshotTooltip: 'Save Box Screenshot',
+                  },
+                  menu: {
+                    delete: 'Delete',
+                    forward: 'Bring Forward',
+                    front: 'Bring to Front',
+                    backward: 'Send Backward',
+                    back: 'Send To Back',
+                  },
+                  ie: {
+                    title: 'Sorry...',
+                    label: 'The main functionality of this site is not supported by IE. Please try one of the following:',
+                    chrome: 'Chrome',
+                    firefox: 'Firefox',
+                    Edge: 'Edge/Safari',
+                  },
+                  loading: {
+                    data: 'Loading Data',
+                    resize: 'Resizing Your Design',
+                    printos: 'Exporting Your Design',
+                    export: 'Exporting Your Design',
+                    export2: 'May take a few minutes...',
+                    loading: 'Loading 3D Design',
+                    error: 'WebGl is not enabled. Please enabled it to use this feature.',
+                  },
+                  panel: {
+                    inside: 'Inside View',
+                    insideLabel: 'Choose a color and then click on a panel to apply the selected color. Click again to remove color.',
+                    outside: 'Outside View',
+                    outsideLabel: 'Choose a color and then click on a panel to apply the selected color. Click again to remove color.',
+                  },
+                  details: {
+                    client: 'Client',
+                    quantity: 'Quantity',
+                    projectname: 'Project Name',
+                    description: 'Description',
+                    notes: 'Notes',
+                    pdfpreview: 'PDF Preview',
+                    edit: 'Edit',
+                  },
+                  legend: {
+                    more: 'more...',
+                    shiftDrag: 'Shift+Drag: Proportionately Scale Graphic',
+                    delete: 'DEL/BKSP: Delete Graphic',
+                    save: 'Ctrl+S: Save Design',
+                    mouseTitle: 'Mouse Actions:',
+                    keyTitle: 'Key Commands:',
+                    doubleClick: 'Double-Click: Fold/Unfold',
+                    dragMouse: 'Drag Mouse on Design: Rotate 3D',
+                    mouseWheel: 'Mouse Wheel: Zoom 3D',
+                    rightClick: 'Right-Click on a Graphic: Show Element Options',
+                    arrows: 'Arrows: Move Graphic',
+                    duplicate: 'Ctrl+D: Duplicate Graphic',
+                    lines: 'L: Toggle Score Lines',
+                  },
+                },
+                resizer: {
+                  info: {
+                    title: 'Measurements',
+                    label: 'View Conversion Chart',
+                    labelHint: 'Conversion Chart',
+                    resetHint: 'Reset Value',
+                    warning: '* Resize required to apply changes. *',
+                    warning2: '* Very Large Boxes may not be supported*',
+                    fieldError: 'This field accepts only the numerical and decimal inputs.  Please try again',
+                    select: 'Select a material',
+                    custom: 'Custom',
+                    title2: 'Advanced',
+                    resize: 'Resize',
+                    fluting: 'Corrugation',
+                    horizontal: 'Horizontal',
+                    vertical: 'Vertical',
+                    resizeLoading: 'Resizing Your Design',
+                    convertInches: 'Convert to Inches',
+                    convertMetric: 'Convert to Metric',
+                  },
+                  parameters: {
+                    finish: 'Finish',
+                    finishSelect: 'Select a Finish',
+                    material: 'Board Type',
+                    materialSelect: 'Select a Board Type',
+                    allowance: 'Allowance',
+                    length: 'Length',
+                    width: 'Width',
+                    depth: 'Depth',
+                    /*  Re-labeling dimensional parameters is not supported at this time. */
+                  }
+                },
+                graphics: {
+                  user: {
+                    title: "My Graphics",
+                    upload: "Choose Graphic",
+                    accepted: "Accepted Filetypes: JPEG,JPG,PNG,SVG,PDF",
+                  },
+                  standard: {
+                    title: "Standard Graphics",
+                  },
+                  text: {
+                    title: "Add Text",
+                    label: "Text",
+                    font: "Font",
+                    color: "Color",
+                    bold: "Bold",
+                    italic: "Italic",
+                  },
+                  pattern: {
+                    title: "Color Settings & Patterns",
+                    outsideColor: "Outside Color",
+                    outsidePattern: "Outside Pattern",
+                    insideColor: "Inside Color",
+                    insidePattern: "Inside Pattern",
+                    showScores: "Show Scores",
+                    horizontal: "Horizontal Shift",
+                    vertical: "Vertical Shift",
+                    scale: "Scale",
+                    rotation: "Rotation",
+                    none: "Remove Pattern",
+                    close: "Close",
+                  },
+                  panel: {
+                    title: "Panel Color",
+                    label: "Panel Color",
+                    instruction: "Choose a color and then click on a panel to apply the selected color. Click again to remove color.",
+                    buttonOutside: "Remove All (Outside)",
+                    buttonInside: "Remove All (Inside)",
+                  },
+                  litho: {
+                    title: "Full Page Graphics",
+                    label: "Available for Outside Graphics Only",
+                    instructions: "Instructions",
+                    upload: "Choose Artwork",
+                    edit: "Edit Artwork",
+                    remove: "Remove Artwork",
+                  },
+                  nonstandard: {
+                    title: "Line Graphics",
+                  },
+                },
+                export: {
+                  info: {
+                    title: '',
+                    label: '',
+                    loading: 'Exporting...',
+                    saved: 'You must save the design to email files.',
+                    empty: 'No Settings Enabled. Please contact your administrator.',
+                  },
+                  email: {
+                    title: 'Email Files',
+                    name: 'Name for Files',
+                    email: 'Email To',
+                    subject: 'Subject',
+                    details: 'Details',
+                    zip: 'Zip Files',
+                    action: 'Send Email',
+                  },
+                  share: {
+                    title: 'Share a Link',
+                    email: 'Email',
+                    action: 'Share Link',
+                  },
+                  title: {
+                    title: 'Upload to FTP',
+                    action: 'Upload to FTP',
+                  },
+                  printos: {
+                    title: 'Share a Link',
+                    apiKey: 'API Key',
+                    apiSecret: 'API Secret',
+                    action: 'Export',
+                    error: 'No Key Secret Field',
+                    uploadSuccess: 'Successfully Uploaded.',
+                    uploadError: 'Upload Failed. Please check your credentials and try again.',
+                    connectionError: 'Connection Failed. Please try again.'
+                  },
+                  download: {
+                    title: 'Download Files',
+                    hint: 'Download File Type',
+                    action: 'Download Files',
+                    error: 'No Files Selected',
+                  },
+                },
+              },
+              //** Defines custome settings for the resize interface (measurements section)
+              //**
+              //** enable - whether or not to show the section
+              //** readonly - whether or not inputs are editable
+              //** modules - string array containing module names to be included
+              //** trimParams - whether or not to trim *2* trailing zeroes from params
+              //** editFluting - enable/disable the fluting edit button
+              //**
+              //** Formally defined by
+              //** resizer{...} = [
+              //**                  (enabled : (true | false),)?
+              //**                  (readonly : (true | false),)?
+              //**                  (modules : [(('mod_advanced' | (''+.*)) ,)?]?
+              //**                  (trimParams : (true | false),)?
+              //**                  (trimParams : (true | false),)?
+              //**                ]
+              resizer: {
+                enabled: true,
+                readonly: false,
+                modules: ['mod_advanced'],
+                trimParams: true,
+                editFluting: true
+              },
+              //** Defines custom settings for the export section
+              //**
+              //** enable - whether or not to show the section
+              //** modules - string array containing module names to be included
+              //**
+              //** enable : null/default = true
+              //** modules : null = all enabled; default ([]) = disabled;
+              //**
+              //** Formally defined by
+              //** export{...} = [
+              //**                  (enable : (true | false),)?
+              //**                  (modules : [((('mod_share' | 'mod_email' | 'mod_ftp' )* | (''+.*)) ,)?])?
+              //**                ]
+              //**
+              export: {
+                enabled: true,
+                modules: ['mod_share', 'mod_email', 'mod_ftp']
+              },
+              //** Defines custom settings for the graphics section
+              //**
+              //** enable - whether or not to show the section
+              //** modules - string array containing module names to be included
+              //**
+              //** enable : null/default = true
+              //** modules : null = all enabled; default ([]) = disabled;
+              //**
+              //** Formally defined by
+              //** graphics{...} = [
+              //**                  (enable : (true | false),)?
+              //**                  (useKraft : (true | false),)?
+              //**                  (modules : [((('mod_standard', 'mod_graphics', 'mod_text', 'mod_color', 'mod_panel', 'mod_pattern', 'mod_litho' )* | (''+.*)) ,)?])?
+              //**                ]
+              graphics: {
+                enabled: true,
+                modules: ['mod_standard', 'mod_graphics', 'mod_text', 'mod_color', 'mod_panel', 'mod_pattern', 'mod_litho']
+              },
+              //** Defines available views in the studio, and the label for the specified tab
+              //**
+              //** String s - the text name of the view
+              //** String a - the label text for the view tab
+              //**
+              //** null value (not included) : disabled
+              //** default value (null) : enabled, default title
+              //** specified value ('X View') : enabled, title 'X View'
+              //**
+              //** Formally defined by the general
+              //** views{...} = [(String s : String a,)*]
+              //**
+              //** and for the specific case
+              //** views{...} = [
+              //**            ('3d' : (''+.* | null),)?
+              //**            ('outside' : (''+.* | null),)?
+              //**            ('inside' : (''+.* | null),)?
+              //**            ('cad' : (''+.* | null),)?
+              //**            ('details' : (''+.* | null),)?
+              //**            ('fullscreen' : (''+.* | null),)?
+              //**            ('2nd_view' : (''+.* | null),)?
+              //**           ]
+              views: {
+                '3d': '3D',
+                'outside': 'Outside View',
+                'inside': 'Inside View',
+                'cad': null,
+                'details': null,
+                'fullscreen': null,
+                '2nd_view': null
+              },
+              //** Defines the labels for section tabs in the studio tool panel
+              //**
+              //**  resizer - the label text for the measurement section tab
+              //**  graphics - the label text for the graphics section tab
+              //**  export - the label text for the export section tab
+              //**
+              //** null = default = specified (current)
+              //**
+              //** Formally defined by
+              //** tabs{...} = [
+              //**            (resizer : ''+.*,)?
+              //**            (graphics : ''+.*,)?
+              //**            (export : ''+.*,)?
+              //**           ]
+              tabs: {
+                resizer: 'Default Dimensions',
+                graphics: 'Default Graphics',
+                export: 'Default <br /> Share',
+              },
+              //** Defines custom settings for the details view
+              //**
+              //** fields - list of form fields to override
+              //** hideAdvancedDims - whether or not to show the "advanced dimensions" form part
+              //**
+              //** fields - null/default = false
+              //** hideAdvancedDims - null/default = true
+              //** Formally defined by
+              //** form{...} = [
+              //**              (fields : [(''+.* : (true | false),)*])?
+              //**              (hideAdvancedDims : (true | false),)?
+              //**             ]
+              form: {
+                fields: {
+                  'Project Name': false,
+                },
+                hideAdvancedDims: true
+              },
+              //** Defines custom settings for finishes - the look and feel of the rendered design
+              //**
+              //** enable - whether or not to include the setting
+              //** label - the label text for the dropdown menu
+              //** options - list of available options in dropdown menu, defined by
+              //**          - String title text
+              //**          - renderBase : colorized or cardboard look and feel
+              //**          - renderSurface : shiny or dull (reflective or not)
+              //**          - interior : ???
+              //**          - id : finish identifier
+              //**          - isDefault : initially selected finish
+              //**
+              //** enable - null/default = false
+              //** label - null/default = '' (empty string)
+              //** options - null = error, default ({}) = empty
+              //**
+              //** Formally defined by
+              //** finishes{...} = [
+              //**                  (enable : (true | false),)?
+              //**                  (label : (''+.*)?,)?
+              //**                  (options : [
+              //**                              (''+.* : {
+              //**                                        (renderBase : (('color' | 'kraft') | (''+.*)),)?
+              //**                                        (renderSurface :  (('gloss') | (''+.*)),)?
+              //**                                        (interior :  (('white') | (''+.*)),)?
+              //**                                        (id :  ((''+.*)),)?
+              //**                                        (isDefault : ('true' | 'false'),)?
+              //**                                        }
+              //**                               ,)*
+              //**                            ],)+
+              //**                ]
+              finishes: {
+                enable: true,
+                // NOTE: Label: Finishes moved to ui[resizer[parameters]] section
+                //  label: 'Materials',
+                options: {
+                  'Standard White': {
+                    renderBase: 'color',
+                    interior: 'white',
+                    id: 1,
+                    isDefault: 'true'
+                  },
+                  'Premium White': {
+                    renderBase: 'color',
+                    interior: 'white'
+                  },
+                  'Premium White with Gloss Ink Finish': {
+                    renderBase: 'color',
+                    renderSurface: 'gloss',
+                    interior: 'white'
+                  },
+                  'Kraft': {
+                    renderBase: 'kraft'
+                  }
+                }
+              },
+              //** Defines custom settings for materials
+              //**
+              //** enable - whether or not the dropdown is available
+              //**
+              //** enable - null/default = false
+              //**
+              //** Formally defined by the general
+              //** materials{...} = [(String s : boolean a,)*]
+              //**
+              //** and for the specific case
+              //** materials{...} = [(enable : (true | false),)?]
+              //**
+              materials: {
+                enable: false
+              }
+            },
+            //**(Required)
+            //**Fires after action sent
+            onSave: function(userSessionHandle, parameters) {
+              console.log("onSave returned");
+              logToPage("onSave Callback Fired");
+              logToPage(parameters);
+            },
+            //**(optional)
+            //**Fires after studio is loaded
+            onLoad: function(userSessionHandle) {
+              console.log("onLoad returned");
+              logToPage("onLoad Callback Fired");
+            },
+            //**(optional)
+            //**Fires after *successful* resize
+            onResize: function(userSessionHandle, parameters) {
+              console.log("onResize returned");
+              logToPage("onResize Callback Fired");
+              logToPage(parameters);
+            },
+            //**(optional)
+            onTabsReadyAll: function() {
+              console.log("onTabsReadyAll returned");
+              logToPage("onTabsReadyAll Callback Fired");
+            },
+          });
+        });
+      }
+      //** Sample Login API call function to get a usertoken for viewing previously saved/"user" designs
+      //** in the studio.
+      //** uses data defined in the "formData" object above
+      //** a logged in user is only necessary for viewing "user" type designs or for saving changes
+      //** and is not needed for simply viewing "standard" designs
+      var loggedInUserToken = null;
+
+      function doUserLogin() {
+        //if( str === null || str.match(/^ *$/) !== null)){
+        //** configure and run the ajax call to the Login API
+        $.ajax({
+          method: "POST",
+          contentType: 'multipart/form-data',
+          url: apiURL + "api/login",
+          data: formData,
+          processData: false,
+          contentType: false,
+          cache: false,
+          timeout: 800000,
+          beforeSend: function() {
+            var dataType = Object.prototype.toString.call(this.data);
+            if (dataType != "[object FormData]") {
+              alert("\"data\" type must be formatted as a FormData Object.  Current type is \"" + dataType + "\".  Cancelling Login API call.");
+              return false;
+            }
+            return true;
+          }
+        }).done(function(data, errorThrown) {
+          if (data["result"] == "error") {
+            alert("API Login Failed, Reason: " + data["errors"]["password"]);
+          } else if (data["result"] == "success") {
+            if (data["user"] == "disconnected") {
+              alert("API Login Failed, check format of login parameters/data payload")
+            } else {
+              loggedInUserToken = data["token"];
+              logToPage("User Successfully Logged in. Token: " + loggedInUserToken);
+            }
+          } else {
+            alert(JSON.stringify(data));
+          }
+          logToPage("Complete Login API Response:");
+          logToPage(data);
+        }).fail(function(textStatus, errorThrown) {
+          if (errorThrown != "canceled") {
+            alert("Unable to complete Login API call. Check API endpoint value and status. Error: " + errorThrown);
+          }
+        }).always(function(textStatus, errorThrown) {
+          if (errorThrown === "success") {
+            loadStudioWidget();
+          } else {
+            alert("Cannot load Design Studio Widget.  Check API endpoint value and status. Error: " + errorThrown);
+            logToPage("Error loading Design Studio Widget.  Check API Endpoing value and status. Error: " + errorThrown);
+          }
+        });
+      };
+
+      function logToPage(message) {
+        var time = new Date();
+        var timestamp = new Date().toLocaleDateString(undefined, {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          fractionalSecondDigits: '3'
+        })
+        var date = "<br />" + timestamp + ": ";
+        if (typeof(message) === "string") {
+          $('#eventLog').append(date + '<br />\"' + message + '\"<br />');
+        } else if (typeof(message) === "number") {
+          $('#eventLog').append(date + "<br />" + message);
+        } else {
+          $('#eventLog').append("<pre>" + date + "<br />" + JSON.stringify(message, null, 4) + "</pre>");
+        }
+        $("#eventLog").animate({
+          scrollTop: $('#eventLog').prop("scrollHeight")
+        }, 200);
+      }
+    </script>
+    <title>BoxItNow</title>
+  </head>
+
+  <body>
+    <!-- BEGIN PAGE -->
+    <div id='body'>
+      <div id='console'>
+        <h3>Event Log</h3>
+        <div id='eventLog'>
+        </div>
+      </div>
+      <!-- widget content is loaded dynamically into this div -->
+      <div id='studio'>
+      </div>
+    </div>
+    <div id='footer'>
+    </div>
+    <!-- END PAGE -->
+  </body>
+
+</html>
