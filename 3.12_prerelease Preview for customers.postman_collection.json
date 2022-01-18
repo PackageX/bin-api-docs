@@ -1,0 +1,554 @@
+{
+	"info": {
+		"_postman_id": "e793f8b1-77e9-4d5c-a1b0-57e9024d4d71",
+		"name": "3.12_prerelease Preview for customers",
+		"description": "Box It Now Version 3.12_prerelease Preview Test Call Collection.\n\nMost calls either utilize or require a postman environment with variables configured to function correctly. All environment variables in query URLs or query data are defined with the format \"{{envVar}}\".",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Design",
+			"item": [
+				{
+					"name": "/api/design/layout/{baseId}",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "parameters[Length]",
+									"value": "4.00000",
+									"type": "text"
+								},
+								{
+									"key": "parameters[Width]",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "parameters[Depth]",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "parameters[Allowance]",
+									"value": "0.08600",
+									"type": "text"
+								},
+								{
+									"key": "apiKey",
+									"value": "{{apiKey}}\n",
+									"description": "apiKey provided by BIN",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{apiURL}}/api/design/layout/{{baseId}}",
+							"protocol": "https",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"design",
+								"layout",
+								"{{baseId}}"
+							]
+						},
+						"description": "Used to generate a custom sized design without a user interface.  The only real purpose of this API Endpoint, at least at this time, is to retreive information for pricing by the customer."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "/api/category/{id}/items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{apiURL}}/api/category/{{categoryId}}/items",
+							"protocol": "https",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"category",
+								"{{categoryId}}",
+								"items"
+							]
+						},
+						"description": "Retrieves the Item listing of the specified Category"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{apiURL}}/api/category/",
+							"protocol": "https",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"category",
+								""
+							]
+						},
+						"description": "Retreives a listing of all available Categories"
+					},
+					"response": []
+				}
+			],
+			"description": "The Item API provides endpoints to get a listing of all available Categories and the individual Designs that are contained within each Category."
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "/api/project/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "folderName",
+									"value": "testapi",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{apiURL}}/api/project/all?apiKey={{apiKey}}",
+							"protocol": "https",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"project",
+								"all"
+							],
+							"query": [
+								{
+									"key": "apiKey",
+									"value": "{{apiKey}}"
+								}
+							]
+						},
+						"description": "Retrieves a listing of all available Categories"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/project/{folderId}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{apiURL}}/api/project/{{folderId}}?apiKey={{apiKey}}",
+							"protocol": "https",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"project",
+								"{{folderId}}"
+							],
+							"query": [
+								{
+									"key": "apiKey",
+									"value": "{{apiKey}}",
+									"description": "apiKey provided by BIN"
+								}
+							]
+						},
+						"description": "Retrieves a listing of all available Base Designs within the specified Category"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Resize",
+			"item": [
+				{
+					"name": "/api/resize/info/{resizeToken}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "apiKey",
+									"value": "{{apiKey}}",
+									"description": "apiKey provided by BIN",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{apiURL}}/api/resize/info/{{resizeToken}}",
+							"protocol": "https",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"resize",
+								"info",
+								"{{resizeToken}}"
+							]
+						},
+						"description": "This endpoint retreives the relevent information for the design associated with the resizeToken that is passed as the final portion of the URL."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/resize/compiledPdf/{resizeToken}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{apiURL}}/resize/compiledPdf/{{resizeToken}}",
+							"protocol": "https",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"resize",
+								"compiledPdf",
+								"{{resizeToken}}"
+							]
+						},
+						"description": "Retrieves the compiled HIgh-Resolution PDF file for the specified Design. Please note that this endpoing does initiate the creation of the High-Resolution PDF file if it has not previously been created, and therefore can take some time to return the file/initiate the download.\n\nTypical creation time for a High-Resolution PDF is in the range of 1-15 seconds, but there have been cases involving an abnormally high count of high-resolution source images that have taken significantly longer than that, in some cases longer than 10 minutes to generate.\n\nThis being the case, this endpoint should NEVER be called in a flow that will impact the user directly. We suggest using secondary calls to initiate file retrieval if the initial call does not complete within 20 seconds or so."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/resize/generateProofPdf/{resizeToken}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "apiKey",
+									"value": "{{apiKey}}",
+									"description": "apiKey Provided by BIN",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{apiURL}}/resize/generateProofPdf/{{resizeToken}}",
+							"protocol": "https",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"resize",
+								"generateProofPdf",
+								"{{resizeToken}}"
+							]
+						},
+						"description": "This endpoint initiates the creation of low-resolution proof pdf and png files for the specified design. The urls for the low-resolution proof pdf and png files are included in the /resize/info endpoint, however the target files do not physically exist until this endpoint is called and has completed its run."
+					},
+					"response": []
+				}
+			],
+			"description": "The Resize API provides endpoints to retrieve data and files that are relevent to previously created and saved User Designs."
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "/api/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "RegisterForm[username]",
+									"value": "",
+									"description": "Must be a properly formatted email addres",
+									"type": "text"
+								},
+								{
+									"key": "RegisterForm[password]",
+									"value": "",
+									"description": "Alphanumeric and Special Characters are valid.  100 character limit.",
+									"type": "text"
+								},
+								{
+									"key": "RegisterForm[email]",
+									"value": "",
+									"description": "Must be a properly formatted email address.  Will most likely be merged with username in the future",
+									"type": "text"
+								},
+								{
+									"key": "RegisterForm[activate]",
+									"value": "true",
+									"description": "Should almost always be set to true.  Here for legacy reasons, but will be removed soon as a parameter most likely.",
+									"type": "text"
+								},
+								{
+									"key": "RegisterForm[agreement]",
+									"value": "true",
+									"description": "Must be set to true for account to be created.  If false, account wil not be created and will return error",
+									"type": "text"
+								},
+								{
+									"key": "apiKey",
+									"value": "{{apiKey}}",
+									"description": "apiKey provided by BIN",
+									"type": "text"
+								},
+								{
+									"key": "RegisterForm[ephemeral]",
+									"value": "true",
+									"description": "Set to true for temporary/anonymous users, false when creating a true/permanent user account",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{apiURL}}/api/register",
+							"protocol": "https",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						},
+						"description": "Register API Sample Call"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "LoginForm[username]",
+									"value": "{{username}}",
+									"description": "Username of user to log in",
+									"type": "text"
+								},
+								{
+									"key": "LoginForm[password]",
+									"value": "{{password}}",
+									"description": "Password of user to log in",
+									"type": "text"
+								},
+								{
+									"key": "apiKey",
+									"value": "{{apiKey}}",
+									"description": "apiKey provided by BIN",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{apiURL}}/api/login",
+							"protocol": "https",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "This endpoint logs in the user with the credentials supplied to it."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{apiURL}}/api/logout",
+							"protocol": "https",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						},
+						"description": "This endpoint logs out any currently logged in user"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/user/merge",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "apiKey",
+									"value": "{{apiKey}}",
+									"description": "apiKey provided by BIN",
+									"type": "text"
+								},
+								{
+									"key": "Target[username]",
+									"value": "",
+									"description": "The Permanent User's Username",
+									"type": "text"
+								},
+								{
+									"key": "Target[password]",
+									"value": "",
+									"description": "The permanent User's Password",
+									"type": "text"
+								},
+								{
+									"key": "Target[source_username]",
+									"value": "",
+									"description": "The Ephemeral User's Username",
+									"type": "text"
+								},
+								{
+									"key": "Target[source_password]",
+									"value": "",
+									"description": "The Epthemeral User's Password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{apiURL}}/api/user/merge?apiKey={{apiKey}}",
+							"protocol": "https",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"merge"
+							],
+							"query": [
+								{
+									"key": "apiKey",
+									"value": "{{apiKey}}"
+								}
+							]
+						},
+						"description": "merges ephemeral users into existing or newly registered full users"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/user/makePersistent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Target[username]",
+									"value": "{{ephemeralUserUsername}}",
+									"description": "The Ephemeral User's Username",
+									"type": "text"
+								},
+								{
+									"key": "Target[password]",
+									"value": "{{ephemeralUserPassword}}",
+									"description": "The Ephemeral User's Password",
+									"type": "text"
+								},
+								{
+									"key": "Target[newuser_username]",
+									"value": "{{newPersistentUserUsername}}",
+									"description": "The new user's Username, if desired.  If you want to keep the same username, then put the Ephemeral User's Username here also.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{apiURL}}/api/user/makePersistent?apiKey={{apiKey}}",
+							"protocol": "https",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"makePersistent"
+							],
+							"query": [
+								{
+									"key": "apiKey",
+									"value": "{{apiKey}}",
+									"description": "apiKey provided by BIN"
+								}
+							]
+						},
+						"description": "Changes Ephemeral User to a Permanent User"
+					},
+					"response": []
+				}
+			],
+			"description": "The User API provides endpoints for registering new users, logging in/out existing users, and manipulating Ephemeral/Anonymous users."
+		}
+	]
+}
