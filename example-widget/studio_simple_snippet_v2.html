@@ -1,0 +1,177 @@
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Sample Box It Now Studio Widget</title>
+		<base href="{{apiUrlWithTrailingSlash}}">
+		<link rel="stylesheet" type="text/css" href="{{binBaseCssFileUrl}}">
+		<script type="text/javascript" src="{{binBaseBootstrapJsFileUrl}}"></script>
+		<script>
+			//LOAD bin libraries
+			//(required) load the studio in metric or imperial measurement units. Used in conjunction with the "unitSystem" key below.
+			// will throw js error if not included.
+			var useMetric = 0;
+			// begin studio widget script definition and configuration call.
+			BIN.Bootstrap.load({
+				apiUrl: "{{apiUrlWithTrailingSlash}}",
+				apiKey: "{{apiKey}}"
+			}, function() {
+				//Begin create studio
+				BIN.Widgets.Create({
+					//can be: 'viewer' (3d viewer), 'studio' (3d design studio) , 'media' (Media Manager), or 'profile' (User Profile)
+					type: 'studio',
+					//(required) Existing HTML div to load the widget into on the page
+					tag: $('#{{targetDivId}}'),
+					//(required to load existing user design) User token that is returned from the Login API.  Not necessary if loading a standard/new design
+					userToken: '{{userToken}}',
+					//(required) define base design options
+					design: {
+						//(required) 'standard' or 'user'
+						type: 'standard',
+						//(required) designId of standard design or resizeId of existing user design.
+						id: 413,
+						//(optional) 'imperial' or 'metric'
+						//default/null : 'imperial'
+						unitSystem: 'metric',
+						//(optional) 'vertical' or 'horizontal'
+						//default/null : 'vertical'
+						fluting: 'vertical',
+						//(optional) true/False
+						//default/null false
+						//true automatically triggers a resize event on load and creates a new resizeId for the design (essentially a "Save As" feature), retaining any existing graphics in the new design in addition to modifications when saved
+						//false will retain the original resizeId and overwrite existing artwork with any modifications that are made when the design is saved.  If dimensions are changed and/or the "Resize" button is clicked, then a new resizeId will be generated
+						// and the original design's artwork will remain unchanged.
+						isTemplate: false,
+						//(Optional)
+						//** There may be more than Length, Width, and Depth available, depending on design.
+						//** When parameters are passed in below, a resize event will be triggered automatically so that the design that is loaded up first is the correct size,etc.  Not all parameters are required, any not passed in will use default values from the database.
+						parameters: {
+							Length: "20.00000",
+							Width: "20.00000",
+							Allowance: "0.12500",
+						}
+					},
+					// additional customization options
+					options: {
+						user: {
+							// dictates whether a save prompt allowing user to choose My Boxes folder and name for the saved design is displayed or the design is saved silently and automatically named.
+							// (optional) defaults/null displays prompt, 'simple' does not.
+							saving: 'simple'
+						},
+						defaultLayout: {
+							// show or hide the score lines in the 2d/3d objects
+							// (optional) default/null true
+							showScores: false
+						},
+						ui: {
+							// sets what section of the design studio is active on widget load.
+							// (optional) defaults to 'measurements'.  options are 'measurements', 'graphics', or 'export'
+							initialTab: 'graphics',
+							// configure visible labels for all elements available in the studio.  This is used to rename the default label values, but can also be used together with i8n frameworks to allow for labels to be displayed in various languages.
+							// below is a very small sample of sections and elements that can be renamed/relabeled.
+							saveButtonText: 'SAVE DESIGN',
+							saveProgressText: 'Saving...',
+							saveFinishText: 'DESIGN SAVED',
+							studio: {
+								info: {
+									register: 'Register',
+								},
+							},
+						},
+						views: {
+							'3d': '3D123',
+							'outside': 'Outside View',
+							'cad': null,
+						},
+						tabs: {
+							resizer: 'Default Dimensions123',
+							graphics: 'Default Graphics',
+							export: 'Default <br /> Share',
+						},
+						// configure options for resize tab and functionality
+						//(optional)
+						resizer: {
+							enabled: true,
+							modules: ['mod_advanced'],
+						},
+						// configure options for export tab and functionality
+						// (optional)
+						export: {
+							enabled: true,
+							modules: ['mod_share', 'mod_ftp', 'mod_xmpie']
+						},
+						// configure options for graphics tab and functionality
+						// (optional)
+						graphics: {
+							enabled: true,
+							modules: ['mod_standard', 'mod_graphics', 'mod_text', 'mod_panel', 'mod_litho', 'mod_color', 'mod_pattern']
+						},
+						form: {
+							fields: {},
+							// show or hide additional fields in details tab.
+							//(optional) default: false.  If true, only shows Length, Width, Depth, and Allowance.
+							hideAdvancedDims: false,
+						},
+						// enable and define options for the "Finish" dropdown.  Finishes are the visual look of the substrate, ie "white/kraft", "kraft/kraft", etc.
+						finishes: {
+							enable: true,
+							// if enabled, then at least 1 option must be defined below.
+							options: {
+								'Standard White': {
+									renderBase: '#ff0000',
+									interior: 'white',
+								},
+								'Kraft': {
+									renderBase: 'kr1aft',
+									isDefault: 'true'
+								}
+							}
+						},
+						// enable/disable the "Board Type" dropdown to allow users to manually select pre-defined board substrates/thicknesses, ie b-flute, c-flute, etc.
+						// (optional) default/null : true
+						materials: {
+							enable: true
+						},
+					},
+					// (optional) fired after save event is completed (successfully or unsuccessfully)
+					onSave: function(userSessionHandle, parameters) {
+						console.log("onSave callback triggered");
+						console.log("******************** onSave Parameters ********************");
+						console.log(parameters);
+						//onSave actions go here.  for example, E-commerce solution specific add to cart functionality
+					},
+					//(optional) fired after widget load event is completed
+					onLoad: function(userSessionHandle) {
+						console.log("onLoad callback triggered");
+						console.log(userSessionHandle);
+						//onLoad actions go here.  for example, displaying an instructional overlay
+					},
+					//(optional) fired after resize event is completed (successfully or unsuccessfully)
+					onResize: function(userSessionHandle, parameters) {
+						console.log("onResize callback triggered");
+						console.log("******************** onResize Parameters ********************");
+						console.log(parameters);
+						//onResize actions go here.  for example, updating session info with new resizeId/resizeToken, etc.
+					},
+				});
+			});
+		</script>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: #000000;
+			}
+
+			#viewer {
+				margin: auto;
+				background-color: #000000;
+			}
+		</style>
+
+	<body>
+		<div id="viewer">
+		</div>
+	</body>
+
+</html>
