@@ -1,0 +1,903 @@
+openapi: 3.0.1
+info:
+  title: Box It Now API
+  description: Access BIN functionality remotely
+  version: 3.12_Prerelease
+servers:
+- url: https://demo.boxitnow.com/api
+paths:
+  /login:
+    post:
+      tags:
+      - User
+      summary: Login
+      description: This will allow you to log a user into a session. Parameters must be passed in body as form data with format outlined below, Case-Sensitive
+      parameters:
+      - name: LoginForm[username]
+        in: query
+        description: The user's username or email
+        required: true
+        schema:
+          type: string
+      - name: LoginForm[password]
+        in: query
+        description: The user's password
+        required: true
+        schema:
+          type: string
+      - name: apiKey
+        in: query
+        description: api access token
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: The Successful login result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    description: success
+                  token:
+                    type: string
+                    description: Valid User Login Token
+                  user:
+                    type: string
+                    description: connected
+                  options:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: userId
+                      ftpAddress:
+                        type: string
+                        description: user's FTP server address
+                      ftpPass:
+                        type: string
+                        description: user's FTP Server password
+                      ftpUser:
+                        type: string
+                        description: user's FTP Server username
+                      autoLogin:
+                        type: string
+                        description: 1/true or 0/false
+                      forceLogin:
+                        type: string
+                        description: 1/true or 0/false
+                      defaultFileTypes:
+                        type: string
+                        description: comma-separated list of user-enabled filetype
+                          for this user
+                      pxSite:
+                        type: string
+                        description: linked PackageX Collaboration site name
+                      pxUser:
+                        type: string
+                        description: linked PackageX Collaboration Username
+                      pxPass:
+                        type: string
+                        description: linked PackageX Collaboration Password
+                      firstpage:
+                        type: string
+                        description: user selected starting page
+                      recentPage:
+                        type: string
+                        description: no clue --josh
+                      printOsKey:
+                        type: string
+                        description: HP PrintOS Public Key
+                      printOsSecret:
+                        type: string
+                        description: HP PrintOS Secret Key
+                      printOsFolder:
+                        type: string
+                        description: HP PrintOS Target Folder
+                  name:
+                    type: string
+                    description: user's first and last name
+                  profile:
+                    type: object
+                    properties:
+                      dateRegistered:
+                        type: string
+                        description: registration timestamp for user
+        300:
+          description: The Errored login result, displayed when bad credentials are
+            passed or if the apiKey is missing or incorrect
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    description: error
+                  errors:
+                    type: object
+                    properties:
+                      password:
+                        type: string
+                        description: Relevent Error message
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+  /logout:
+    post:
+      tags:
+      - User
+      summary: Login
+      description: This will allow you to log a user into a session.
+      responses:
+        200:
+          description: The Successful login result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    description: success
+                  user:
+                    type: string
+                    description: connected
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+  /register:
+    post:
+      tags:
+      - User
+      summary: Register
+      description: This will allow you to create a new user. Parameters must be passed in body as form data with format outlined below, Case-Sensitive
+      parameters:
+      - name: RegisterForm[username]
+        in: query
+        description: The user's username
+        required: true
+        schema:
+          type: string
+      - name: RegisterForm[password]
+        in: query
+        description: The password, must be more than 6 characters. Invalid password
+          will give you and JSON error when you can show the user
+        required: true
+        schema:
+          type: string
+      - name: RegisterForm[email]
+        in: query
+        description: The user's email
+        required: true
+        schema:
+          type: string
+      - name: RegisterForm[activate]
+        in: query
+        description: Automatically initiate the user, default=false
+        schema:
+          type: string
+      - name: RegisterForm[agreement]
+        in: query
+        description: Agreement. default=false
+        required: true
+        schema:
+          type: string
+      - name: RegisterForm[ephemeral]
+        in: query
+        description: Set this true if the user is created for temporary reasons. default=false
+        schema:
+          type: string
+      - name: apiKey
+        in: query
+        description: api access token
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: The registration result, with user token, gives errors if invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginSuccess'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /user/merge:
+    post:
+      tags:
+      - User
+      summary: Merge
+      description: Merges ephemeral users into existing full users.  Parameters must be passed in body as form data with format outlined below, Case-Sensitive
+      parameters:
+      - name: Target[username]
+        in: query
+        description: The permanent user's username
+        required: true
+        schema:
+          type: string
+      - name: Target[password]
+        in: query
+        description: The permanent user's password
+        required: true
+        schema:
+          type: string
+      - name: Target[source_username]
+        in: query
+        description: The ephemeral user's username
+        required: true
+        schema:
+          type: string
+      - name: Target[source_password]
+        in: query
+        description: The ephemeral user's password
+        required: true
+        schema:
+          type: string
+      - name: apiKey
+        in: query
+        description: api access token
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: The merge result, gives errors if invalid credentials
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DefaultResult'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /user/makePersistent:
+    post:
+      tags:
+      - User
+      summary: Persist
+      description: Changes ephemeral user to a permanent.  Parameters must be passed in body as form data with format outlined below, Case-Sensitive
+      parameters:
+      - name: Target[username]
+        in: query
+        description: The ephemeral user's username
+        required: true
+        schema:
+          type: string
+      - name: Target[password]
+        in: query
+        description: The ephemeral user's password
+        required: true
+        schema:
+          type: string
+      - name: Target[newuser_username]
+        in: query
+        description: The new user's username (Target[username] if you want to keep the same username)
+        required: true
+        schema:
+          type: string
+      - name: apiKey
+        in: query
+        description: api access token
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: The persist result, gives errors if invalid credentials
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DefaultResult'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /category:
+    get:
+      tags:
+      - Item
+      summary: Categories Listing
+      description: Get a list of available categories
+      responses:
+        200:
+          description: The list and description available categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /category/{id}:
+    get:
+      tags:
+      - Item
+      summary: Category Items Listing
+      description: Gets a list of available Items in the specified Category
+      parameters:
+      - name: id
+        in: path
+        description: category id
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: The listing of items in the requested Category
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    description: success
+                  items:
+                    type: object
+                    description: Array of Items elements, each containing information about an individual Design
+                    properties:
+                      itemRefNo:
+                        type: string
+                        description: Design ID
+                      catgegoryGroupNo:
+                        type: string
+                        description: Parent Category ID
+                      itemNo:
+                        type: string
+                        description: Item number within category (depricated, will be removed soon)
+                      itemDisplayOrder:
+                        type: string
+                        description: Display order of item within Category listing
+                      itemQuickDesc:
+                        type: string
+                        description: Abbreviated Design Name
+                      itemLongDesc1:
+                        type: string
+                        description: Item long description field 1
+                      itemLongDesc2:
+                        type: string
+                        description: Item long description field 2 (typically unused, will be removed soon)
+                      itemShortDesc:
+                        type: string
+                        description: Item's display name
+                      enabled:
+                        type: boolean
+                        description: Is design enabled.  (redundant and will be removed soon, as API only returns enabled designs by default)
+                      designSettingId:
+                        type: string
+                        description: Unused (will be removed soon)
+                      contextSettingId:
+                        type: string
+                        description: Unused (will be removed soon)
+                      image:
+                        type: string
+                        description: relative link to Item's thumbnail image
+                      purchased:
+                        type: boolean
+                        description: (deprecated, will be removed soon)
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /design/layout/{id}:
+    post:
+      tags:
+      - Design
+      summary: Layout
+      description: Generates a resized design from specific parameters and returns the design info.  Can contain parameters that are not defined below, as each Design can have different parameters that define what can be customized about it. Parameters must be passed in body as form data with format "parameters[parameterName]", Case-Sensitive
+      parameters:
+      - name: id
+        in: path
+        description: The base design id
+        required: true
+        schema:
+          type: string
+      - name: parameters
+        in: query
+        description: Design parameters to use in resizing the design.  must be sent with format parameters[{{parameterName}}] where parametername is the Case-Sensitive parameter key.
+        style: form
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: apiKey
+        in: query
+        description: api access token
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResizedDesignInfo'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /resize/info/{resizeToken}:
+    get:
+      tags:
+      - Resize
+      summary: Info
+      description: Gets information about a resize, including file URLs. Note - Low Res PNG images are not available until AFTER the low res PDF has been generated.
+      parameters:
+      - name: resizeToken
+        in: path
+        description: The resizeToken of the requested design
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Resize'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /resize/compiledPdf/{id}:
+    get:
+      tags:
+      - Resize
+      summary: Hi-Res PDF
+      description: Gets the hi-res compiled pdf of deisgn. If file does not exist, will initiate generation of the High-Res PDF.  This typically takes < 10 seconds, but can take an unspecified amount of time under rare circumstances.  Should not be used in a flow where a long wait can impede the user experience.
+      parameters:
+      - name: id
+        in: path
+        description: Design ResizeToken
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Returns the actual Design High-Resolution PDF file.
+          content:
+            application/octet-stream: {}
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /resize/generateProofPdf/{id}:
+    get:
+      tags:
+      - Resize
+      summary: Generate Proof
+      description: Generates the low-res compiled pdf of design. If file does not exist, it may take ~30s to generate. This call will also generate the low res png images and must be called before download/use of low-res png images.
+      parameters:
+      - name: id
+        in: path
+        description: Design ResizeToken
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GenerateProofPDF'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /project/all:
+    get:
+      tags:
+      - Project
+      summary: Retrieve list of all user's saved project folders
+      description: Retrieves the list of all of the folders that the logged in user has created.  User MUST be logged in before calling this endpoint
+      parameters:
+      - name: apiKey
+        in: query
+        description: API Access Token
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Gives errors if invalid item id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProjectsFolderList'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /project/{folderId}:
+    get:
+      tags:
+      - Project
+      summary: Retrieve list of all user's saved project folders
+      description: Retrieves the list of all of the folders that the logged in user has created.  User MUST be logged in before calling this endpoint
+      parameters:
+      - name: folderId
+        in: path
+        description: folderId to retrieve contents of
+        required: true
+        schema:
+          type: integer
+      - name: apiKey
+        in: query
+        description: API Access Token
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: errors if invalid folderID or if valid user is not logged in
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProjectsDesignList'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    ProjectsDesignList:
+      type: object
+      properties:
+        result:
+          type: string
+          description: success or failure
+          default: success
+        projectNo:
+          type: string
+          description: folderId for requested folder
+        projectName:
+          type: string
+          description: Display name of requested folder
+        projectDesc:
+          type: string
+          description: Description of requested folder
+        createdDate:
+          type: string
+          description: datetime that folder was created
+        imageUrl:
+          type: string
+          description: full URL to folder Thumbnail image
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              resizeToken:
+                type: string
+                description: resizeToken of design
+              jobName:
+                type: string
+                description: Display Name of the design
+              identifier:
+                type: string
+                description: resizeID of design
+              guid:
+                type: string
+                description: unused, will be removed soon
+                default: depricated
+              originalRefNo:
+                type: string
+                description: DesignID of the original box style used to create this design
+              version:
+                type: string
+                description: unused, will be removed soon
+                default: depricated
+              versionHash:
+                type: string
+                description: unused, will be removed soon
+                default: depricated
+              lastModified:
+                type: string
+                description: datetime of the last time the design was saved
+              dateCreated:
+                type: string
+                description: datetime of when the design was created
+              measurementUnit:
+                type: string
+                description: 0=Imperial, 1=Metric
+              files:
+                type: object
+                properties:
+                  thumbnail:
+                    type: string
+                    description: Thumbnail of resize
+                  highrespdf:
+                    type: string
+                    description: High-Resolution PDF for downloading
+                  pdf:
+                    type: string
+                    description: PDF Spec Sheet
+                  lowrespdf:
+                    type: string
+                    description: Low-Resolution PDF compilation file
+                  lowrespng_outside:
+                    type: string
+                    description: PNG Image with Transparency of the design Outside View
+                  lowrespng_inside:
+                    type: string
+                    description: PNG Image with Transparency of the design Inside View
+                  cad_dims:
+                    type: string
+                    description: CAD view of design with dimension
+                  cad_flat:
+                    type: string
+                    description: CAD view of design without dimension
+                  eps:
+                    type: string
+                    description: EPS file
+                  dxf:
+                    type: string
+                    description: DXF cad file
+                  hpgl:
+                    type: string
+                    description: HPGL cutting file
+                  artwork:
+                    type: object
+                    description: Outside and Inside layout screenshot png
+                    properties:
+                      outside:
+                        type: string
+                        description: Outside View Screenshot PNG
+                      inside:
+                        type: string
+                        description: Inside View Screenshot PNG
+                  outside:
+                    type: string
+                    description: Outside View Screenshot (Redundant to "artwork" array, will be removed soon)
+                  inside:
+                    type: string
+                    description: inside View Screenshot (Redundant to "artwork" array, will be removed soon)
+    ProjectsFolderList:
+      type: object
+      properties:
+        result:
+          type: string
+          description: success or failure
+          default: success
+        projects:
+          type: object
+          properties:
+            projectNo:
+              type: string
+              description: resizeID (NOT resizeToken) of the saved Design
+            projectName:
+              type: string
+              description: Display name of the saved Design
+            projectDesc:
+              type: string
+              description: Description of the saved Design
+            imageUrl:
+              type: string
+              description: relative URL to Design Thumbnail File
+            isShared:
+              type: string
+              description: depricated, will be removed soon
+            designCount:
+              type: string
+              description: depricated, will be removed soon
+    GenericResponse:
+      type: object
+      properties:
+        result:
+          type: string
+          description: success
+        user:
+          type: string
+          description: connected
+    Category:
+      type: object
+      properties:
+        categoryGroupName:
+          type: string
+          description: Category Name
+        categoryGroupRefNo:
+          type: string
+          description: Category ID
+        categoryGroupDesc:
+          type: string
+          description: Category Description
+        image1:
+          type: string
+          description: Relative link to category icon image
+        image2:
+          type: string
+          description: Same as image1 (redundant, will be removed soon)
+        ipadBackgroundColor:
+          type: string
+          description: Category background/highlight color
+    Resize:
+      type: object
+      properties:
+        result:
+          type: string
+          description: success
+        thumbnail:
+          type: string
+          description: Thumbnail of resize
+        highrespdf:
+          type: string
+          description: High-Resolution PDF for downloading
+        pdf:
+          type: string
+          description: PDF Spec Sheet
+        lowrespdf:
+          type: string
+          description: Low-Resolution PDF compilation file
+        lowrespng_outside:
+          type: string
+          description: PNG Image with Transparency of the design Outside View
+        lowrespng_inside:
+          type: string
+          description: PNG Image with Transparency of the design Inside View
+        cad_dims:
+          type: string
+          description: CAD view of design with dimension
+        cad_flat:
+          type: string
+          description: CAD view of design without dimension
+        eps:
+          type: string
+          description: EPS file
+        dxf:
+          type: string
+          description: DXF cad file
+        hpgl:
+          type: string
+          description: HPGL cutting file
+        artwork:
+          type: object
+          description: Outside and Inside layout screenshot png
+          properties:
+            outside:
+              type: string
+              description: Outside View Screenshot PNG
+            inside:
+              type: string
+              description: Inside View Screenshot PNG
+        outside:
+          type: string
+          description: Outside View Screenshot (Redundant to "artwork" array, will be removed soon)
+        inside:
+          type: string
+          description: inside View Screenshot (Redundant to "artwork" array, will be removed soon)
+        parameters:
+          type: object
+          description: Design parameter information.  This will vary based on the available parameters for each specific design.  You should account for variable key/value information in your code.
+    GenerateProofPDF:
+      type: object
+      properties:
+        proofpdf:
+          type: object
+          properties:
+            result:
+              type: string
+              description: success
+            message:
+              type: string
+              description: Error if proof generation failed, otherwise will return "Proof Generation Success"
+          description: Low-Resolution (Proof) PDF compilation file
+    ResizedDesignInfo:
+      type: object
+      properties:
+        result:
+          type: string
+          description: Success
+        resizeId:
+          type: string
+          description: The resizeID for this specific resize. Needed for loading an existing design into the Design Studio Widget
+        resizeToken:
+          type: string
+          description: the resizeToken for this specific resize. Needed for retrieving additional data, High-Resolution PDF, and all API calls relating to existing designs
+        parameters:
+          type: object
+          description: Contains information about the resize, including parameters used to create it.  This section can contain variable key:value data depending on what params are included in each Design, but will always contain the keys outlined here
+          properties:
+            item:
+              type: string
+              description: the base designID that was used to create this design
+            userId:
+              type: string
+              description: the UserID of the user that created the resize
+            Scale:
+              type: string
+              description: Unused, will be removed soon
+            blankHeight:
+              type: string
+              description: The height of the blank for this design
+            blankWidth:
+              type: string
+              description: the width of the blank for this design
+            walklength:
+              type: string
+              description: The total length of all cuts/creases/perfs in the design. (Still in beta/development, no guarantees to accuracy until out of beta)
+            lineTotal:
+              type: string
+              description: The total length of all straight cuts/creases/perfs in the design (Still in beta/development, no guarantees to accuracy until out of beta)
+            arcTotal:
+              type: string
+              description: The total length of all arced cuts/creases/perfs in the design (Still in beta/development, no guarantees to accuracy until out of beta)
+    DefaultResult:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Success
+        errors:
+          type: string
+          description: Error
+    LoginSuccess:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Success
+        token:
+          type: string
+          description: User token
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        fields:
+          type: string
